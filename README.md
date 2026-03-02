@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# FIA stem map
+# FIAstemmap <a href="https://ctoney.github.io/FIAstemmap/"><img src="man/figures/logo.png" align="right" height="138" alt="FIAstemmap website" /></a>
 
 <!-- badges: start -->
 
