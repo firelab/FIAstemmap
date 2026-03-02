@@ -4,7 +4,7 @@
 \alias{spatstat_helpers}
 \alias{create_fia_owin}
 \alias{create_fia_ppp}
-\title{Analyze tree spatial pattern on FIA plots}
+\title{Analyze the spatial pattern of trees on an FIA plot}
 \usage{
 create_fia_owin(linear_unit = "ft", macroplot = FALSE, npoly = 360)
 

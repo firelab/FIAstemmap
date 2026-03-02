@@ -30,8 +30,8 @@ Forest Inventory and Analysis (FIA) plots.
 cw_sapling_adj
 }
 \description{
-A species-specific lookup table of estimated crown width (CW) adjustment
-factors for saplings based on data from Bragg (2001).
+A species-specific lookup table of estimated adjustment factors for crown
+width (CW) of saplings based on data from Bragg (2001).
 }
 \details{
 FIA "saplings" are trees less than 5.0 in. (12.7 cm) diameter but greater
@@ -42,9 +42,9 @@ see \link{cw_coef}) do not include trees with diameter less than 5.0 in.
 undesirable, especially since a quadratic term is used in the regression
 equations for some species.
 
-Adjustment is based on the proportion of crown width predicted at 5-in.
-(12.7 cm), at each 1-in. (2.54 cm) increment below that. Intermediate values
-are interpolated in the crown width prediction method. Mean adjustment
+Adjustment is based on the proportion of crown width predicted for 5-in.
+(12.7 cm) diameter, at each 1-in. (2.54 cm) increment below that. Intermediate
+values are interpolated in the crown width prediction method. Mean adjustment
 factors are used if a species-specific adjustment is not available.
 }
 \examples{

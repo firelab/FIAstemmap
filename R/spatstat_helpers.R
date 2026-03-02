@@ -1,4 +1,4 @@
-#' Analyze tree spatial pattern on FIA plots
+#' Analyze the spatial pattern of trees on an FIA plot
 #'
 #' Functions that facilitate point pattern analysis of FIA tree data using the
 #' \pkg{spatstat} library.

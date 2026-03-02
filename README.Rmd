@@ -18,17 +18,17 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-**NOTE: this repository is for an implementation update _currently under development_**
+**NOTE: this is an implementation update _currently under development_**
 
 The Forest Inventory and Analysis Program ([FIA](https://research.fs.usda.gov/programs/nfi)) of USDA Forest Service provide tree-level measurements from a systematic grid of field plots across all forest ownerships and land uses in the US.
 
-**FIAstemmap** is an R package for mapping tree stem locations on FIA plots, modeling individual crown dimensions, and generating plot-level estimates of fractional tree canopy cover. Several stand height metrics can be calculated. Spatial analysis of tree point pattern is facilitated for the standard FIA four-point cluster plot design. Efficient data processing supports national applications. The package provides an updated implementation of the software originally described by Toney et al. 2009 [[1]](#References). The original implementation for modeling plot canopy cover from individual tree measurements has supported several applications of FIA data, including:
+**FIAstemmap** is an R package for mapping tree stem locations on FIA plots, modeling individual crown dimensions, and generating plot-level estimates of fractional tree canopy cover. Several stand height metrics can be calculated. Spatial analysis of tree point pattern is facilitated for the standard FIA four-point cluster plot design. Efficient data processing supports national applications. The package provides an updated implementation of the software originally described by Toney et al. 2009 [[1]](#references). The original implementation for modeling plot canopy cover from individual tree measurements has supported several applications of FIA data, including:
 
-* reference data for classifying vegetation types and mapping tree canopy cover in the LANDFIRE Program [[2, 3, 4, 5]](#References)
-* National Land Cover Database (NLCD) Tree Canopy Cover (TCC) science and development [[6]](#References)
-* wildlife habitat analyses [[7, 8, 9]](#References)
-* mapping erosion risk in rangelands [[10]](#References)
-* comparative assessments of tree canopy cover estimation methods [[11, 12]](#References)
+* reference data for classifying vegetation types and mapping tree canopy cover in the LANDFIRE Program [[2, 3, 4, 5]](#references)
+* National Land Cover Database (NLCD) Tree Canopy Cover (TCC) science and development [[6]](#references)
+* wildlife habitat analyses [[7, 8, 9]](#references)
+* mapping erosion risk in rangelands [[10]](#references)
+* comparative assessments of tree canopy cover estimation methods [[11, 12]](#references)
 
 ## Installation
 
