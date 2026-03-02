@@ -126,6 +126,21 @@ below, along with the status of each column as required or optional for
 
 - `CRWIDTH`: optional crown width (may be computed with **TODO**)
 
+## References
+
+Baddeley A, Rubak E, Turner R (2015). *Spatial Point Patterns:
+Methodology and Applications with R*. Chapman and Hall/CRC Press,
+London. ISBN 9781482210200,
+<https://www.routledge.com/Spatial-Point-Patterns-Methodology-and-Applications-with-R/Baddeley-Rubak-Turner/p/book/9781482210200/>.
+
+Ripley, B.D. (1977) Modelling spatial patterns. *Journal of the Royal
+Statistical Society: Series B (Methodological)*, **39**:2, 172–192.
+<https://doi.org/10.1111/j.2517-6161.1977.tb01615.x>.
+
+## See also
+
+spatstat package: <https://cran.r-project.org/package=spatstat>
+
 ## Examples
 
 ``` r
