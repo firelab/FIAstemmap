@@ -16,4 +16,4 @@
   overlay
 - [`create_fia_owin()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
   [`create_fia_ppp()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
-  : Analyze tree spatial pattern on FIA plots
+  : Analyze the spatial pattern of trees on an FIA plot

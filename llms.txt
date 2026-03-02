@@ -1,7 +1,6 @@
 # FIAstemmap
 
-**NOTE: this repository is for an implementation update *currently under
-development***
+**NOTE: this is an implementation update *currently under development***
 
 The Forest Inventory and Analysis Program
 ([FIA](https://research.fs.usda.gov/programs/nfi)) of USDA Forest
@@ -15,18 +14,18 @@ can be calculated. Spatial analysis of tree point pattern is facilitated
 for the standard FIA four-point cluster plot design. Efficient data
 processing supports national applications. The package provides an
 updated implementation of the software originally described by Toney et
-al. 2009 [\[1\]](#References). The original implementation for modeling
+al. 2009 [\[1\]](#references). The original implementation for modeling
 plot canopy cover from individual tree measurements has supported
 several applications of FIA data, including:
 
 - reference data for classifying vegetation types and mapping tree
-  canopy cover in the LANDFIRE Program [\[2, 3, 4, 5\]](#References)
+  canopy cover in the LANDFIRE Program [\[2, 3, 4, 5\]](#references)
 - National Land Cover Database (NLCD) Tree Canopy Cover (TCC) science
-  and development [\[6\]](#References)
-- wildlife habitat analyses [\[7, 8, 9\]](#References)
-- mapping erosion risk in rangelands [\[10\]](#References)
+  and development [\[6\]](#references)
+- wildlife habitat analyses [\[7, 8, 9\]](#references)
+- mapping erosion risk in rangelands [\[10\]](#references)
 - comparative assessments of tree canopy cover estimation methods [\[11,
-  12\]](#References)
+  12\]](#references)
 
 ## Installation
 
@@ -144,5 +143,5 @@ individual tree measurements. *Forest Ecology and Management*, Volume
   overlay
 - [`create_fia_owin()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
   [`create_fia_ppp()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
-  : Analyze tree spatial pattern on FIA plots
+  : Analyze the spatial pattern of trees on an FIA plot
 

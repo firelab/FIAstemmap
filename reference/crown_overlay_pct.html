@@ -43,14 +43,14 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">crown_overlay_pct</span><span class="op">(</span><span class="va">plot_radius</span>, <span class="va">tree_list</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">crown_overlay_pct</span><span class="op">(</span><span class="va">sample_radius</span>, <span class="va">tree_list</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-plot-radius">plot_radius<a class="anchor" aria-label="anchor" href="#arg-plot-radius"></a></dt>
+<dl><dt id="arg-sample-radius">sample_radius<a class="anchor" aria-label="anchor" href="#arg-sample-radius"></a></dt>
 <dd><p>A numeric value giving the radius of the
 subplot/microplot.</p></dd>
 
@@ -58,17 +58,29 @@ subplot/microplot.</p></dd>
 <dt id="arg-tree-list">tree_list<a class="anchor" aria-label="anchor" href="#arg-tree-list"></a></dt>
 <dd><p>A data frame containing tree records for the
 subplot/microplot. Must have columns <code>DIST</code> (stem distance from subplot
-center in same units as <code>plot_radius</code>), <code>AZIMUTH</code> (horizontal angle from
+center in same units as <code>sample_radius</code>), <code>AZIMUTH</code> (horizontal angle from
 subplot/microplot center to the stem location, in the range <code>0:359</code>) and
-<code>CRWIDTH</code> (tree crown width in the same units as <code>plot_radius</code> and <code>DIST</code>).</p></dd>
+<code>CRWIDTH</code> (tree crown width in the same units as <code>sample_radius</code> and <code>DIST</code>).</p></dd>
+
+
+<dt id="arg-digits">digits<a class="anchor" aria-label="anchor" href="#arg-digits"></a></dt>
+<dd><p>Optional integer number of digits to keep in the result
+(defaults to <code>1</code>, will be passed to <code><a href="https://rdrr.io/r/base/Round.html" class="external-link">round()</a></code>).</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A numeric value for tree canopy cover as percent of the subplot/microplot
+    <p>An numeric value for tree canopy cover as percent of the subplot/microplot
 covered by a vertical projection of circular crowns.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">crown_overlay_pct</span><span class="op">(</span><span class="fl">24</span>, <span class="va">plantation</span><span class="op">[</span><span class="va">plantation</span><span class="op">$</span><span class="va">SUBP</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span></span></span>
+<span class="r-in"><span>                                 <span class="va">plantation</span><span class="op">$</span><span class="va">DIA</span> <span class="op">&gt;=</span> <span class="fl">5</span>, <span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> 'g_build_collection' is not an exported object from 'namespace:gdalraster'</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
