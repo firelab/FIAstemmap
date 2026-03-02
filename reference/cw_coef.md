@@ -45,7 +45,7 @@ A data frame with 430 rows and 8 columns:
   [`numeric`](https://rdrr.io/r/base/numeric.html), Regression b1
   coefficient
 
-- `b1`:
+- `b2`:
 
   [`numeric`](https://rdrr.io/r/base/numeric.html), Regression b2
   coefficient
@@ -94,6 +94,7 @@ radius and estimating canopy cover. *Forest Ecology and Management*,
 ## Examples
 
 ``` r
+# Abies grandis
 cw_coef[cw_coef$SPCD == 17, ]
 #>   symbol SPCD common_name surrogate   b0   b1    b2       reference
 #> 3   ABGR   17   grand fir      <NA> 5.75 1.11 -0.01 Bechtold (2004)
