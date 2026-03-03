@@ -125,13 +125,13 @@ K <- spatstat.explore::Kest(X, rmax = 12)
 plot(K, main = "Ripley's K-function for the plantation trees")
 }
 \references{
-Baddeley A, Rubak E, Turner R (2015). \emph{Spatial Point Patterns: Methodology
+Baddeley, A., E. Rubak, R. Turner. 2015. \emph{Spatial Point Patterns: Methodology
 and Applications with R}. Chapman and Hall/CRC Press, London.
 ISBN 9781482210200,
 \url{https://www.routledge.com/Spatial-Point-Patterns-Methodology-and-Applications-with-R/Baddeley-Rubak-Turner/p/book/9781482210200/}.
 
-Ripley, B.D. (1977) Modelling spatial patterns. \emph{Journal of the Royal
-Statistical Society: Series B (Methodological)}, \strong{39}:2, 172–192.
+Ripley, B.D. 1977. Modelling spatial patterns. \emph{Journal of the Royal
+Statistical Society: Series B (Methodological)}, 39(2): 172–192.
 \url{https://doi.org/10.1111/j.2517-6161.1977.tb01615.x}.
 }
 \seealso{

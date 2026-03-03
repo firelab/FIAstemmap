@@ -54,20 +54,19 @@ literature, surrogate species were assigned based on subjectively similar
 tree physiognomy.
 }
 \examples{
-# Abies grandis
 cw_coef[cw_coef$SPCD == 17, ]
 }
 \references{
 Bechtold, W.A. 2003. Crown-Diameter Prediction Models for 87 Species of
 Stand-Grown Trees in the Eastern United States. \emph{Southern Journal of Applied
-Forestry}, Vol. 27, No. 4, 269-278.
+Forestry}, 27(4): 269-278.
 
 Bechtold, W.A. 2004. Largest-Crown-Width Prediction Models for 53 Species in
-the Western United States. \emph{Western Journal of Applied Forestry}, Vol. 19,
-No. 4, 245-251.
+the Western United States. \emph{Western Journal of Applied Forestry}, 19(4):
+245-251.
 
 Gill, S.J., G.S. Biging, E.C. Murphy. 2000. Modeling conifer tree crown
-radius and estimating canopy cover. \emph{Forest Ecology and Management}, 126,
+radius and estimating canopy cover. \emph{Forest Ecology and Management}, 126(3):
 405-416.
 }
 \keyword{datasets}

@@ -38,7 +38,6 @@
 #'     Literature source of the species coefficients (see References)}
 #' }
 #' @examples
-#' # Abies grandis
 #' cw_coef[cw_coef$SPCD == 17, ]
 #' @source
 #' Toney et al. 2009. A stem-map model for predicting tree canopy cover of
@@ -47,14 +46,14 @@
 #' @references
 #' Bechtold, W.A. 2003. Crown-Diameter Prediction Models for 87 Species of
 #' Stand-Grown Trees in the Eastern United States. _Southern Journal of Applied
-#' Forestry_, Vol. 27, No. 4, 269-278.
+#' Forestry_, 27(4): 269-278.
 #'
 #' Bechtold, W.A. 2004. Largest-Crown-Width Prediction Models for 53 Species in
-#' the Western United States. _Western Journal of Applied Forestry_, Vol. 19,
-#' No. 4, 245-251.
+#' the Western United States. _Western Journal of Applied Forestry_, 19(4):
+#' 245-251.
 #'
 #' Gill, S.J., G.S. Biging, E.C. Murphy. 2000. Modeling conifer tree crown
-#' radius and estimating canopy cover. _Forest Ecology and Management_, 126,
+#' radius and estimating canopy cover. _Forest Ecology and Management_, 126(3):
 #' 405-416.
 "cw_coef"
 
@@ -74,9 +73,10 @@
 #' equations for some species.
 #'
 #' Adjustment is based on the proportion of crown width predicted for 5-in.
-#' (12.7 cm) diameter, at each 1-in. (2.54 cm) increment below that. Intermediate
-#' values are interpolated in the crown width prediction method. Mean adjustment
-#' factors are used if a species-specific adjustment is not available.
+#' (12.7 cm) diameter, at each 1-in. (2.54 cm) increment below that.
+#' Intermediate values are interpolated in the crown width prediction method.
+#' Mean adjustment factors are used if a species-specific adjustment is not
+#' available.
 #'
 #' @format ## `cw_sapling_adj`
 #' A data frame with 23 rows and 5 columns:
@@ -92,7 +92,6 @@
 #'     CW adjustment factor at 4 in. DIA relative to 5 in. DIA}
 #' }
 #' @examples
-#' # Tsuga canadensis
 #' cw_coef[cw_coef$SPCD == 261, ]
 #'
 #' cw_sapling_adj[cw_sapling_adj$SPCD == 261, ]

@@ -43,12 +43,12 @@ undesirable, especially since a quadratic term is used in the regression
 equations for some species.
 
 Adjustment is based on the proportion of crown width predicted for 5-in.
-(12.7 cm) diameter, at each 1-in. (2.54 cm) increment below that. Intermediate
-values are interpolated in the crown width prediction method. Mean adjustment
-factors are used if a species-specific adjustment is not available.
+(12.7 cm) diameter, at each 1-in. (2.54 cm) increment below that.
+Intermediate values are interpolated in the crown width prediction method.
+Mean adjustment factors are used if a species-specific adjustment is not
+available.
 }
 \examples{
-# Tsuga canadensis
 cw_coef[cw_coef$SPCD == 261, ]
 
 cw_sapling_adj[cw_sapling_adj$SPCD == 261, ]
