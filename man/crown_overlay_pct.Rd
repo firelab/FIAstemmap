@@ -4,29 +4,39 @@
 \alias{crown_overlay_pct}
 \title{Compute fractional tree canopy cover of a subplot/microplot by crown overlay}
 \usage{
-crown_overlay_pct(sample_radius, tree_list, digits = 1)
+crown_overlay_pct(tree_list, sample_radius, digits = 1)
 }
 \arguments{
-\item{sample_radius}{A numeric value giving the radius of the
+\item{tree_list}{A data frame containing tree records for a
+subplot/microplot. Must have columns \code{DIST} (stem distance from
+subplot/microplot center in the same units as \code{sample_radius}), \code{AZIMUTH}
+(horizontal angle from subplot/microplot center to the stem location, in the
+range \code{0:359}) and \code{CRWIDTH} (tree crown width in the same units as
+\code{sample_radius} and \code{DIST}).}
+
+\item{sample_radius}{A numeric value giving the radius of the circular
 subplot/microplot.}
 
-\item{tree_list}{A data frame containing tree records for the
-subplot/microplot. Must have columns \code{DIST} (stem distance from subplot
-center in same units as \code{sample_radius}), \code{AZIMUTH} (horizontal angle from
-subplot/microplot center to the stem location, in the range \code{0:359}) and
-\code{CRWIDTH} (tree crown width in the same units as \code{sample_radius} and \code{DIST}).}
-
-\item{digits}{Optional integer number of digits to keep in the result
-(defaults to \code{1}, will be passed to \code{round()}).}
+\item{digits}{Optional integer indicating the number of digits to keep in the
+return value (defaults to \code{1}, will be passed to \code{round()}).}
 }
 \value{
-An numeric value for tree canopy cover as percent of the subplot/microplot
-covered by a vertical projection of circular crowns.
+Estimated tree canopy cover as percent of the area specified by
+\code{sample_radius} that is covered by a vertical projection of circular
+crowns.
 }
 \description{
-Compute fractional tree canopy cover of a subplot/microplot by crown overlay
+\code{crown_overlay_pct()} computes the proportion of a circular polygon covered
+by a given set of tree crowns modeled as discs and having spatially explicit
+stem locations. The sampled area is generally an FIA subplot with radius 24
+ft (7.315 m) for trees with diameter \verb{>= 5 in.} (12.7 cm), or an FIA
+microplot with radius 6.8 ft (2.073 m) for trees \verb{>= 1 in.} (2.54 cm)
+but \verb{< 5 in.} (12.7 cm) diameter (denoted as "saplings"). Stem locations
+are specified as distance and azimuth from subplot/microplot center.
 }
 \examples{
-crown_overlay_pct(24, plantation[plantation$SUBP == 1 &
-                                 plantation$DIA >= 5, ])
+# subplot 1 of the `plantation` plot
+subp1_trees <- plantation[plantation$SUBP == 1 &
+                          plantation$DIA >= 5, ]
+crown_overlay_pct(subp1_trees, 24)
 }

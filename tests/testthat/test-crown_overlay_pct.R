@@ -4,5 +4,5 @@ test_that("crown_overlay_pct works", {
         matrix(nrow = 4, ncol = 3, byrow = TRUE) |>
         as.data.frame()
     colnames(trees) <- c("AZIMUTH", "DIST", "CRWIDTH")
-    expect_equal(round(crown_overlay_pct(24, trees)), 20)
+    expect_equal(round(crown_overlay_pct(trees, 24)), 20)
 })
