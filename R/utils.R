@@ -1,3 +1,7 @@
+# .rda datasets in data/ that are used internally but also intended to be
+# available to users
+utils::globalVariables(c("cw_coef", "cw_sapling_adj"), package = "FIAstemmap")
+
 #' Get stem xy coordinates for a tree list
 #'
 #' `.get_tree_list_xy()` returns a named list with two elemnts each containing
