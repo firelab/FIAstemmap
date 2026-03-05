@@ -138,7 +138,7 @@ individual tree measurements. *Forest Ecology and Management*, Volume
 
 ## Functions
 
-- [`crown_overlay_pct()`](https://ctoney.github.io/FIAstemmap/reference/crown_overlay_pct.md)
+- [`overlay_crowns()`](https://ctoney.github.io/FIAstemmap/reference/overlay_crowns.md)
   : Compute fractional tree canopy cover of a subplot/microplot by crown
   overlay
 - [`create_fia_owin()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
