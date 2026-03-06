@@ -10,16 +10,16 @@ plots across all forest ownerships and land uses in the US.
 **FIAstemmap** is an R package for mapping tree stem locations on FIA
 plots, modeling individual crown dimensions, and generating plot-level
 estimates of fractional tree canopy cover. Several stand height metrics
-can be calculated. Spatial analysis of tree point pattern is facilitated
-for the standard FIA four-point cluster plot design. Efficient data
-processing supports national applications. The package provides an
-updated implementation of the software originally described by Toney et
-al. 2009 [\[1\]](#references). The original implementation for modeling
-plot canopy cover from individual tree measurements has supported
-several applications of FIA data, including:
+can also be calculated. Spatial analysis of tree point pattern is
+facilitated for the standard FIA four-point cluster plot design.
+Efficient data processing is intended to support national applications.
+The package provides an updated implementation of the software
+originally described by Toney et al. 2009 [\[1\]](#references). The
+original implementation for predicting canopy cover from individual tree
+measurements has supported several applications of FIA data, including:
 
-- vegetation type classification and tree canopy cover mapping in the
-  LANDFIRE Program [\[2, 3, 4, 5\]](#references)
+- LANDFIRE vegetation classification and tree canopy cover mapping [\[2,
+  3, 4, 5\]](#references)
 - National Land Cover Database (NLCD) Tree Canopy Cover science and
   development [\[6, 7\]](#references)
 - wildlife habitat analysis [\[8, 9, 10\]](#references)
