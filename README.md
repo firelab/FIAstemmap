@@ -25,14 +25,14 @@ al. 2009 [\[1\]](#references). The original implementation for modeling
 plot canopy cover from individual tree measurements has supported
 several applications of FIA data, including:
 
-- reference data for classifying vegetation types and mapping tree
-  canopy cover in the LANDFIRE Program [\[2, 3, 4, 5\]](#references)
-- National Land Cover Database (NLCD) Tree Canopy Cover (TCC) science
-  and development [\[6\]](#references)
-- wildlife habitat analyses [\[7, 8, 9\]](#references)
-- mapping erosion risk in rangelands [\[10\]](#references)
-- comparative assessments of tree canopy cover estimation methods [\[11,
-  12\]](#references)
+- vegetation type classification and tree canopy cover mapping in the
+  LANDFIRE Program [\[2, 3, 4, 5\]](#references)
+- National Land Cover Database (NLCD) Tree Canopy Cover science and
+  development [\[6, 7\]](#references)
+- wildlife habitat analysis [\[8, 9, 10\]](#references)
+- mapping erosion risk [\[11\]](#references)
+- assessment of tree canopy cover estimation methods [\[12,
+  13\]](#references)
 
 ## Installation
 
@@ -82,11 +82,11 @@ Short, Karen & Chen, Xuexia & Huang, Chengquan & Pabst, Kari & Rollins,
 Matthew. (2011). Monitoring Landscape Change for LANDFIRE Using
 Multi-Temporal Satellite Imagery and Ancillary Data. *Selected Topics in
 Applied Earth Observations and Remote Sensing, IEEE Journal of*. 4.
-252 - 264. 10. <https://doi.org/10.1109/JSTARS.2010.2044478>.
+252-264. 10. <https://doi.org/10.1109/JSTARS.2010.2044478>.
 
 \[5\] Nelson, K.J., Connot, J., Peterson, B. et al. 2013. The LANDFIRE
 Refresh Strategy: Updating the National Dataset. *Fire Ecology*, 9,
-80–101. <https://doi.org/10.4996/fireecology.0902080>.
+80-101, <https://doi.org/10.4996/fireecology.0902080>.
 
 \[6\] Toney, Chris; Liknes, Greg; Lister, Andy; Meneguzzo, Dacia. 2012.
 Assessing alternative measures of tree canopy cover: Photo-interpreted
@@ -97,36 +97,43 @@ Mensurationists*. e-Gen. Tech. Rep. SRS-157. Asheville, NC: U.S.
 Department of Agriculture, Forest Service, Southern Research Station.
 209-215. Available: <https://research.fs.usda.gov/treesearch/41009>.
 
-\[7\] Tavernia, B., Nelson, M., Goerndt, M., Walters, B., & Toney, C.
+\[7\] Derwin, J.M., Thomas, V.A., Wynne, R.H., Coulston, J.W., Liknes,
+G.C., Bender, S., Blinn, C.E., Brooks, E.B., Ruefenacht, B., Benton, R.
+and Finco, M.V., 2020. Estimating tree canopy cover using harmonic
+regression coefficients derived from multitemporal Landsat data.
+*International Journal of Applied Earth Observation and Geoinformation*,
+86, 101985, <https://doi.org/10.1016/j.jag.2019.101985>.
+
+\[8\] Tavernia, B., Nelson, M., Goerndt, M., Walters, B., & Toney, C.
 (2013). Changes in forest habitat classes under alternative climate and
 land-use change scenarios in the northeast and midwest, USA.
 *Mathematical and Computational Forestry & Natural-Resource Sciences*
-(MCFNS), **5**:2, 135-150(15). Retrieved from
+(MCFNS), 5:2, 135-150. Retrieved from
 <https://www.mcfns.com/index.php/Journal/article/view/MCFNS_165>.
 
-\[8\] Rowland, M.M.; Vojta, C.D.; tech. eds. 2013. A technical guide for
+\[9\] Rowland, M.M.; Vojta, C.D.; tech. eds. 2013. A technical guide for
 monitoring wildlife habitat. Gen. Tech. Rep. WO-89. Washington, DC: U.S.
 Department of Agriculture, Forest Service: 400 p. Available:
 <https://doi.org/10.2737/WO-GTR-89>.
 
-\[9\] Michael C. McGrann, Bradley Wagner, Matthew Klauer, Kasia Kaphan,
+\[10\] Michael C. McGrann, Bradley Wagner, Matthew Klauer, Kasia Kaphan,
 Erik Meyer, Brett J. Furnas. 2022. Using an acoustic complexity index to
 help monitor climate change effects on avian diversity. *Ecological
 Indicators*, Volume 142, 109271,
 <https://doi.org/10.1016/j.ecolind.2022.109271>.
 
-\[10\] McGwire KC, Weltz MA, Nouwakpo S, Spaeth K, Founds M, Cadaret E.
+\[11\] McGwire KC, Weltz MA, Nouwakpo S, Spaeth K, Founds M, Cadaret E.
 2020. Mapping erosion risk for saline rangelands of the Mancos Shale
 using the rangeland hydrology erosion model. *Land Degradation &
-Development*. 31: 2552-2564. <https://doi.org/10.1002/ldr.3620>.
+Development*. 31: 2552-2564, <https://doi.org/10.1002/ldr.3620>.
 
-\[11\] Riemann, R., Liknes, G., O’Neil-Dunne, J., Toney, C., Lister, T.
+\[12\] Riemann, R., Liknes, G., O’Neil-Dunne, J., Toney, C., Lister, T.
 (2016). Comparative assessment of methods for estimating tree canopy
 cover across a rural-to-urban gradient in the mid-Atlantic region of the
-USA. *Environmental Monitoring and Assessment* **188**:297.
+USA. *Environmental Monitoring and Assessment*, 188, 297,
 <https://doi.org/10.1007/s10661-016-5281-8>.
 
-\[12\] Andrew N. Gray, Anne C.S. McIntosh, Steven L. Garman, Michael A.
+\[13\] Andrew N. Gray, Anne C.S. McIntosh, Steven L. Garman, Michael A.
 Shettles. 2021. Predicting canopy cover of diverse forest types from
 individual tree measurements. *Forest Ecology and Management*, Volume
 501, 119682, ISSN 0378-1127,
