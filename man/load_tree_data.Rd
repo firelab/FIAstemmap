@@ -11,9 +11,9 @@ load_tree_data(src, table = NULL, columns = DEFAULT_TREE_COLUMNS, sql = NULL)
 database connection string (see Details).}
 
 \item{table}{Optional character string giving the name of a table in \code{src}
-from which tree records will be fetched. Generally needed with RDBMS sources
-containing multiple tables, as opposed to a single-table source such as a
-CSV file.}
+from which tree records will be fetched. Generally needed with database
+sources containing multiple tables, as opposed to a single-table source such
+as a CSV file.}
 
 \item{columns}{Optional character vector specifying a subset of column names
 in the source table to include in the result set.}
@@ -34,5 +34,60 @@ prior extraction (e.g., .zip), and network-hosted files can be read directly
 without prior download (see Details).
 }
 \details{
-A data source is typically specified as one of the following: \strong{WIP}
+A data source is typically specified as one of the following:
+
+CSV file\cr
+Path to a text file with \code{".csv"} extension. For files structured as CSV,
+but not ending with the \code{".csv"} extension, a \code{"CSV:"} prefix can be added
+before the filename to force loading as CSV format.
+
+SQLite database\cr
+Path to a SQLite file. File extensions are typically \code{".db"} or \code{".sqlite"}.
+GeoPackage SQLite files with \code{".gpkg"} extension are also supported.
+
+PostgreSQL database\cr
+A connection string in one of the following formats:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{src <- "PG:dbname=databasename"
+
+src <- "PG:dbname='db' host='addr' port='5432' user='x' password='y'"
+
+src <- "PG:service=servicename"
+
+src <- "postgresql://[usr[:pwd]@][netloc][:port][/db][?param1=val1&...]"
+}\if{html}{\out{</div>}}
+
+GDAL Virtual File Systems are also supported. This allows, for example,
+reading from compressed archives such as \code{".zip"} without prior extraction.
+The syntax in that case uses the \code{"/vsizip/"} prefix:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{# relative path to the .zip:
+src <- "/vsizip/MT_CSV.zip/MT_TREE.csv"
+
+# absolute path to the .zip:
+src <- "/vsizip//home/ctoney/data/MT_CSV.zip/MT_TREE.csv"
+
+# on Windows:
+src <- "/vsizip/c:/users/ctoney/MT_CSV.zip/MT_TREE.csv"
+}\if{html}{\out{</div>}}
+
+Network-hosted files can also be read without prior download using the
+\code{"vsicurl"} prefix:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{src <- "/vsicurl/https://apps.fs.usda.gov/fia/datamart/CSV/MT_TREE.csv"
+}\if{html}{\out{</div>}}
+
+For more details, including supported VSI prefixes for cloud storage services
+and other virtual file systems, see
+\url{https://gdal.org/en/stable/user/virtual_file_systems.html}.
+}
+\note{
+\code{src} can be any GDAL supported dataset. A full list of formats supported by
+the current GDAL installation can be obtained with:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{fmt <- gdalraster::gdal_formats()
+fmt$long_name[fmt$vector]
+}\if{html}{\out{</div>}}
+
+For more details: \url{https://gdal.org/en/stable/drivers/vector/index.html}
 }

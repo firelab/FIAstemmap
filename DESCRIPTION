@@ -24,6 +24,7 @@ Imports:
     methods,
     spatstat.geom
 Suggests:
+    glue (>= 1.6.0),
     spatstat.explore,
     spelling,
     testthat (>= 3.0.0)

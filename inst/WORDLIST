@@ -20,7 +20,9 @@ FIA
 FIADB
 Finco
 Furnas
+GDAL
 Garman
+GeoPackage
 Geoinformation
 Goerndt
 ISSN
@@ -59,6 +61,7 @@ Spaeth
 Tavernia
 Tobin
 Tolk
+VSI
 Vogelmann
 Vojta
 WO
@@ -68,6 +71,7 @@ Xuexia
 al
 allometric
 et
+gpkg
 loblolly
 macroplot
 microplot
@@ -78,3 +82,4 @@ ownerships
 rangeland
 rangelands
 spatstat
+sqlite
