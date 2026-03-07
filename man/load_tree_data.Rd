@@ -4,7 +4,13 @@
 \alias{load_tree_data}
 \title{Load tree data from a file or database connection}
 \usage{
-load_tree_data(src, table = NULL, columns = DEFAULT_TREE_COLUMNS, sql = NULL)
+load_tree_data(
+  src,
+  table = NULL,
+  columns = DEFAULT_TREE_COLUMNS,
+  sql = NULL,
+  quoted_cols_as_char = TRUE
+)
 }
 \arguments{
 \item{src}{A character string specifying the data source as a file name or
@@ -23,6 +29,10 @@ read all columns in the source table.}
 \item{sql}{Optional character string containing a SQL SELECT statement to
 execute on \code{src} (instead of selecting all records, potentially from a subset
 of columns, i.e., mutually exclusive with \code{table} and/or \code{columns}).}
+
+\item{quoted_cols_as_char}{A logical value indicating whether to auto-detect
+columns that contain quoted values as \code{"character"} type, \code{TRUE} by default.
+Only used when \code{src} is a CSV file.}
 }
 \value{
 A data frame containing tree records fetched from \code{src}.
@@ -33,9 +43,7 @@ comma-separated values (CSV) file, a SQLite database file (.db, .sqlite,
 .gpkg), or a PostgreSQL database connection. Other data sources are also
 possible. File-based sources can be read from compressed archives without
 prior extraction if desired (e.g., .zip), and network-hosted files can be
-read directly without prior download (see Details). This function provides
-certain conveniences, but tree data could also be loaded in various other
-ways (e.g., \code{read.csv()}).
+read directly without prior download (see Details).
 }
 \details{
 A data source is most commonly specified as one of the following:
@@ -95,6 +103,13 @@ fmt$long_name[fmt$vector]
 }\if{html}{\out{</div>}}
 
 For more details: \url{https://gdal.org/en/stable/drivers/vector/index.html}
+
+\code{load_tree_data()} from a PostgreSQL database requires GDAL built with
+support for the PostgreSQL client library (can be checked with
+\code{gdalraster::gdal_formats("postgresql")}).
+
+Column names are case-sensitive in \pkg{FIAstemmap} functions, and are
+assumed to follow the FIADB upper case naming convention.
 }
 \examples{
 # Lolo NF, single-condition forest plots, INVYR 2022, from public FIADB
