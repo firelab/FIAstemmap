@@ -12,29 +12,33 @@ database connection string (see Details).}
 
 \item{table}{Optional character string giving the name of a table in \code{src}
 from which tree records will be fetched. Generally needed with database
-sources containing multiple tables, as opposed to a single-table source such
-as a CSV file.}
+sources containing multiple tables (as opposed to a single-table source such
+as a CSV file).}
 
 \item{columns}{Optional character vector specifying a subset of column names
-in the source table to include in the result set.}
+in the source table to include in the result set. Defaults to
+\link{DEFAULT_TREE_COLUMNS}. Can also be set to \code{NULL} or empty string (\code{""}) to
+read all columns in the source table.}
 
 \item{sql}{Optional character string containing a SQL SELECT statement to
-execute on \code{src} (instead of selecting all records potentially from a subset
+execute on \code{src} (instead of selecting all records, potentially from a subset
 of columns, i.e., mutually exclusive with \code{table} and/or \code{columns}).}
 }
 \value{
-A data frame containing the tree records fetched from \code{src}.
+A data frame containing tree records fetched from \code{src}.
 }
 \description{
-\code{load_tree_data()} fetches tree records from a data source, most commonly
-a comma-separated values (CSV) file, a SQLite database file (.db, .sqlite,
+\code{load_tree_data()} fetches tree records from a data source, typically a
+comma-separated values (CSV) file, a SQLite database file (.db, .sqlite,
 .gpkg), or a PostgreSQL database connection. Other data sources are also
 possible. File-based sources can be read from compressed archives without
-prior extraction (e.g., .zip), and network-hosted files can be read directly
-without prior download (see Details).
+prior extraction if desired (e.g., .zip), and network-hosted files can be
+read directly without prior download (see Details). This function provides
+certain conveniences, but tree data could also be loaded in various other
+ways (e.g., \code{read.csv()}).
 }
 \details{
-A data source is typically specified as one of the following:
+A data source is most commonly specified as one of the following:
 
 CSV file\cr
 Path to a text file with \code{".csv"} extension. For files structured as CSV,
@@ -42,19 +46,20 @@ but not ending with the \code{".csv"} extension, a \code{"CSV:"} prefix can be a
 before the filename to force loading as CSV format.
 
 SQLite database\cr
-Path to a SQLite file. File extensions are typically \code{".db"} or \code{".sqlite"}.
-GeoPackage SQLite files with \code{".gpkg"} extension are also supported.
+Path to a SQLite file. The file extension is generally either \code{".db"} or
+\code{".sqlite"}, but GeoPackage files with the \code{".gpkg"} extension are also
+supported.
 
 PostgreSQL database\cr
 A connection string in one of the following formats:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{src <- "PG:dbname=databasename"
+\if{html}{\out{<div class="sourceCode">}}\preformatted{"PG:dbname=databasename"
 
-src <- "PG:dbname='db' host='addr' port='5432' user='x' password='y'"
+"PG:dbname='db' host='addr' port='5432' user='x' password='y'"
 
-src <- "PG:service=servicename"
+"PG:service=servicename"
 
-src <- "postgresql://[usr[:pwd]@][netloc][:port][/db][?param1=val1&...]"
+"postgresql://[user[:pwd]@][netloc][:port][/dbname][?param1=val1&...]"
 }\if{html}{\out{</div>}}
 
 GDAL Virtual File Systems are also supported. This allows, for example,
@@ -62,19 +67,19 @@ reading from compressed archives such as \code{".zip"} without prior extraction.
 The syntax in that case uses the \code{"/vsizip/"} prefix:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{# relative path to the .zip:
-src <- "/vsizip/MT_CSV.zip/MT_TREE.csv"
+f <- "/vsizip/MT_CSV.zip/MT_TREE.csv"
 
 # absolute path to the .zip:
-src <- "/vsizip//home/ctoney/data/MT_CSV.zip/MT_TREE.csv"
+f <- "/vsizip//home/ctoney/data/MT_CSV.zip/MT_TREE.csv"
 
 # on Windows:
-src <- "/vsizip/c:/users/ctoney/MT_CSV.zip/MT_TREE.csv"
+f <- "/vsizip/c:/users/ctoney/MT_CSV.zip/MT_TREE.csv"
 }\if{html}{\out{</div>}}
 
 Network-hosted files can also be read without prior download using the
 \code{"/vsicurl/"} prefix:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{src <- "/vsicurl/https://apps.fs.usda.gov/fia/datamart/CSV/MT_TREE.csv"
+\if{html}{\out{<div class="sourceCode">}}\preformatted{vsi_f <- "/vsicurl/https://apps.fs.usda.gov/fia/datamart/CSV/MT_TREE.csv"
 }\if{html}{\out{</div>}}
 
 For more details, including supported VSI prefixes for cloud storage services
@@ -97,4 +102,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
 
 head(tree)
+}
+\seealso{
+\link{DEFAULT_TREE_COLUMNS}
 }
