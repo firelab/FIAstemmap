@@ -82,7 +82,7 @@ extraction. The syntax in that case uses the `"/vsizip/"` prefix:
     src <- "/vsizip/c:/users/ctoney/MT_CSV.zip/MT_TREE.csv"
 
 Network-hosted files can also be read without prior download using the
-`"vsicurl"` prefix:
+`"/vsicurl/"` prefix:
 
     src <- "/vsicurl/https://apps.fs.usda.gov/fia/datamart/CSV/MT_TREE.csv"
 
@@ -99,3 +99,26 @@ supported by the current GDAL installation can be obtained with:
     fmt$long_name[fmt$vector]
 
 For more details: <https://gdal.org/en/stable/drivers/vector/index.html>
+
+## Examples
+
+``` r
+# Lolo NF, single-condition forest plots, INVYR 2022, from public FIADB
+f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
+tree <- load_tree_data(f)
+#> ! The data source does not have DIST and/or AZIMUTH
+#> ℹ Fetching tree data...
+#> ✔ Fetching tree data... [16ms]
+#> 
+#> ℹ 910 tree records returned
+
+head(tree)
+#> OGR feature set (attribute table)
+#>   PLT_CN          SUBP TREE STATUSCD SPCD  DIA HT ACTUALHT CCLCD TPA_UNADJ
+#> 1 670951075126144 1    1    2        108.0                                
+#> 2 670951075126144 1    2    1        108.0 1.0 9  9        3     74.965282
+#> 3 670951075126144 2    1    2        108.0                                
+#> 4 670951075126144 2    2    2        108.0                                
+#> 5 670951075126144 2    3    2        108.0                                
+#> 6 670951075126144 2    4    2        108.0                                
+```
