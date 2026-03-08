@@ -98,7 +98,7 @@ extraction. The syntax in that case uses the `"/vsizip/"` prefix:
 Network-hosted files can also be read without prior download using the
 `"/vsicurl/"` prefix:
 
-    vsi_f <- "/vsicurl/https://apps.fs.usda.gov/fia/datamart/CSV/MT_TREE.csv"
+    f <- "/vsicurl/https://apps.fs.usda.gov/fia/datamart/CSV/MT_TREE.csv"
 
 For more details, including supported VSI prefixes for cloud storage
 services and other virtual file systems, see
@@ -133,7 +133,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
-#> ✔ Fetching tree data... [13ms]
+#> ✔ Fetching tree data... [11ms]
 #> 
 #> ℹ 910 tree records returned
 
