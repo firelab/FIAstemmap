@@ -97,10 +97,10 @@ crowns.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># subplot 1 of the `plantation` plot</span></span></span>
-<span class="r-in"><span><span class="va">subp1_trees</span> <span class="op">&lt;-</span> <span class="va">plantation</span><span class="op">[</span><span class="va">plantation</span><span class="op">$</span><span class="va">SUBP</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span></span></span>
-<span class="r-in"><span>                          <span class="va">plantation</span><span class="op">$</span><span class="va">DIA</span> <span class="op">&gt;=</span> <span class="fl">5</span>, <span class="op">]</span></span></span>
-<span class="r-in"><span><span class="fu">overlay_crowns</span><span class="op">(</span><span class="va">subp1_trees</span>, <span class="fl">24</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 87</span>
+<span class="r-in"><span><span class="va">trees</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">plantation</span>, <span class="va">CRWIDTH</span> <span class="op">&lt;-</span> <span class="fu"><a href="predict_crwidth.html">predict_crwidth</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">trees</span><span class="op">[</span><span class="va">trees</span><span class="op">$</span><span class="va">SUBP</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">trees</span><span class="op">$</span><span class="va">DIA</span> <span class="op">&gt;=</span> <span class="fl">5</span>, <span class="op">]</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">overlay_crowns</span><span class="op">(</span>sample_radius <span class="op">=</span> <span class="fl">24</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 86.9</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -46,8 +46,8 @@ crowns.
 
 ``` r
 # subplot 1 of the `plantation` plot
-subp1_trees <- plantation[plantation$SUBP == 1 &
-                          plantation$DIA >= 5, ]
-overlay_crowns(subp1_trees, 24)
-#> [1] 87
+trees <- within(plantation, CRWIDTH <- predict_crwidth(plantation))
+trees[trees$SUBP == 1 & trees$DIA >= 5, ] |>
+  overlay_crowns(sample_radius = 24)
+#> [1] 86.9
 ```

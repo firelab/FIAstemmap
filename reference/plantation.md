@@ -12,7 +12,7 @@ plantation
 
 ### `plantation`
 
-A data frame with 91 rows and 14 columns:
+A data frame with 91 rows and 12 columns:
 
 - `PLT_CN`:
 
@@ -47,11 +47,6 @@ A data frame with 91 rows and 14 columns:
   [`integer`](https://rdrr.io/r/base/integer.html), FIA tree species
   code
 
-- `SPGRPCD`:
-
-  [`integer`](https://rdrr.io/r/base/integer.html), FIA tree species
-  group code
-
 - `DIA`:
 
   [`numeric`](https://rdrr.io/r/base/numeric.html), Tree diameter at
@@ -75,11 +70,6 @@ A data frame with 91 rows and 14 columns:
 
   [`numeric`](https://rdrr.io/r/base/numeric.html), Trees per acre
   expansion factor
-
-- `CRWIDTH`:
-
-  [`numeric`](https://rdrr.io/r/base/numeric.html), Estimated tree crown
-  width in feet
 
 ## Source
 

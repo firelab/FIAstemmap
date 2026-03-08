@@ -112,8 +112,6 @@ below, along with the status of each column as required or optional for
 
 - `SPCD`: optional FIA species code
 
-- `SPGRPCD`: optional FIA species group code
-
 - `DIA`: optional tree diameter
 
 - `HT`: optional tree height
@@ -124,7 +122,8 @@ below, along with the status of each column as required or optional for
 
 - `TPA_UNADJ`: optional tree expansion factor (per acre)
 
-- `CRWIDTH`: optional crown width (may be computed with **TODO**)
+- `CRWIDTH`: optional crown width (see
+  [`predict_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/predict_crwidth.md))
 
 ## References
 
