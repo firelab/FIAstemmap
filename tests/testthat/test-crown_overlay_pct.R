@@ -4,5 +4,5 @@ test_that("overlay_crowns works", {
         matrix(nrow = 4, ncol = 3, byrow = TRUE) |>
         as.data.frame()
     colnames(trees) <- c("AZIMUTH", "DIST", "CRWIDTH")
-    expect_equal(round(overlay_crowns(trees, 24)), 20)
+    expect_equal(overlay_crowns(trees, 24, 0), 20)
 })
