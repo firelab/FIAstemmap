@@ -5,10 +5,7 @@ comma-separated values (CSV) file, a SQLite database file (.db, .sqlite,
 .gpkg), or a PostgreSQL database connection. Other data sources are also
 possible. File-based sources can be read from compressed archives
 without prior extraction if desired (e.g., .zip), and network-hosted
-files can be read directly without prior download (see Details). This
-function provides certain conveniences, but tree data could also be
-loaded in various other ways (e.g.,
-[`read.csv()`](https://rdrr.io/r/utils/read.table.html)).
+files can be read directly without prior download (see Details).
 
 ## Usage
 
@@ -117,11 +114,12 @@ supported by the current GDAL installation can be obtained with:
 
 For more details: <https://gdal.org/en/stable/drivers/vector/index.html>
 
-`load_tree_data()` requires GDAL built with support for the PostgreSQL
-client library for access to PostgreSQL databases.
+`load_tree_data()` from a PostgreSQL database requires GDAL built with
+support for the PostgreSQL client library (can be checked with
+`gdalraster::gdal_formats("postgresql")`).
 
-Column names are generally case-sensitive in FIAstemmap functions and
-assumed to follow FIADB all upper case naming.
+Column names are case-sensitive in FIAstemmap functions, and are assumed
+to follow the FIADB upper case naming convention.
 
 ## See also
 

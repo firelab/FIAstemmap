@@ -4,16 +4,12 @@ comma-separated values (CSV) file, a SQLite database file (.db, .sqlite,
 .gpkg), or a PostgreSQL database connection. Other data sources are also
 possible. File-based sources can be read from compressed archives without
 prior extraction if desired (e.g., .zip), and network-hosted files can be
-read directly without prior download (see Details). This function provides
-certain conveniences, but tree data could also be loaded in various other
-ways (e.g., read.csv())."><meta property="og:description" content="load_tree_data() fetches tree records from a data source, typically a
+read directly without prior download (see Details)."><meta property="og:description" content="load_tree_data() fetches tree records from a data source, typically a
 comma-separated values (CSV) file, a SQLite database file (.db, .sqlite,
 .gpkg), or a PostgreSQL database connection. Other data sources are also
 possible. File-based sources can be read from compressed archives without
 prior extraction if desired (e.g., .zip), and network-hosted files can be
-read directly without prior download (see Details). This function provides
-certain conveniences, but tree data could also be loaded in various other
-ways (e.g., read.csv())."><meta property="og:image" content="https://ctoney.github.io/FIAstemmap/logo.png"></head><body>
+read directly without prior download (see Details)."><meta property="og:image" content="https://ctoney.github.io/FIAstemmap/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -57,9 +53,7 @@ comma-separated values (CSV) file, a SQLite database file (.db, .sqlite,
 .gpkg), or a PostgreSQL database connection. Other data sources are also
 possible. File-based sources can be read from compressed archives without
 prior extraction if desired (e.g., .zip), and network-hosted files can be
-read directly without prior download (see Details). This function provides
-certain conveniences, but tree data could also be loaded in various other
-ways (e.g., <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code>).</p>
+read directly without prior download (see Details).</p>
     </div>
 
     <div class="section level2">
@@ -157,10 +151,11 @@ the current GDAL installation can be obtained with:</p>
 <p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>fmt <span class="ot">&lt;-</span> gdalraster<span class="sc">::</span><span class="fu">gdal_formats</span>()</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>fmt<span class="sc">$</span>long_name[fmt<span class="sc">$</span>vector]</span></code></pre><p></p></div>
 <p>For more details: <a href="https://gdal.org/en/stable/drivers/vector/index.html" class="external-link">https://gdal.org/en/stable/drivers/vector/index.html</a></p>
-<p><code>load_tree_data()</code> requires GDAL built with support for the PostgreSQL client
-library for access to PostgreSQL databases.</p>
-<p>Column names are generally case-sensitive in <span class="pkg">FIAstemmap</span> functions and
-assumed to follow FIADB all upper case naming.</p>
+<p><code>load_tree_data()</code> from a PostgreSQL database requires GDAL built with
+support for the PostgreSQL client library (can be checked with
+<code>gdalraster::gdal_formats("postgresql")</code>).</p>
+<p>Column names are case-sensitive in <span class="pkg">FIAstemmap</span> functions, and are
+assumed to follow the FIADB upper case naming convention.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
