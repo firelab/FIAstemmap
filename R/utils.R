@@ -48,3 +48,63 @@
 
     list(x = x, y = y)
 }
+
+#' Get a WKB or WKT geometry for an FIA plot
+#'
+#' `.get_fia_plot_geom()` returns a MultiPolygon geometry for the FIA 4-point
+#' cluster design.
+#'
+#' @param center_x Numeric x coordinate of plot center (center of the center
+#' subplot).
+#' @param center_y Numeric y coordinate of plot center (center of the center
+#' subplot).
+#' @param macroplot A logical value, `TRUE` to use the FIA optional "macroplot"
+#' dimension. Default is `FALSE`.
+#' @param linear_unit An optional character string specifying the linear
+#' distance unit. Defaults to the native FIA unit of `"ft"`, but may be set to
+#' `"m"` instead (or `"meter"` / `"metre"`).
+#' @param quad_segs Integer number of segments used to define a 90 degree curve
+#' (quadrant of a circle). Passed to `gdalraster::g_buffer()`. Defaults to `30`.
+#' @param as_wkb A logical value, `TRUE` to return the geometry as a `"raw"`
+#' vector of WKB (the default). Can be set to `FALSE` to return a `"character"`
+#' string of WKT instead.
+#' @return
+#' A MultiPolygon geometry as a raw vector of WKB by default, or as a character
+#' string of WKT if `as_wkb = FALSE`.
+#' @noRd
+#' @export
+.get_fia_plot_geom <- function(center_x = 0, center_y = 0, macroplot = FALSE,
+                               linear_unit = "ft", quad_segs = 30L,
+                               as_wkb = TRUE) {
+
+    subp_radius <- 24
+    if (macroplot)
+        subp_radius <- 59.8
+
+    unit_conv <- 1  # FIA native unit ft
+    if (linear_unit %in% c("m", "meter", "metre")) {
+        unit_conv <- 0.3048  # ft to m
+        subp_radius <- subp_radius * unit_conv
+    }
+
+    sub_geoms <- vector(mode = "list", length = 4)
+
+    sub_geoms[[1]] <- gdalraster::g_create("POINT", c(center_x, center_y)) |>
+        gdalraster::g_buffer(subp_radius, quad_segs = quad_segs)
+
+    s2_y <- center_y + (120 * unit_conv)
+    sub_geoms[[2]] <- gdalraster::g_create("POINT", c(center_x, s2_y)) |>
+        gdalraster::g_buffer(subp_radius, quad_segs = quad_segs)
+
+    s3_x <- center_x + (103.92 * unit_conv)
+    s3_y <- center_y + (-60 * unit_conv)
+    sub_geoms[[3]] <- gdalraster::g_create("POINT", c(s3_x, s3_y)) |>
+        gdalraster::g_buffer(subp_radius, quad_segs = quad_segs)
+
+    s4_x <- center_x + (-103.92 * unit_conv)
+    s4_y <- s3_y
+    sub_geoms[[4]] <- gdalraster::g_create("POINT", c(s4_x, s4_y)) |>
+        gdalraster::g_buffer(subp_radius, quad_segs = quad_segs)
+
+    gdalraster::g_build_collection(sub_geoms, "MULTIPOLYGON", as_wkb)
+}
