@@ -37,3 +37,6 @@ external-articles:
   title: Stem-map model manuscript (pdf)
   description: A stem-map model for predicting tree canopy cover of Forest Inventory and Analysis (FIA) plots
   href: https://www.fs.usda.gov/rm/pubs/rmrs_p056/rmrs_p056_53_toney.pdf
+
+figures:
+  fig.asp: 1
