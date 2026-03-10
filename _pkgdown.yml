@@ -16,6 +16,7 @@ reference:
 - contents:
   - load_tree_data
   - overlay_crowns
+  - plot_crowns
   - predict_crwidth
   - spatstat_helpers
 
