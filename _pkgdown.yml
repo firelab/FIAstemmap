@@ -39,5 +39,5 @@ external-articles:
   href: https://www.fs.usda.gov/rm/pubs/rmrs_p056/rmrs_p056_53_toney.pdf
 
 figures:
-  fig.width: 5
-  fig.height: 5
+  fig.width: 6
+  fig.height: 6
