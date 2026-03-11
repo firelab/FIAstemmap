@@ -26,11 +26,14 @@
 #' given in meters, and tree diameters are assumed to be given in centimeters.
 #' **TODO: not currently implemented**
 #' @param main Character string giving the main plot title (on top).
-#' @param crown_col The color of tree crowns.
+#' @param crown_col The color of tree crowns, e.g., either a color name (as
+#' listed by `colors()`) or a hexadecimal string.
 #' @param stem_col The color of tree stems when plotting an individual subplot
-#' or microplot.
-#' @param subp_border_lwd The line width of subplot boundaries, a _positive_
-#' number, defaulting to `3`.
+#' or microplot (see `crown_col` above).
+#' @param subp_border_lwd The line width of subplot boundaries. Must a positive
+#' number.
+#' @param subp_border_col The color of subplot boundaries (see `crown_col`
+#' above).
 #' @return
 #' The input, invisibly.
 #'
@@ -46,7 +49,8 @@
 #' @export
 plot_crowns <- function(tree_list, subplot = NULL, microplot = FALSE,
                         linear_unit = "ft", main = "", crown_col = "#328e13",
-                        stem_col = "#b85e00", subp_border_lwd = 3){
+                        stem_col = "#b85e00", subp_border_lwd = 3,
+                        subp_border_col = "gray62"){
 
     if (missing(tree_list) || is.null(tree_list))
         stop("'tree_list' is required", call. = FALSE)
@@ -139,7 +143,7 @@ plot_crowns <- function(tree_list, subplot = NULL, microplot = FALSE,
 
     xlab <- sprintf("x (%s)", linear_unit)
     ylab <- sprintf("y (%s)", linear_unit)
-    gdalraster::plot_geom(fia_poly, xlab, ylab, main, border = "gray62",
+    gdalraster::plot_geom(fia_poly, xlab, ylab, main, border = subp_border_col,
                           lwd = subp_border_lwd, bbox = rct)
 
     for (i in seq_len(nrow(trees_in))) {
@@ -151,9 +155,9 @@ plot_crowns <- function(tree_list, subplot = NULL, microplot = FALSE,
         }
     }
 
-    border_col <- grDevices::adjustcolor("gray62", alpha.f = 0.2)
-    gdalraster::plot_geom(fia_poly, border = border_col, lwd = subp_border_lwd,
-                          add = TRUE)
+    border_col_adj <- grDevices::adjustcolor(subp_border_col, alpha.f = 0.2)
+    gdalraster::plot_geom(fia_poly, border = border_col_adj,
+                          lwd = subp_border_lwd, add = TRUE)
 
     invisible(tree_list)
 }

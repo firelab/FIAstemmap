@@ -12,7 +12,8 @@ plot_crowns(
   main = "",
   crown_col = "#328e13",
   stem_col = "#b85e00",
-  subp_border_lwd = 3
+  subp_border_lwd = 3,
+  subp_border_col = "gray62"
 )
 }
 \arguments{
@@ -41,13 +42,17 @@ given in meters, and tree diameters are assumed to be given in centimeters.
 
 \item{main}{Character string giving the main plot title (on top).}
 
-\item{crown_col}{The color of tree crowns.}
+\item{crown_col}{The color of tree crowns, e.g., either a color name (as
+listed by \code{colors()}) or a hexadecimal string.}
 
 \item{stem_col}{The color of tree stems when plotting an individual subplot
-or microplot.}
+or microplot (see \code{crown_col} above).}
 
-\item{subp_border_lwd}{The line width of subplot boundaries, a \emph{positive}
-number, defaulting to \code{3}.}
+\item{subp_border_lwd}{The line width of subplot boundaries. Must a positive
+number.}
+
+\item{subp_border_col}{The color of subplot boundaries (see \code{crown_col}
+above).}
 }
 \value{
 The input, invisibly.
