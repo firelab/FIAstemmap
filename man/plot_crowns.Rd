@@ -2,14 +2,17 @@
 % Please edit documentation in R/plot_crowns.R
 \name{plot_crowns}
 \alias{plot_crowns}
-\title{Display modeled tree crowns vertically projected on subplot boundaries}
+\title{Display modeled tree crowns projected vertically on subplot boundaries}
 \usage{
 plot_crowns(
   tree_list,
   subplot = NULL,
   microplot = FALSE,
   linear_unit = "ft",
-  main = ""
+  main = "",
+  crown_col = "#328e13",
+  stem_col = "#b85e00",
+  subp_border_lwd = 3
 )
 }
 \arguments{
@@ -18,12 +21,12 @@ columns \code{SUBP} (FIA subplot number), \code{STATUSCD} (FIA integer tree stat
 \code{1} = live), \code{DIA} (tree diameter), \code{HT} (tree height), \code{ACTUALHT} (tree
 actual height, \code{ACTUALHT < HT} indicating a broken top), \code{DIST} (stem
 distance from subplot/microplot center), \code{AZIMUTH} (horizontal angle from
-subplot/microplot center to the stem location, in the range \code{0:359}), and
+subplot/microplot center to the stem location, in range \code{0:359}), and
 \code{CRWIDTH} (tree crown width).}
 
 \item{subplot}{Optional integer subplot number in the range \code{1:4} indicating
-a specific subplot for display. May be \code{NULL} or \code{NA} to display the full
-four-point cluster.}
+a specific subplot for display. May be \code{NULL} or \code{NA} to display the whole
+four-point cluster plot.}
 
 \item{microplot}{A logical value, \code{TRUE} to display the modeled crowns of
 saplings overlaid of the microplot boundary of \code{subplot = n}. The default is
@@ -37,6 +40,14 @@ given in meters, and tree diameters are assumed to be given in centimeters.
 \strong{TODO: not currently implemented}}
 
 \item{main}{Character string giving the main plot title (on top).}
+
+\item{crown_col}{The color of tree crowns.}
+
+\item{stem_col}{The color of tree stems when plotting an individual subplot
+or microplot.}
+
+\item{subp_border_lwd}{The line width of subplot boundaries, a \emph{positive}
+number, defaulting to \code{3}.}
 }
 \value{
 The input, invisibly.
@@ -45,8 +56,8 @@ The input, invisibly.
 \code{plot_crowns()} draws vertically projected tree crowns as discs overlaid on
 subplot or microplot boundaries. The full four-subplot cluster, or
 individual subplots, can be displayed with trees \verb{>= 5.0} in. (\code{12.7} cm)
-diameter, or individual microplots can be display with saplings (i.e., trees
-\verb{< 5} in. diameter).
+diameter. Individual microplots can also be displayed with saplings (i.e.,
+trees \verb{< 5} in. diameter).
 }
 \examples{
 trees <- within(plantation, CRWIDTH <- predict_crwidth(plantation))
