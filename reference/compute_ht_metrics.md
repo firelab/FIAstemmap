@@ -51,8 +51,8 @@ with elements:
   tallest trees `>= 5.0` in. (`12.7` cm) diameter comprising up to `16`
   trees per acre (`39.5` trees per hectare)
 
-- `meanSapHt`: mean height of saplings (trees `>= 1.0` in. diameter but
-  `< 5.0` in. diameter, i.e., `>= 2.54` cm but `< 12.7` cm)
+- `meanSapHt`: mean height of saplings (trees `>= 1.0` in. but `< 5.0`
+  in. diameter, i.e., `>= 2.54` cm but `< 12.7` cm)
 
 - `maxSapHt`: height of the tallest sapling
 
