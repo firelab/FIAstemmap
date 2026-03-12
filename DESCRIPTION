@@ -23,7 +23,8 @@ Imports:
     gdalraster (>= 2.4.0.9030),
     grDevices,
     methods,
-    spatstat.geom
+    spatstat.geom,
+    stats
 Suggests:
     glue (>= 1.6.0),
     spatstat.explore,
