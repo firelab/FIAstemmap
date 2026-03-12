@@ -64,7 +64,7 @@ predict_crwidth <- function(tree_list, digits = 1) {
         stop("'tree_list$DIA' cannot have missing values", call. = FALSE)
 
     if (is.null(digits))
-        digits <- 2
+        digits <- 1
 
     cw <- rep_len(NA_real_, nrow(tree_list))
 
