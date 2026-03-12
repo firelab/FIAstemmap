@@ -38,8 +38,8 @@ dominant/co-dominant trees \verb{>= 5.0} in. (\code{12.7} cm) diameter
 \item \code{predomTreeHt}: predominant tree height, as the mean height of the tallest
 trees \verb{>= 5.0} in. (\code{12.7} cm) diameter comprising up to \code{16} trees per
 acre (\code{39.5} trees per hectare)
-\item \code{meanSapHt}: mean height of saplings (trees \verb{>= 1.0} in. diameter but
-\verb{< 5.0} in. diameter, i.e., \verb{>= 2.54} cm but \verb{< 12.7} cm)
+\item \code{meanSapHt}: mean height of saplings (trees \verb{>= 1.0} in. but \verb{< 5.0} in.
+diameter, i.e., \verb{>= 2.54} cm but \verb{< 12.7} cm)
 \item \code{maxSapHt}: height of the tallest sapling
 }
 

@@ -17,8 +17,8 @@
 #' * `predomTreeHt`: predominant tree height, as the mean height of the tallest
 #'   trees `>= 5.0` in. (`12.7` cm) diameter comprising up to `16` trees per
 #'   acre (`39.5` trees per hectare)
-#' * `meanSapHt`: mean height of saplings (trees `>= 1.0` in. diameter but
-#'   `< 5.0` in. diameter, i.e., `>= 2.54` cm but `< 12.7` cm)
+#' * `meanSapHt`: mean height of saplings (trees `>= 1.0` in. but `< 5.0` in.
+#'   diameter, i.e., `>= 2.54` cm but `< 12.7` cm)
 #' * `maxSapHt`: height of the tallest sapling
 #'
 #' For the purpose of height calculations, canopy dominant/co-dominant include
@@ -82,16 +82,16 @@ compute_ht_metrics <- function(tree_list, digits = 1) {
     if (nrow(trees_in) > 0) {
         basal_area <- pi * (trees_in$DIA / 2)^2
         ht_metrics$meanTreeHt <-
-            round(mean(tree_ht, na.rm = TRUE), digits = digits)
+            round(mean(tree_ht, na.rm = TRUE), digits)
 
         ht_metrics$meanTreeHtBAW <-
             round(stats::weighted.mean(tree_ht, basal_area, na.rm = TRUE),
-                  digits = digits)
+                  digits)
 
         tree_ht_doms <- tree_ht[trees_in$CCLCD %in% c(1, 2, 3)]
         basal_area_doms <- basal_area[trees_in$CCLCD %in% c(1, 2, 3)]
         ht_metrics$meanTreeHtDom <-
-            round(mean(tree_ht_doms, na.rm = TRUE), digits = digits)
+            round(mean(tree_ht_doms, na.rm = TRUE), digits)
 
         ht_metrics$meanTreeHtDomBAW <-
             round(stats::weighted.mean(tree_ht_doms, basal_area_doms,
@@ -111,12 +111,12 @@ compute_ht_metrics <- function(tree_list, digits = 1) {
             if (tpa > 16)
                 break
         }
-        ht_metrics$predomTreeHt <- round(sum_ht / n, digits = digits)
+        ht_metrics$predomTreeHt <- round(sum_ht / n, digits)
     }
 
     if (nrow(saplings_in) > 0) {
         ht_metrics$meanSapHt <-
-            round(mean(sapling_ht, na.rm = TRUE), digits = digits)
+            round(mean(sapling_ht, na.rm = TRUE), digits)
 
         ht_metrics$maxSapHt <- max(sapling_ht, na.rm = TRUE)
     }
