@@ -2,15 +2,15 @@
 
 ## Functions
 
+- [`calc_crown_overlay()`](https://ctoney.github.io/FIAstemmap/reference/calc_crown_overlay.md)
+  : Compute fractional tree canopy cover of a subplot/microplot by crown
+  overlay
 - [`calc_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/calc_crwidth.md)
   : Compute predicted tree crown width using species-specific equations
 - [`calc_ht_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_ht_metrics.md)
   : Calculate plot-level stand height metrics
 - [`load_tree_data()`](https://ctoney.github.io/FIAstemmap/reference/load_tree_data.md)
   : Load tree data from a file or database connection
-- [`overlay_crowns()`](https://ctoney.github.io/FIAstemmap/reference/overlay_crowns.md)
-  : Compute fractional tree canopy cover of a subplot/microplot by crown
-  overlay
 - [`plot_crowns()`](https://ctoney.github.io/FIAstemmap/reference/plot_crowns.md)
   : Display modeled tree crowns projected vertically on subplot
   boundaries
