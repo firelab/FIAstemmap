@@ -3,7 +3,7 @@
 export(.get_fia_plot_geom)
 export(.get_tree_list_xy)
 export(DEFAULT_TREE_COLUMNS)
-export(compute_ht_metrics)
+export(calc_ht_metrics)
 export(create_fia_owin)
 export(create_fia_ppp)
 export(load_tree_data)

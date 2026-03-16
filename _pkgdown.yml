@@ -14,7 +14,7 @@ home:
 reference:
 - title: Functions
 - contents:
-  - compute_ht_metrics
+  - calc_ht_metrics
   - load_tree_data
   - overlay_crowns
   - plot_crowns

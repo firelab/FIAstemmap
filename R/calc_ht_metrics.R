@@ -1,6 +1,6 @@
-#' Compute plot-level stand height metrics
+#' Calculate plot-level stand height metrics
 #'
-#' `compute_ht_metrics()` computes several stand height metrics for a given FIA
+#' `calc_ht_metrics()` computes several stand height metrics for a given FIA
 #' plot, i.e., across the full four-subplot cluster (see Details).
 #'
 #' @details
@@ -37,10 +37,10 @@
 #' in Details.
 #'
 #' @examples
-#' compute_ht_metrics(plantation)
+#' calc_ht_metrics(plantation)
 #'
 #' @export
-compute_ht_metrics <- function(tree_list, digits = 1) {
+calc_ht_metrics <- function(tree_list, digits = 1) {
 
     if (missing(tree_list) || is.null(tree_list))
         stop("'tree_list' is required", call. = FALSE)

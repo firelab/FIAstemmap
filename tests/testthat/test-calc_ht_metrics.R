@@ -1,4 +1,4 @@
-test_that("compute_ht_metrics works", {
+test_that("calc_ht_metrics works", {
     expected <- vector(mode = "list", length = 8)
     names(expected) <- c("meanTreeHt", "meanTreeHtBAW", "meanTreeHtDom",
                          "meanTreeHtDomBAW", "maxTreeHt", "predomTreeHt",
@@ -11,5 +11,5 @@ test_that("compute_ht_metrics works", {
     expected$predomTreeHt <- 50.3
     expected$meanSapHt <- 33.5
     expected$maxSapHt <- 42
-    expect_equal(compute_ht_metrics(plantation), expected, tolerance = 0.1)
+    expect_equal(calc_ht_metrics(plantation), expected, tolerance = 0.1)
 })
