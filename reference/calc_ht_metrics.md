@@ -1,0 +1,93 @@
+# Calculate plot-level stand height metrics
+
+`calc_ht_metrics()` computes several stand height metrics for a given
+FIA plot, i.e., across the full four-subplot cluster (see Details).
+
+## Usage
+
+``` r
+calc_ht_metrics(tree_list, digits = 1)
+```
+
+## Arguments
+
+- tree_list:
+
+  A data frame with tree records for one FIA plot. Must have columns
+  `DIA` (tree diameter), `HT` (tree height), `ACTUALHT` (tree actual
+  height, `ACTUALHT < HT` indicating a broken top), `CCLCD` (FIA crown
+  class code), `TPA_UNADJ` (trees per acre).
+
+- digits:
+
+  Optional integer indicating the number of digits to keep in the return
+  values (defaults to `1`).
+
+## Value
+
+A named list of computed height metrics for the input tree list, as
+described in Details.
+
+## Details
+
+The following plot-level height metrics are returned in a named list
+with elements:
+
+- `meanTreeHt`: mean height of trees `>= 5.0` in. (`12.7` cm) diameter
+
+- `meanTreeHtBAW`: basal-area weighted mean height of trees `>= 5.0` in.
+  (`12.7` cm) diameter
+
+- `meanTreeHtDom`: mean height of canopy dominant/co-dominant trees
+  `>= 5.0` in. (`12.7` cm) diameter
+
+- `meanTreeHtDomBAW`: basal-area weighted mean height of canopy
+  dominant/co-dominant trees `>= 5.0` in. (`12.7` cm) diameter
+
+- `maxTreeHt`: height of the tallest tree `>= 5.0` in. (`12.7` cm)
+  diameter
+
+- `predomTreeHt`: predominant tree height, as the mean height of the
+  tallest trees `>= 5.0` in. (`12.7` cm) diameter comprising up to `16`
+  trees per acre (`39.5` trees per hectare)
+
+- `meanSapHt`: mean height of saplings (trees `>= 1.0` in. but `< 5.0`
+  in. diameter, i.e., `>= 2.54` cm but `< 12.7` cm)
+
+- `maxSapHt`: height of the tallest sapling
+
+For the purpose of height calculations, canopy dominant/co-dominant
+include "open grown" trees, i.e., include trees with FIA crown class
+code (`CCLCD`) of `1` (open grown), `2` (dominant) or `3` (co-dominant),
+but exclude trees with `CCLCD` of `4` (intermediate) or `5`
+(over-topped).
+
+## Examples
+
+``` r
+calc_ht_metrics(plantation)
+#> $meanTreeHt
+#> [1] 45
+#> 
+#> $meanTreeHtBAW
+#> [1] 45.4
+#> 
+#> $meanTreeHtDom
+#> [1] 45
+#> 
+#> $meanTreeHtDomBAW
+#> [1] 45.4
+#> 
+#> $maxTreeHt
+#> [1] 51
+#> 
+#> $predomTreeHt
+#> [1] 50.3
+#> 
+#> $meanSapHt
+#> [1] 33.5
+#> 
+#> $maxSapHt
+#> [1] 42
+#> 
+```

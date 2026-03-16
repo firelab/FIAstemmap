@@ -2,8 +2,8 @@
 
 ## Functions
 
-- [`compute_ht_metrics()`](https://ctoney.github.io/FIAstemmap/reference/compute_ht_metrics.md)
-  : Compute plot-level stand height metrics
+- [`calc_ht_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_ht_metrics.md)
+  : Calculate plot-level stand height metrics
 - [`load_tree_data()`](https://ctoney.github.io/FIAstemmap/reference/load_tree_data.md)
   : Load tree data from a file or database connection
 - [`overlay_crowns()`](https://ctoney.github.io/FIAstemmap/reference/overlay_crowns.md)
