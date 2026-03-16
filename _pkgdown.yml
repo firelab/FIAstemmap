@@ -14,10 +14,10 @@ home:
 reference:
 - title: Functions
 - contents:
+  - calc_crown_overlay
   - calc_crwidth
   - calc_ht_metrics
   - load_tree_data
-  - overlay_crowns
   - plot_crowns
   - spatstat_helpers
 
