@@ -1,11 +1,12 @@
-#' Calculate plot-level stand height metrics
+#' Calculate stand height metrics
 #'
-#' `calc_ht_metrics()` computes several stand height metrics for a given FIA
-#' plot, i.e., across the full four-subplot cluster (see Details).
+#' `calc_ht_metrics()` computes several stand height metrics for a given tree
+#' list (see Details).
 #'
 #' @details
-#' The following plot-level height metrics are returned in a named list with
-#' elements:
+#' Stand height metrics are based on live trees (`STATUSCD == 1`), and are
+#' are assigned `0` by definition if no live trees are present. Height metrics
+#' are returned in a named list with the following elements:
 #' * `numTrees`: number of live trees `>= 5.0` in. (`12.7` cm) diameter
 #' * `meanTreeHt`: mean height of trees `>= 5.0` in. (`12.7` cm) diameter
 #' * `meanTreeHtBAW`: basal-area weighted mean height of trees `>= 5.0` in.
@@ -23,10 +24,11 @@
 #' * `meanSapHt`: mean height of saplings
 #' * `maxSapHt`: height of the tallest sapling
 #'
-#' For the purpose of height calculations, canopy dominant/co-dominant include
-#' "open grown" trees, i.e., include trees with FIA crown class code (`CCLCD`)
-#' of `1` (open grown), `2` (dominant) or `3` (co-dominant), but exclude trees
-#' with `CCLCD` of `4` (intermediate) or `5` (over-topped).
+#' For the purpose of height calculations, metrics based on
+#' "canopy dominant/co-dominant" include open grown trees, i.e., include trees
+#' with FIA crown class code `CCLCD` of `1` (open grown), `2` (dominant) or `3`
+#' (co-dominant), but exclude trees with `CCLCD` of `4` (intermediate) or `5`
+#' (over-topped).
 #'
 #' @param tree_list A data frame with tree records for one FIA plot.  Must have
 #' columns `DIA` (tree diameter), `HT` (tree height), `ACTUALHT` (tree actual

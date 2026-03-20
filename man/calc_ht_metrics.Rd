@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_ht_metrics.R
 \name{calc_ht_metrics}
 \alias{calc_ht_metrics}
-\title{Calculate plot-level stand height metrics}
+\title{Calculate stand height metrics}
 \usage{
 calc_ht_metrics(tree_list, digits = 1)
 }
@@ -20,12 +20,13 @@ A named list of computed height metrics for the input tree list, as described
 in Details.
 }
 \description{
-\code{calc_ht_metrics()} computes several stand height metrics for a given FIA
-plot, i.e., across the full four-subplot cluster (see Details).
+\code{calc_ht_metrics()} computes several stand height metrics for a given tree
+list (see Details).
 }
 \details{
-The following plot-level height metrics are returned in a named list with
-elements:
+Stand height metrics are based on live trees (\code{STATUSCD == 1}), and are
+are assigned \code{0} by definition if no live trees are present. Height metrics
+are returned in a named list with the following elements:
 \itemize{
 \item \code{numTrees}: number of live trees \verb{>= 5.0} in. (\code{12.7} cm) diameter
 \item \code{meanTreeHt}: mean height of trees \verb{>= 5.0} in. (\code{12.7} cm) diameter
@@ -45,10 +46,11 @@ diameter, i.e., \verb{>= 2.54} cm but \verb{< 12.7} cm)
 \item \code{maxSapHt}: height of the tallest sapling
 }
 
-For the purpose of height calculations, canopy dominant/co-dominant include
-"open grown" trees, i.e., include trees with FIA crown class code (\code{CCLCD})
-of \code{1} (open grown), \code{2} (dominant) or \code{3} (co-dominant), but exclude trees
-with \code{CCLCD} of \code{4} (intermediate) or \code{5} (over-topped).
+For the purpose of height calculations, metrics based on
+"canopy dominant/co-dominant" include open grown trees, i.e., include trees
+with FIA crown class code \code{CCLCD} of \code{1} (open grown), \code{2} (dominant) or \code{3}
+(co-dominant), but exclude trees with \code{CCLCD} of \code{4} (intermediate) or \code{5}
+(over-topped).
 }
 \examples{
 calc_ht_metrics(plantation)
