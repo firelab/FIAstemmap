@@ -4,20 +4,17 @@
 \alias{calc_tcc_metrics}
 \title{Predict plot-level canopy cover from individual tree measurements}
 \usage{
-calc_tcc_metrics(
-  tree_list,
-  stem_map = TRUE,
-  full_output = TRUE,
-  crwidth_col = "CRWIDTH",
-  digits = 1
-)
+calc_tcc_metrics(tree_list, stem_map = TRUE, full_output = TRUE, digits = 1)
 }
 \arguments{
 \item{tree_list}{A data frame with tree records for one FIA plot. In general,
 the input data frame will have the columns specified in
 \link{DEFAULT_TREE_COLUMNS} (see \code{?DEFAULT_TREE_COLUMNS}). Potentially, only a
 subset of those columns will be needed depending on values given for the
-arguments \code{stem_map}, \code{full_output} and \code{crwidth_col} described below.}
+arguments \code{stem_map} and \code{full_output} described below. If the input data
+frame has a column named \code{"CRWIDTH"} it will be used for tree crown width
+values, otherwise, crown widths will be calculated with a call to
+\code{calc_crwidth()}.}
 
 \item{stem_map}{A logical value indicating whether to map individual trees
 explicitly using coordinates specified in terms of distance and azimuth from
@@ -33,12 +30,6 @@ output list includes subplot-level TCC estimates, live tree and sapling
 counts, stand height metrics, and point pattern statistics, depending on the
 value given for \code{stem_map} (see Details).}
 
-\item{crwidth_col}{The name of a column in \code{tree_list} containing the
-individual tree crown widths (case-sensitive). Defaults to \code{"CRWIDTH"}. If
-the given column name does not exist in the input data frame, or this
-argument is set to \code{NULL}, then crown widths will be computed with a call to
-\code{calc_crwidth()}.}
-
 \item{digits}{Optional integer indicating the number of digits to keep in the
 return values (defaults to \code{1}). May be passed to \code{calc_crwidth()} and
 \code{calc_ht_metrics()}.}
@@ -52,39 +43,40 @@ is returned instead.
 }
 \description{
 \code{calc_tcc_metrics()} computes plot-level predicted tree canopy cover (TCC)
-from tree list data. A full set of stand structure components used to derive
-the plot-level prediction are included in the output by default (see
+from tree list data. By default, a full set of stand structure components
+used to derive the plot-level TCC prediction are included in the output (see
 Details).
 }
 \details{
-This function supports two alternative methods for predicting plot-level TCC.
+This function provides two methods for predicting plot-level TCC.
 
-The default method requires individual tree coordinates to be provided in the
-input, as distance and azimuth from subplot centers for trees with diameter
-\verb{>= 5 in.} (12.7 cm), or from microplot centers for "sapling" trees with
-diameter \verb{>= 1 in.} (2.54 cm) but \verb{< 5 in.} (12.7 cm). This method
-involves spatially explicit stem-mapping to account for crown overlap of the
-mature trees, along with empirical modeling of the understory sapling
-contribution to total canopy cover (Toney et al. 2009). The empirical model
-for the sapling component also uses overstory tree point pattern as one of
-its predictor variables (based on Ripley's K function, Ripley 1977).
+The default "stem-map" method requires individual tree coordinates to be
+included in the input as distance and azimuth from subplot centers for trees
+with diameter \verb{>= 5 in.} (12.7 cm), and from microplot centers for
+"saplings" having diameter \verb{>= 1 in.} (2.54 cm) but \verb{< 5 in.}
+(12.7 cm). This method involves mapping trees spatially to account for crown
+overlap, along with empirical modeling of the understory sapling contribution
+to total canopy cover (Toney et al. 2009). The empirical model for the
+sapling component also uses the overstory tree point pattern as a predictor
+variable (based on Ripley's K function, Ripley 1977).
 
 Alternatively, plot-level TCC can be predicted using a simplified approach
 that does not include exact stem placement (\code{stem_map = FALSE}). A random
 arrangement of stems is assumed in that case. This is the method used to
-estimate percent canopy cover in the Forest Vegetation Simulator (Crookston
-and Stage 1999).
+estimate tree canopy cover in the Forest Vegetation Simulator (Crookston and
+Stage 1999).
 
-The stem-map method requires computation of several stand structure metrics
-which are components of the overall model used to derive the plot-level TCC
-estimate. These include:
+Both methods require estimates of individual tree crown width, which are
+computed with \code{calc_crwidth()} if not provided in the input tree list.
+
+The stem-map method also requires computation of several stand structure
+metrics, which are components of the overall model used to derive a
+plot-level TCC estimate. These additional variables include:
 \itemize{
-\item individual tree crown widths via \code{calc_crwidth()} (if not provided in the
-input tree list)
 \item individual subplot and microplot crown overlays via \code{calc_crown_overlay()}
 \item a stand height metric (\code{meanTreeHtBAW}) via \code{calc_ht_metrics()}
 \item plot-level counts of mature trees and saplings
-\item descriptive statistics for the tree spatial point pattern via
+\item descriptive spatial statistics for the overstory tree point pattern via
 \code{create_fia_ppp() |> spatstat.explore::Lest()}
 }
 }
@@ -99,7 +91,7 @@ Ripley, B.D. 1977. Modelling spatial patterns. \emph{Journal of the Royal
 Statistical Society: Series B (Methodological)}, 39(2): 172–192.
 \url{https://doi.org/10.1111/j.2517-6161.1977.tb01615.x}.
 
-Toney, C, J.D. Shaw and M.D. Nelson. 2009. A stem-map model for predicting
+Toney, C., J.D. Shaw and M.D. Nelson. 2009. A stem-map model for predicting
 tree canopy cover of Forest Inventory and Analysis (FIA) plots. In:
 McWilliams, Will; Moisen, Gretchen; Czaplewski, Ray, comps. \emph{Forest Inventory
 and Analysis (FIA) Symposium 2008}; October 21-23, 2008; Park City, UT. Proc.
