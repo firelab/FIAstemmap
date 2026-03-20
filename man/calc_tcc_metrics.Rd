@@ -43,22 +43,24 @@ is returned instead.
 }
 \description{
 \code{calc_tcc_metrics()} computes plot-level predicted tree canopy cover (TCC)
-from tree list data. By default, a full set of stand structure components
-used to derive the plot-level TCC prediction are included in the output (see
+from tree list data. By default, a full set of stand structure metrics used
+to derive the plot-level TCC prediction are included in the output (see
 Details).
 }
 \details{
 This function provides two methods for predicting plot-level TCC.
 
 The default "stem-map" method requires individual tree coordinates to be
-included in the input as distance and azimuth from subplot centers for trees
+given in the input as distance and azimuth from subplot centers for trees
 with diameter \verb{>= 5 in.} (12.7 cm), and from microplot centers for
 "saplings" having diameter \verb{>= 1 in.} (2.54 cm) but \verb{< 5 in.}
-(12.7 cm). This method involves mapping trees spatially to account for crown
-overlap, along with empirical modeling of the understory sapling contribution
-to total canopy cover (Toney et al. 2009). The empirical model for the
-sapling component also uses the overstory tree point pattern as a predictor
-variable (based on Ripley's K function, Ripley 1977).
+(12.7 cm). This method involves mapping trees spatially within the plot
+boundary to account for crown overlap explicitly, along with empirical
+modeling of the understory sapling contribution to total canopy cover
+(Toney et al. 2009). The empirical model for the sapling component also uses
+the spatial point pattern of overstory trees as a predictor variable (using
+a square root transformation of Ripley's edge-corrected K function, Ripley
+1977, Stoyan and Penttinen 2000).
 
 Alternatively, plot-level TCC can be predicted using a simplified approach
 that does not include exact stem placement (\code{stem_map = FALSE}). A random
@@ -70,8 +72,8 @@ Both methods require estimates of individual tree crown width, which are
 computed with \code{calc_crwidth()} if not provided in the input tree list.
 
 The stem-map method also requires computation of several stand structure
-metrics, which are components of the overall model used to derive a
-plot-level TCC estimate. These additional variables include:
+metrics, as components of the overall model used to derive a plot-level TCC
+estimate. These additional variables include:
 \itemize{
 \item individual subplot and microplot crown overlays via \code{calc_crown_overlay()}
 \item a stand height metric (\code{meanTreeHtBAW}) via \code{calc_ht_metrics()}
@@ -81,22 +83,26 @@ plot-level TCC estimate. These additional variables include:
 }
 }
 \references{
-Crookston, N.L. and A.R. Stage. 1999. Percent canopy cover and stand
+Crookston, N.L. and A.R. Stage. (1999). Percent canopy cover and stand
 structure statistics from the Forest Vegetation Simulator. Gen. Tech. Rep.
 RMRS-GTR-24. Ogden, UT: U. S. Department of Agriculture, Forest Service,
-Rocky Mountain Research Station. 11 p. Available:
+Rocky Mountain Research Station. 11 p.
 \url{https://research.fs.usda.gov/treesearch/6261}.
 
-Ripley, B.D. 1977. Modelling spatial patterns. \emph{Journal of the Royal
+Ripley, B.D. (1977). Modelling spatial patterns. \emph{Journal of the Royal
 Statistical Society: Series B (Methodological)}, 39(2): 172–192.
 \url{https://doi.org/10.1111/j.2517-6161.1977.tb01615.x}.
+
+Stoyan, D., and Penttinen, A. (2000). Recent Applications of Point Process
+Methods in Forestry Statistics. \emph{Statistical Science}, 15(1), 61–78.
+\url{http://www.jstor.org/stable/2676677}.
 
 Toney, C., J.D. Shaw and M.D. Nelson. 2009. A stem-map model for predicting
 tree canopy cover of Forest Inventory and Analysis (FIA) plots. In:
 McWilliams, Will; Moisen, Gretchen; Czaplewski, Ray, comps. \emph{Forest Inventory
 and Analysis (FIA) Symposium 2008}; October 21-23, 2008; Park City, UT. Proc.
 RMRS-P-56CD. Fort Collins, CO: U.S. Department of Agriculture, Forest
-Service, Rocky Mountain Research Station. 19 p. Available:
+Service, Rocky Mountain Research Station. 19 p.
 \url{https://research.fs.usda.gov/treesearch/33381}.
 }
 \seealso{
