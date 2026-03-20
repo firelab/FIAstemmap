@@ -130,8 +130,8 @@ computed with <code><a href="calc_crwidth.html">calc_crwidth()</a></code> if not
 <p>The stem-map method also requires computation of several stand structure
 metrics, as components of the overall model used to derive a plot-level TCC
 estimate. These additional variables include:</p><ul><li><p>individual subplot and microplot crown overlays via <code><a href="calc_crown_overlay.html">calc_crown_overlay()</a></code></p></li>
-<li><p>a stand height metric (<code>meanTreeHtBAW</code>) via <code><a href="calc_ht_metrics.html">calc_ht_metrics()</a></code></p></li>
-<li><p>plot-level counts of mature trees and saplings</p></li>
+<li><p>a stand height metric (<code>meanTreeHtBAW</code>) and plot-level counts of mature
+trees and saplings via <code><a href="calc_ht_metrics.html">calc_ht_metrics()</a></code></p></li>
 <li><p>descriptive spatial statistics for the overstory tree point pattern via
 <code>create_fia_ppp() |&gt; spatstat.explore::Lest()</code></p></li>
 </ul></div>
@@ -145,8 +145,8 @@ Rocky Mountain Research Station. 11 p.
 <p>Ripley, B.D. (1977). Modelling spatial patterns. <em>Journal of the Royal
 Statistical Society: Series B (Methodological)</em>, 39(2): 172–192.
 <a href="https://doi.org/10.1111/j.2517-6161.1977.tb01615.x" class="external-link">https://doi.org/10.1111/j.2517-6161.1977.tb01615.x</a>.</p>
-<p>Stoyan, D., and Penttinen, A. (2000). Recent Applications of Point Process
-Methods in Forestry Statistics. <em>Statistical Science</em>, 15(1), 61–78.
+<p>Stoyan, D., and Penttinen, A. (2000). Recent applications of point process
+methods in forestry statistics. <em>Statistical Science</em>, 15(1), 61–78.
 <a href="http://www.jstor.org/stable/2676677" class="external-link">http://www.jstor.org/stable/2676677</a>.</p>
 <p>Toney, C., J.D. Shaw and M.D. Nelson. 2009. A stem-map model for predicting
 tree canopy cover of Forest Inventory and Analysis (FIA) plots. In:
@@ -162,6 +162,12 @@ Service, Rocky Mountain Research Station. 19 p.
 <code><a href="spatstat_helpers.html">create_fia_ppp()</a></code></p></div>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">calc_tcc_metrics</span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in calc_tcc_metrics(plantation):</span> could not find function "calc_tcc_metrics"</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

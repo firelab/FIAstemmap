@@ -95,10 +95,9 @@ TCC estimate. These additional variables include:
 - individual subplot and microplot crown overlays via
   [`calc_crown_overlay()`](https://ctoney.github.io/FIAstemmap/reference/calc_crown_overlay.md)
 
-- a stand height metric (`meanTreeHtBAW`) via
+- a stand height metric (`meanTreeHtBAW`) and plot-level counts of
+  mature trees and saplings via
   [`calc_ht_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_ht_metrics.md)
-
-- plot-level counts of mature trees and saplings
 
 - descriptive spatial statistics for the overstory tree point pattern
   via `create_fia_ppp() |> spatstat.explore::Lest()`
@@ -115,8 +114,8 @@ Ripley, B.D. (1977). Modelling spatial patterns. *Journal of the Royal
 Statistical Society: Series B (Methodological)*, 39(2): 172–192.
 <https://doi.org/10.1111/j.2517-6161.1977.tb01615.x>.
 
-Stoyan, D., and Penttinen, A. (2000). Recent Applications of Point
-Process Methods in Forestry Statistics. *Statistical Science*, 15(1),
+Stoyan, D., and Penttinen, A. (2000). Recent applications of point
+process methods in forestry statistics. *Statistical Science*, 15(1),
 61–78. <http://www.jstor.org/stable/2676677>.
 
 Toney, C., J.D. Shaw and M.D. Nelson. 2009. A stem-map model for
@@ -133,3 +132,10 @@ Station. 19 p. <https://research.fs.usda.gov/treesearch/33381>.
 [`calc_crown_overlay()`](https://ctoney.github.io/FIAstemmap/reference/calc_crown_overlay.md),
 [`calc_ht_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_ht_metrics.md),
 [`create_fia_ppp()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
+
+## Examples
+
+``` r
+calc_tcc_metrics(plantation)
+#> Error in calc_tcc_metrics(plantation): could not find function "calc_tcc_metrics"
+```
