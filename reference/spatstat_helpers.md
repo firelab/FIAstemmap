@@ -210,6 +210,6 @@ plot(X, main = "Loblolly pine plantation",
 
 
 # Ripley's K-function
-K <- spatstat.explore::Kest(X, rmax = 12)
+K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
 plot(K, main = "Ripley's K for the plantation trees")
 ```

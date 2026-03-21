@@ -1,9 +1,9 @@
 # Compute predicted canopy cover from individual tree measurements
 
 `calc_tcc_metrics()` computes predicted plot-level tree canopy cover
-(TCC) from tree list data. By default, a full set of stand structure
-metrics used to derive the plot-level TCC value are included in the
-output (see Details).
+(TCC) from standard field inventory measurements. By default, a full set
+of stand structure metrics used to derive the plot-level TCC value are
+included in the output (see Details).
 
 ## Usage
 
@@ -29,13 +29,13 @@ calc_tcc_metrics(tree_list, stem_map = TRUE, full_output = TRUE, digits = 1)
 
 - stem_map:
 
-  A logical value indicating whether to map individual trees explicitly
-  using coordinates specified in terms of distance and azimuth from
-  subplot/microplot centers. The default is `TRUE`, in which case the
-  input `tree_list` must contain columns `"DIST"` and `"AZIMUTH"`. This
-  argument may be set to `FALSE` if individual tree locations are not
-  available, in which case TCC will be predicted assuming a random
-  arrangement of the stems (see Details).
+  A logical value indicating whether to map individual tree stems
+  explicitly, using coordinates specified in terms of distance and
+  azimuth from subplot/microplot centers. The default is `TRUE`, in
+  which case the input `tree_list` must contain columns `"DIST"` and
+  `"AZIMUTH"`. This argument may be set to `FALSE` if individual tree
+  locations are not available, in which case TCC will be predicted
+  assuming a random arrangement of tree locations (see Details).
 
 - full_output:
 
