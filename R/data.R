@@ -66,12 +66,12 @@ DEFAULT_TREE_COLUMNS <- c("PLT_CN", "SUBP", "TREE", "AZIMUTH", "DIST",
 #' Forest Inventory and Analysis (FIA) plots.
 #' \url{https://research.fs.usda.gov/treesearch/33381}.
 #' @references
-#' Bechtold, W.A. 2003. Crown-Diameter Prediction Models for 87 Species of
-#' Stand-Grown Trees in the Eastern United States. _Southern Journal of Applied
+#' Bechtold, W.A. 2003. Crown-diameter prediction models for 87 species of
+#' stand-grown trees in the eastern United States. _Southern Journal of Applied
 #' Forestry_, 27(4): 269-278.
 #'
-#' Bechtold, W.A. 2004. Largest-Crown-Width Prediction Models for 53 Species in
-#' the Western United States. _Western Journal of Applied Forestry_, 19(4):
+#' Bechtold, W.A. 2004. Largest-crown-width prediction models for 53 species in
+#' the western United States. _Western Journal of Applied Forestry_, 19(4):
 #' 245-251.
 #'
 #' Gill, S.J., G.S. Biging, E.C. Murphy. 2000. Modeling conifer tree crown

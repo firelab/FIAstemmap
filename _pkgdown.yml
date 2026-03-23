@@ -18,9 +18,9 @@ reference:
   - calc_crwidth
   - calc_ht_metrics
   - calc_tcc_metrics
+  - spatstat_helpers
   - load_tree_data
   - plot_crowns
-  - spatstat_helpers
 
 - title: Data
 - contents:

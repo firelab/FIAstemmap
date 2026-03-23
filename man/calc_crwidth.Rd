@@ -42,12 +42,12 @@ tree species when their diameter is greater than 50 in. (127 cm).
 calc_crwidth(plantation)
 }
 \references{
-Bechtold, W.A. 2003. Crown-Diameter Prediction Models for 87 Species of
-Stand-Grown Trees in the Eastern United States. \emph{Southern Journal of Applied
+Bechtold, W.A. 2003. Crown-diameter prediction models for 87 species of
+stand-grown trees in the eastern United States. \emph{Southern Journal of Applied
 Forestry}, 27(4): 269-278.
 
-Bechtold, W.A. 2004. Largest-Crown-Width Prediction Models for 53 Species in
-the Western United States. \emph{Western Journal of Applied Forestry}, 19(4):
+Bechtold, W.A. 2004. Largest-crown-width prediction models for 53 species in
+the western United States. \emph{Western Journal of Applied Forestry}, 19(4):
 245-251.
 
 Gill, S.J., G.S. Biging, E.C. Murphy. 2000. Modeling conifer tree crown
