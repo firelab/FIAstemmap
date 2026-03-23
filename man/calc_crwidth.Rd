@@ -33,7 +33,7 @@ for the lookup table \link{cw_sapling_adj}.
 Large diameter trees in the temperate rain forests of the Pacific Northwest
 region can far exceed the range of diameters in the broadly applicable
 datasets that have been used to develop crown width prediction equations
-(Bechold 2003, 2004). To avoid extrapolation beyond the range of the model
+(Bechtold 2003, 2004). To avoid extrapolation beyond the range of the model
 fitting data in those cases, \code{calc_crwidth()} makes use of the "old growth"
 equation presented by Gill et al. (2000) to estimate crown width for nine
 tree species when their diameter is greater than 50 in. (127 cm).
