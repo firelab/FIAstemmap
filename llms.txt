@@ -140,11 +140,11 @@ individual tree measurements. *Forest Ecology and Management*, Volume
   : Compute fractional tree canopy cover of a subplot/microplot by crown
   overlay
 - [`calc_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/calc_crwidth.md)
-  : Compute predicted tree crown width using species-specific equations
+  : Predict tree crown widths using species-specific equations
 - [`calc_ht_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_ht_metrics.md)
   : Calculate stand height metrics
 - [`calc_tcc_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_tcc_metrics.md)
-  : Compute predicted canopy cover from individual tree measurements
+  : Predict plot-level canopy cover from individual tree measurements
 - [`load_tree_data()`](https://ctoney.github.io/FIAstemmap/reference/load_tree_data.md)
   : Load tree data from a file or database connection
 - [`plot_crowns()`](https://ctoney.github.io/FIAstemmap/reference/plot_crowns.md)
@@ -168,5 +168,5 @@ individual tree measurements. *Forest Ecology and Management*, Volume
   : Sapling crown width adjustment factors
 
 - [`plantation`](https://ctoney.github.io/FIAstemmap/reference/plantation.md)
-  : Tree list for a plot in a loblolly pine plantation
+  : Pine plantation tree list
 

@@ -1,6 +1,6 @@
 # Analyze the spatial pattern of trees on an FIA plot
 
-Functions that facilitate point pattern analysis of FIA tree data using
+These functions facilitate point pattern analysis of FIA tree data using
 the spatstat library.
 
 ## Usage
@@ -86,8 +86,8 @@ create_fia_ppp(
 `create_fia_owin()` returns an object of class `"owin"` from the
 spatstat library. This object represents the generic 2-D observation
 window for the nationally standard FIA plot design which is a four-point
-cluster of subplots. Used when creating a spatstat point pattern object
-for an FIA tree list.
+cluster of circular subplots. Used when creating a spatstat point
+pattern object for an FIA tree list.
 
 `create_fia_ppp()` returns an object of class `"ppp"` representing the
 point pattern of an FIA tree list in the 2-D plane. A point pattern

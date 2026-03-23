@@ -1,8 +1,8 @@
-# Compute predicted canopy cover from individual tree measurements
+# Predict plot-level canopy cover from individual tree measurements
 
 `calc_tcc_metrics()` computes predicted plot-level tree canopy cover
 (TCC) from standard field inventory measurements. By default, a full set
-of stand structure metrics used to derive the plot-level TCC value are
+of stand structure variables used to derive the plot-level TCC value are
 included in the output (see Details).
 
 ## Usage
@@ -74,7 +74,7 @@ account for crown overlap explicitly, along with empirical modeling of
 the understory sapling contribution to total canopy cover (Toney et al.
 2009). The empirical model for the sapling component also uses the
 spatial point pattern of overstory trees as a predictor variable (using
-a square root transformation of Ripley's edge-corrected K function,
+a square root transformation of Ripley's edge-corrected K-function,
 Ripley 1977, Stoyan and Penttinen 2000).
 
 Alternatively, TCC can be predicted using a simplified approach that
@@ -107,7 +107,7 @@ plot-level modeled TCC value, along with those additional component
 variables. Specific elements of the returned list include some or all of
 the following, conditionally:
 
-- `model_tcc`: plot-level predicted canopy cover of trees `>= 1` inch
+- `$model_tcc`: plot-level predicted canopy cover of trees `>= 1` inch
   (`2.54` cm) diameter, derived by one of the two methods described
   above depending on the value given for argument
   `stem_map = TRUE|FALSE`
@@ -116,15 +116,15 @@ If the stem-map method is used, then TCC values derived by crown overlay
 on the individual subplot and microplot boundaries are included, along
 with means of the four subplot/microplot values:
 
-- `subpN_crown_overlay`: estimated canopy cover of trees `>= 5-in.`
+- `$subpN_crown_overlay`: estimated canopy cover of trees `>= 5-in.`
   (12.7 cm) diameter in subplot `N` based on crown overlay (`N = 1:4`)
 
-- `subp_overlay_mean`: mean of the four subplot crown overlays
+- `$subp_overlay_mean`: mean of the four subplot crown overlays
 
-- `micrN_crown_overlay`: estimated canopy cover of saplings in the
+- `$micrN_crown_overlay`: estimated canopy cover of saplings in the
   microplot of subplot `N` based on crown overlay (`N = 1:4`)
 
-- `micr_overlay_mean`: mean of the four microplot crown overlays
+- `$micr_overlay_mean`: mean of the four microplot crown overlays
 
 A set of spatial point pattern statistics is also included when the
 stem-map method is used. A square root transformation of Ripley's K
@@ -135,8 +135,8 @@ observation window. The mean of the following values is a predictor
 variable in a linear regression model used to estimate the sapling
 contribution to total tree canopy cover:
 
-- `L_rft`: Ripley’s L function at `r` feet (`r` = `6`, `8`, `10`, and
-  `12`)
+- `$L_rft`: estimates of the L-function at `r` feet (`r` = `6`, `8`,
+  `10`, and `12`)
 
 If the argument `full_output = TRUE` (the default), then the output will
 also include all of the the named elements from the output of
@@ -254,7 +254,7 @@ calc_tcc_metrics(plantation)
 #> [1] 42
 #> 
 
-# return only the predicted TCC
+# return only the predicted TCC value (`$model_tcc`)
 calc_tcc_metrics(plantation, full_output = FALSE)
 #> [1] 88.5
 

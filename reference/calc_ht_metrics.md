@@ -1,7 +1,7 @@
 # Calculate stand height metrics
 
 `calc_ht_metrics()` computes several stand height metrics for a given
-tree list (see Details).
+tree list.
 
 ## Usage
 
@@ -34,32 +34,32 @@ Stand height metrics are based on live trees (`STATUSCD == 1`), and are
 are assigned `0` by definition if no live trees are present. Height
 metrics are returned in a named list with the following elements:
 
-- `numTrees`: number of live trees `>= 5.0` in. (`12.7` cm) diameter
+- `$numTrees`: number of live trees `>= 5.0` in. (`12.7` cm) diameter
 
-- `meanTreeHt`: mean height of trees `>= 5.0` in. (`12.7` cm) diameter
+- `$meanTreeHt`: mean height of trees `>= 5.0` in. (`12.7` cm) diameter
 
-- `meanTreeHtBAW`: basal-area weighted mean height of trees `>= 5.0` in.
-  (`12.7` cm) diameter
+- `$meanTreeHtBAW`: basal-area weighted mean height of trees `>= 5.0`
+  in. (`12.7` cm) diameter
 
-- `meanTreeHtDom`: mean height of canopy dominant/co-dominant trees
+- `$meanTreeHtDom`: mean height of canopy dominant/co-dominant trees
   `>= 5.0` in. (`12.7` cm) diameter
 
-- `meanTreeHtDomBAW`: basal-area weighted mean height of canopy
+- `$meanTreeHtDomBAW`: basal-area weighted mean height of canopy
   dominant/co-dominant trees `>= 5.0` in. (`12.7` cm) diameter
 
-- `maxTreeHt`: height of the tallest tree `>= 5.0` in. (`12.7` cm)
+- `$maxTreeHt`: height of the tallest tree `>= 5.0` in. (`12.7` cm)
   diameter
 
-- `predomTreeHt`: predominant tree height, as the mean height of the
+- `$predomTreeHt`: predominant tree height, as the mean height of the
   tallest trees `>= 5.0` in. (`12.7` cm) diameter comprising up to `16`
   trees per acre (`39.5` trees per hectare)
 
-- `numSaplings`: number of live saplings (trees `>= 1.0` in. but `< 5.0`
-  in. diameter, i.e., `>= 2.54` cm but `< 12.7` cm)
+- `$numSaplings`: number of live saplings (trees `>= 1.0` in. but
+  `< 5.0` in. diameter, i.e., `>= 2.54` cm but `< 12.7` cm)
 
-- `meanSapHt`: mean height of saplings
+- `$meanSapHt`: mean height of saplings
 
-- `maxSapHt`: height of the tallest sapling
+- `$maxSapHt`: height of the tallest sapling
 
 For the purpose of height calculations, metrics based on "canopy
 dominant/co-dominant" include open grown trees, i.e., include trees with

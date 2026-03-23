@@ -49,6 +49,10 @@ This function does not perform an filtering based on `SUBP` (subplot),
 input tree list is assumed to be filtered to the specific set of live
 trees for one subplot or microplot with the given `sample_radius`.
 
+## See also
+
+[`calc_tcc_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_tcc_metrics.md)
+
 ## Examples
 
 ``` r

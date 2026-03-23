@@ -1,4 +1,4 @@
-# Tree list for a plot in a loblolly pine plantation
+# Pine plantation tree list
 
 An example tree list for an FIA plot in a loblolly pine plantation.
 
