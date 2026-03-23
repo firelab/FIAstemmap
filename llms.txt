@@ -145,14 +145,14 @@ individual tree measurements. *Forest Ecology and Management*, Volume
   : Calculate stand height metrics
 - [`calc_tcc_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_tcc_metrics.md)
   : Predict plot-level canopy cover from individual tree measurements
+- [`create_fia_owin()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
+  [`create_fia_ppp()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
+  : Analyze the spatial pattern of trees on an FIA plot
 - [`load_tree_data()`](https://ctoney.github.io/FIAstemmap/reference/load_tree_data.md)
   : Load tree data from a file or database connection
 - [`plot_crowns()`](https://ctoney.github.io/FIAstemmap/reference/plot_crowns.md)
   : Display modeled tree crowns projected vertically on subplot
   boundaries
-- [`create_fia_owin()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
-  [`create_fia_ppp()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
-  : Analyze the spatial pattern of trees on an FIA plot
 
 ## Data
 

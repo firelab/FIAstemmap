@@ -1,9 +1,9 @@
 # Predict plot-level canopy cover from individual tree measurements
 
 `calc_tcc_metrics()` computes predicted plot-level tree canopy cover
-(TCC) from standard field inventory measurements. By default, a full set
-of stand structure variables used to derive the plot-level TCC value are
-included in the output (see Details).
+(TCC) from standard field inventory measurements. By default, the output
+includes a full set of stand structure variables used to model the
+plot-level TCC value (see Details).
 
 ## Usage
 
