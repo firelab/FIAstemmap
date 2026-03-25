@@ -20,7 +20,7 @@ License: MIT + file LICENSE
 Depends: R (>= 4.1.0)
 Imports:
     cli,
-    gdalraster (>= 2.4.0.9030),
+    gdalraster (>= 2.5.0),
     grDevices,
     methods,
     spatstat.explore,
@@ -31,8 +31,6 @@ Suggests:
     spelling,
     testthat (>= 3.0.0),
     vctrs (>= 0.3.0)
-Remotes:
-    firelab/gdalraster
 URL: https://ctoney.github.io/FIAstemmap/, https://github.com/ctoney/FIAstemmap
 BugReports: https://github.com/ctoney/FIAstemmap/issues
 Config/testthat/edition: 3
