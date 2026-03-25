@@ -1,8 +1,8 @@
 # Display modeled tree crowns projected vertically on subplot boundaries
 
 `plot_crowns()` draws vertically projected tree crowns as discs overlaid
-on subplot or microplot boundaries. The full four-subplot cluster, or
-individual subplots, can be displayed with trees `>= 5.0` in. (`12.7`
+on FIA subplot or microplot boundaries. The full four-subplot cluster,
+or individual subplots, can be displayed with trees `>= 5.0` in. (`12.7`
 cm) diameter. Individual microplots can also be displayed with saplings
 (i.e., trees `< 5` in. diameter).
 
@@ -18,7 +18,7 @@ plot_crowns(
   crown_col = "#328e13",
   stem_col = "#b85e00",
   subp_border_lwd = 3,
-  subp_border_col = "gray62"
+  subp_border_col = "gray61"
 )
 ```
 
