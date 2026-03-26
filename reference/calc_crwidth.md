@@ -1,6 +1,6 @@
-# Predict tree crown widths using species-specific equations
+# Predict individual tree crown width using species-specific equations
 
-`calc_crwidth()` computes tree crown width using species-specific
+`calc_crwidth()` predicts tree crown width using species-specific
 regression equations from the literature.
 
 ## Usage
