@@ -27,6 +27,18 @@ measurements has supported several applications of FIA data, including:
 - assessment of tree canopy cover estimation methods [\[12,
   13\]](#references)
 
+Note that analysis or computation based on tree spatial pattern within a
+plot require input data with coordinates of individual stems given as
+aziumuth and distance from the sample center point. FIA no longer
+provide `AZIMUTH` and `DIST` attributes in the publicly available FIADB
+`TREE` table. The FIADB User Guide states that these attributes are now
+available by request from [FIA Spatial Data
+Services](https://research.fs.usda.gov/programs/fia/sds)
+[\[14\]](#references). Tree data without stem locations can be used in
+**FIAstemmap** with reduced functionality which includes predicting
+individual tree crown width and computing several stand structure
+metrics.
+
 ## Installation
 
 You can install the development version of **FIAstemmap** with:
@@ -38,12 +50,137 @@ pak::pak("ctoney/FIAstemmap")
 
 ## Examples
 
-TODO…
+### Predict crown width
+
+The data frame `cw_coef` provides a curated set of linear regression
+coefficients for predicting crown width from stem diameter of tree
+species in the conterminous US. The crown width prediction method also
+addresses potential issues in cases of extrapolation beyond the range of
+the model fitting data. Details are given in the documentation for
+[`calc_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/calc_crwidth.md).
+Input is a data frame of tree records which must have columns `SPCD`
+(FIA integer species code), `STATUSCD` (FIA integer tree status code,
+`1` = live) and `DIA` (FIA tree diameter in inches), here using the
+`plantation` example tree list.
 
 ``` r
 library(FIAstemmap)
-## basic example code
+
+# structure of the cw_coef dataset
+str(cw_coef)
+#> 'data.frame':    430 obs. of  8 variables:
+#>  $ symbol     : chr  "ABAM" "ABCO" "ABGR" "ABLAA" ...
+#>  $ SPCD       : num  11 15 17 18 19 20 21 22 41 62 ...
+#>  $ common_name: chr  "Pacific silver fir" "white fir" "grand fir" "corkbark fir" ...
+#>  $ surrogate  : chr  NA NA NA NA ...
+#>  $ b0         : num  7.3 4.49 5.75 6.07 3.96 6.67 6.67 6.32 2.36 -2.12 ...
+#>  $ b1         : num  0.59 0.92 1.11 0.37 0.64 0.43 0.43 0.65 0.99 1.73 ...
+#>  $ b2         : num  0 -0.01 -0.01 0 0 0 0 0 0 -0.02 ...
+#>  $ reference  : chr  "Bechtold (2004)" "Bechtold (2004)" "Bechtold (2004)" "Bechtold (2004)" ...
+
+# add a column of predicted crown width to the plantation tree list
+# `within()` is used to modify only a copy of the example dataset
+tree_list <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
+str(tree_list)
+#> 'data.frame':    91 obs. of  13 variables:
+#>  $ PLT_CN   : chr  "61265063010478" "61265063010478" "61265063010478" "61265063010478" ...
+#>  $ SUBP     : int  1 1 1 1 1 1 1 1 1 1 ...
+#>  $ TREE     : int  4 1 2 3 5 6 10 7 8 9 ...
+#>  $ AZIMUTH  : int  21 282 185 4 24 48 93 60 90 92 ...
+#>  $ DIST     : num  22.7 9.1 10.1 22 11.7 14.9 22.4 19.5 9.5 16.3 ...
+#>  $ STATUSCD : int  1 1 1 1 1 1 1 1 1 1 ...
+#>  $ SPCD     : int  131 131 131 131 131 131 131 131 131 131 ...
+#>  $ DIA      : num  6.7 7.7 6.1 9.5 8.2 5.9 5.6 5.1 9.3 8.1 ...
+#>  $ HT       : int  41 45 42 50 46 44 41 42 48 48 ...
+#>  $ ACTUALHT : int  41 45 42 50 46 44 41 42 48 48 ...
+#>  $ CCLCD    : int  3 3 3 3 3 3 3 3 3 3 ...
+#>  $ TPA_UNADJ: num  6.02 6.02 6.02 6.02 6.02 ...
+#>  $ CRWIDTH  : num  11.8 13.2 11 15.7 13.9 10.7 10.3 9.6 15.4 13.7 ...
 ```
+
+### Exploratory analysis
+
+Plot-level visualization and other exploratory analyses require input
+data with stem locations provided in columns `AZIMUTH` (horizontal angle
+from subplot/microplot center to the stem location, in range `0:359`)
+and `DIST` (stem distance from subplot/microplot center).
+
+``` r
+# display modeled tree crowns projected vertically on boundaries of the FIA
+# four-subplot cluster design
+plot_crowns(tree_list, main = "plantation plot")
+```
+
+![](reference/figures/README-plot-crowns-1.png)
+
+``` r
+
+# individual subplot
+plot_crowns(tree_list, subplot = 4, main = "plantation subplot 4")
+```
+
+![](reference/figures/README-plot-crowns-2.png)
+
+``` r
+
+# or microplot
+plot_crowns(tree_list, subplot = 4, microplot = TRUE,
+            main = "plantation microplot 4")
+```
+
+![](reference/figures/README-plot-crowns-3.png)
+
+Helper functions are provided to facilitate analyzing FIA tree lists as
+Spatial Point Patterns using the **spatstat** library.
+[`create_fia_ppp()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
+returns an object of class `"ppp"` representing the point pattern of an
+FIA tree list in the 2-D plane. This object can be used with functions
+of package **spatstat.explore** for additional plotting capabilty,
+computation of descriptive spatial statistics, and other exploratory
+data analysis.
+
+``` r
+# point pattern object for the plantation tree list
+X <- create_fia_ppp(plantation)
+summary(X)
+#> Planar point pattern:  89 points
+#> Average intensity 0.01229542 points per square foot
+#> 
+#> Coordinates are given to 16 decimal places
+#> 
+#> Window: polygonal boundary
+#> 4 separate polygons (no holes)
+#>            vertices    area relative.area
+#> polygon 1       360 1809.62          0.25
+#> polygon 2       360 1809.62          0.25
+#> polygon 3       360 1809.62          0.25
+#> polygon 4       360 1809.62          0.25
+#> enclosing rectangle: [-127.921, 127.921] x [-84.001, 144.001] feet
+#>                      (255.8 x 228 feet)
+#> Window area = 7238.47 square feet
+#> Unit of length: 1 foot
+#> Fraction of frame area: 0.124
+
+plot(X, pch = 16, main = "Loblolly pine plantation")
+```
+
+![](reference/figures/README-spatstat-explore-1.png)
+
+``` r
+
+# compute Ripley's K-function applying isotropic edge correction
+K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
+
+# plot estimated values of K(r) along with theoretical values for a completely
+# random (Poisson) point process, suggestng spatial regularity in this case
+plot(K, main = "Ripley's K for the plantation trees")
+```
+
+![](reference/figures/README-spatstat-explore-2.png)
+
+### Compute stand structure metrics
+
+### Data processing
 
 ## References
 
@@ -131,3 +268,12 @@ Shettles. 2021. Predicting canopy cover of diverse forest types from
 individual tree measurements. *Forest Ecology and Management*, Volume
 501, 119682, ISSN 0378-1127,
 <https://doi.org/10.1016/j.foreco.2021.119682>.
+
+\[14\] Burrill, Elizabeth A.; DiTommaso, Andrea M.; Turner, Jeffery A.;
+Pugh, Scott A.; Christensen, Glenn; Kralicek, Karin M.; Perry, Carol J.;
+Lepine, Lucie C.; Walker, David M.; Conkling, Barbara L. 2024. The
+Forest Inventory and Analysis Database, FIADB user guides, volume:
+database description (version 9.4), nationwide forest inventory (NFI).
+U.S. Department of Agriculture, Forest Service. 1016 p. \[Online\].
+Available at:
+<https://research.fs.usda.gov/understory/forest-inventory-and-analysis-database-user-guide-nfi>.
