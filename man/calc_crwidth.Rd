@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_crwidth.R
 \name{calc_crwidth}
 \alias{calc_crwidth}
-\title{Predict tree crown widths using species-specific equations}
+\title{Predict individual tree crown width using species-specific equations}
 \usage{
 calc_crwidth(tree_list, digits = 1)
 }
@@ -19,7 +19,7 @@ A numeric vector of length \code{nrow(tree_list)} with predicted crown width in
 feet for live trees. \code{NA} is returned for trees with \code{STATUSCD != 1}.
 }
 \description{
-\code{calc_crwidth()} computes tree crown width using species-specific
+\code{calc_crwidth()} predicts tree crown width using species-specific
 regression equations from the literature.
 }
 \details{

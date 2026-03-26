@@ -1,4 +1,4 @@
-#' Calculate stand height metrics
+#' Calculate stand height metrics from tree list data
 #'
 #' `calc_ht_metrics()` computes several stand height metrics for a given tree
 #' list.
@@ -26,7 +26,7 @@
 #'
 #' For the purpose of height calculations, metrics based on
 #' "canopy dominant/co-dominant" include open grown trees, i.e., include trees
-#' with FIA crown class code `CCLCD` of `1` (open grown), `2` (dominant) or `3`
+#' with FIA crown class codes `CCLCD` of `1` (open grown), `2` (dominant) or `3`
 #' (co-dominant), but exclude trees with `CCLCD` of `4` (intermediate) or `5`
 #' (over-topped).
 #'
@@ -42,7 +42,6 @@
 #'
 #' @examples
 #' calc_ht_metrics(plantation)
-#'
 #' @export
 calc_ht_metrics <- function(tree_list, digits = 1) {
 

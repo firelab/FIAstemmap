@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_ht_metrics.R
 \name{calc_ht_metrics}
 \alias{calc_ht_metrics}
-\title{Calculate stand height metrics}
+\title{Calculate stand height metrics from tree list data}
 \usage{
 calc_ht_metrics(tree_list, digits = 1)
 }
@@ -48,11 +48,10 @@ diameter, i.e., \verb{>= 2.54} cm but \verb{< 12.7} cm)
 
 For the purpose of height calculations, metrics based on
 "canopy dominant/co-dominant" include open grown trees, i.e., include trees
-with FIA crown class code \code{CCLCD} of \code{1} (open grown), \code{2} (dominant) or \code{3}
+with FIA crown class codes \code{CCLCD} of \code{1} (open grown), \code{2} (dominant) or \code{3}
 (co-dominant), but exclude trees with \code{CCLCD} of \code{4} (intermediate) or \code{5}
 (over-topped).
 }
 \examples{
 calc_ht_metrics(plantation)
-
 }
