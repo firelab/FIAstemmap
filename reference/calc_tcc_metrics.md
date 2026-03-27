@@ -179,22 +179,22 @@ Station. 19 p. <https://research.fs.usda.gov/treesearch/33381>.
 # using the spatially explicit "stem-map model" by default
 calc_tcc_metrics(plantation)
 #> $model_tcc
-#> [1] 88.5
+#> [1] 88.4
 #> 
 #> $subp1_crown_overlay
-#> [1] 86.9
+#> [1] 86.8
 #> 
 #> $subp2_crown_overlay
-#> [1] 91.8
+#> [1] 91.7
 #> 
 #> $subp3_crown_overlay
-#> [1] 80.5
+#> [1] 80.2
 #> 
 #> $subp4_crown_overlay
-#> [1] 87.3
+#> [1] 87.2
 #> 
 #> $subp_overlay_mean
-#> [1] 86.625
+#> [1] 86.475
 #> 
 #> $micr1_crown_overlay
 #> [1] 0
@@ -203,13 +203,13 @@ calc_tcc_metrics(plantation)
 #> [1] 0
 #> 
 #> $micr3_crown_overlay
-#> [1] 19.4
+#> [1] 20.2
 #> 
 #> $micr4_crown_overlay
-#> [1] 22
+#> [1] 22.5
 #> 
 #> $micr_overlay_mean
-#> [1] 10.35
+#> [1] 10.675
 #> 
 #> $L_6ft
 #> [1] 3.868305
@@ -227,36 +227,36 @@ calc_tcc_metrics(plantation)
 #> [1] 89
 #> 
 #> $meanTreeHt
-#> [1] 45
+#> [1] 44.8
 #> 
 #> $meanTreeHtBAW
-#> [1] 45.4
+#> [1] 45.3
 #> 
 #> $meanTreeHtDom
-#> [1] 45
+#> [1] 44.8
 #> 
 #> $meanTreeHtDomBAW
-#> [1] 45.4
+#> [1] 45.3
 #> 
 #> $maxTreeHt
 #> [1] 51
 #> 
 #> $predomTreeHt
-#> [1] 50.3
+#> [1] 51
 #> 
 #> $numSaplings
 #> [1] 2
 #> 
 #> $meanSapHt
-#> [1] 33.5
+#> [1] 34.5
 #> 
 #> $maxSapHt
-#> [1] 42
+#> [1] 43
 #> 
 
 # return only the predicted TCC value (`$model_tcc`)
 calc_tcc_metrics(plantation, full_output = FALSE)
-#> [1] 88.5
+#> [1] 88.4
 
 # using the "FVS method" which assumes random tree locations
 calc_tcc_metrics(plantation, stem_map = FALSE, full_output = FALSE)

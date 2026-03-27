@@ -75,30 +75,30 @@ calc_ht_metrics(plantation)
 #> [1] 89
 #> 
 #> $meanTreeHt
-#> [1] 45
+#> [1] 44.8
 #> 
 #> $meanTreeHtBAW
-#> [1] 45.4
+#> [1] 45.3
 #> 
 #> $meanTreeHtDom
-#> [1] 45
+#> [1] 44.8
 #> 
 #> $meanTreeHtDomBAW
-#> [1] 45.4
+#> [1] 45.3
 #> 
 #> $maxTreeHt
 #> [1] 51
 #> 
 #> $predomTreeHt
-#> [1] 50.3
+#> [1] 51
 #> 
 #> $numSaplings
 #> [1] 2
 #> 
 #> $meanSapHt
-#> [1] 33.5
+#> [1] 34.5
 #> 
 #> $maxSapHt
-#> [1] 42
+#> [1] 43
 #> 
 ```

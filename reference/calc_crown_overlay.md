@@ -60,7 +60,7 @@ trees for one subplot or microplot with the given `sample_radius`.
 trees <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
 trees[trees$SUBP == 1 & trees$DIA >= 5, ] |>
   calc_crown_overlay(sample_radius = 24)
-#> [1] 86.9
+#> [1] 86.8
 
 plot_crowns(trees, subplot = 1, main = "plantation subplot 1")
 ```

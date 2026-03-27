@@ -74,3 +74,8 @@ A data frame with 91 rows and 12 columns:
 ## Source
 
 <https://research.fs.usda.gov/programs/nfi>
+
+## Note
+
+A synthetic plot unique identifier is used in example tree list
+datasets.
