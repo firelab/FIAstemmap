@@ -27,17 +27,17 @@ measurements has supported several applications of FIA data, including:
 - assessment of tree canopy cover estimation methods [\[12,
   13\]](#references)
 
-Note that analysis or computation based on tree spatial pattern within a
-plot require input data with coordinates of individual stems given as
-aziumuth and distance from the sample center point. FIA no longer
+Analysis or computation based on the tree spatial pattern within a plot
+require input data with coordinates of individual stems given as azimuth
+and distance from the sample center point. Note that FIA no longer
 provide `AZIMUTH` and `DIST` attributes in the publicly available FIADB
 `TREE` table. The FIADB User Guide states that these attributes are now
 available by request from [FIA Spatial Data
 Services](https://research.fs.usda.gov/programs/fia/sds)
-[\[14\]](#references). Tree data without stem locations can be used in
-**FIAstemmap** with reduced functionality which includes predicting
-individual tree crown width and computing several stand structure
-metrics.
+[\[14\]](#references). Tree data without stem locations can still be
+used in **FIAstemmap** for certain functionality, which includes
+predicting individual tree crown width and computing several stand
+structure metrics.
 
 ## Installation
 
@@ -132,7 +132,7 @@ Spatial Point Patterns using the **spatstat** library.
 [`create_fia_ppp()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
 returns an object of class `"ppp"` representing the point pattern of an
 FIA tree list in the 2-D plane. This object can be used with functions
-of package **spatstat.explore** for additional plotting capabilty,
+of package **spatstat.explore** for additional plotting capability,
 computation of descriptive spatial statistics, and other exploratory
 data analysis.
 
