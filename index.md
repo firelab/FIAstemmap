@@ -54,9 +54,11 @@ pak::pak("ctoney/FIAstemmap")
 
 The data frame `cw_coef` provides a curated set of linear regression
 coefficients for predicting crown width from stem diameter of tree
-species in the conterminous US. The crown width prediction method also
-addresses potential issues in cases of extrapolation beyond the range of
-the model fitting data. Details are given in the documentation for
+species in the conterminous US (see
+[`?cw_coef`](https://ctoney.github.io/FIAstemmap/reference/cw_coef.md)).
+The crown width prediction method also addresses potential issues in
+cases of extrapolation beyond the range of the model fitting data.
+Details are given in the documentation for
 [`calc_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/calc_crwidth.md).
 Input is a data frame of tree records which must have columns `SPCD`
 (FIA integer species code), `STATUSCD` (FIA integer tree status code,
@@ -67,6 +69,7 @@ Input is a data frame of tree records which must have columns `SPCD`
 library(FIAstemmap)
 
 # regression coefficients for estimating tree crown width from diameter
+# ?cw_coef
 head(cw_coef)
 #>   symbol SPCD        common_name surrogate   b0   b1    b2          reference
 #> 1   ABAM   11 Pacific silver fir      <NA> 7.30 0.59  0.00    Bechtold (2004)
@@ -76,7 +79,7 @@ head(cw_coef)
 #> 5   ABLA   19      subalpine fir      <NA> 3.96 0.64  0.00    Bechtold (2004)
 #> 6   ABMA   20 California red fir      <NA> 6.67 0.43  0.00 Gill et al. (2000)
 
-# add predicted crown widths to the plantation tree list
+# add predicted crown widths to the `plantation` tree list
 # `within()` to modify only a copy of the example dataset
 tree_list <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
 str(tree_list)
@@ -105,7 +108,7 @@ and `DIST` (stem distance from subplot/microplot center).
 
 ``` r
 # display modeled tree crowns projected vertically on the FIA plot boundary
-plot_crowns(tree_list, main = "plantation plot")
+plot_crowns(tree_list, main = "Loblolly pine plantation")
 ```
 
 ![](reference/figures/README-plot-crowns-1.png)
@@ -113,7 +116,8 @@ plot_crowns(tree_list, main = "plantation plot")
 ``` r
 
 # individual subplot
-plot_crowns(tree_list, subplot = 4, main = "plantation subplot 4")
+plot_crowns(tree_list, subplot = 4,
+            main = "Loblolly pine plantation subplot 4")
 ```
 
 ![](reference/figures/README-plot-crowns-2.png)
@@ -122,13 +126,13 @@ plot_crowns(tree_list, subplot = 4, main = "plantation subplot 4")
 
 # or microplot
 plot_crowns(tree_list, subplot = 4, microplot = TRUE,
-            main = "plantation microplot 4")
+            main = "Loblolly pine plantation microplot 4")
 ```
 
 ![](reference/figures/README-plot-crowns-3.png)
 
-Helper functions are provided to facilitate analyzing FIA tree lists as
-Spatial Point Patterns using the **spatstat** library.
+Helper functions are provided to facilitate analysis of FIA tree lists
+as Spatial Point Patterns using the **spatstat** library.
 [`create_fia_ppp()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
 returns an object of class `"ppp"` representing the point pattern of an
 FIA tree list in the 2-D plane. This object can be used with functions
@@ -158,7 +162,7 @@ summary(X)
 #> Unit of length: 1 foot
 #> Fraction of frame area: 0.124
 
-plot(X, pch = 16, background = "#EEE9DF", main = "Loblolly pine plantation")
+plot(X, pch = 16, background = "#EEE9DF", main = "plantation point pattern")
 ```
 
 ![](reference/figures/README-spatstat-explore-1.png)
@@ -168,8 +172,8 @@ plot(X, pch = 16, background = "#EEE9DF", main = "Loblolly pine plantation")
 # compute Ripley's K-function applying isotropic edge correction
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
 
-# plot estimated K(r) along with theoretical values for a random (Poisson)
-# point process, suggests spatial regularity in this case
+# plot estimated K(r) along with theoretical values for a completely random
+# point process, spatial regularity suggested in this case
 plot(K, main = "Ripley's K for the plantation trees")
 ```
 
@@ -177,7 +181,133 @@ plot(K, main = "Ripley's K for the plantation trees")
 
 ### Compute stand structure metrics
 
+``` r
+## compute fractional tree canopy cover of a specific sampled area by overlaying
+## modeled crowns
+
+# subplot 1 of the `plantation` plot which contains only live trees
+tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
+  calc_crown_overlay(sample_radius = 24)
+#> [1] 86.9
+
+## calculate stand height metrics, included by default in the output of
+## `calc_tcc_metrics()` (see below)
+
+# calc_ht_metrics(plantation)
+
+## predict plot-level canopy cover from individual tree measurements
+
+# full output
+calc_tcc_metrics(plantation)
+#> $model_tcc
+#> [1] 88.5
+#> 
+#> $subp1_crown_overlay
+#> [1] 86.9
+#> 
+#> $subp2_crown_overlay
+#> [1] 91.8
+#> 
+#> $subp3_crown_overlay
+#> [1] 80.5
+#> 
+#> $subp4_crown_overlay
+#> [1] 87.3
+#> 
+#> $subp_overlay_mean
+#> [1] 86.625
+#> 
+#> $micr1_crown_overlay
+#> [1] 0
+#> 
+#> $micr2_crown_overlay
+#> [1] 0
+#> 
+#> $micr3_crown_overlay
+#> [1] 19.4
+#> 
+#> $micr4_crown_overlay
+#> [1] 22
+#> 
+#> $micr_overlay_mean
+#> [1] 10.35
+#> 
+#> $L_6ft
+#> [1] 3.868305
+#> 
+#> $L_8ft
+#> [1] 6.627377
+#> 
+#> $L_10ft
+#> [1] 7.300455
+#> 
+#> $L_12ft
+#> [1] 11.35045
+#> 
+#> $numTrees
+#> [1] 89
+#> 
+#> $meanTreeHt
+#> [1] 45
+#> 
+#> $meanTreeHtBAW
+#> [1] 45.4
+#> 
+#> $meanTreeHtDom
+#> [1] 45
+#> 
+#> $meanTreeHtDomBAW
+#> [1] 45.4
+#> 
+#> $maxTreeHt
+#> [1] 51
+#> 
+#> $predomTreeHt
+#> [1] 50.3
+#> 
+#> $numSaplings
+#> [1] 2
+#> 
+#> $meanSapHt
+#> [1] 33.5
+#> 
+#> $maxSapHt
+#> [1] 42
+
+# return only the predicted TCC value (`$model_tcc`)
+calc_tcc_metrics(plantation, full_output = FALSE)
+#> [1] 88.5
+
+# using the "FVS method" which assumes random tree locations
+calc_tcc_metrics(plantation, stem_map = FALSE, full_output = FALSE)
+#> [1] 81.4
+```
+
 ### Data processing
+
+``` r
+## load tree data from a file or database connection
+f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
+tree <- load_tree_data(f)
+#> ! The data source does not have DIST and/or AZIMUTH
+#> ℹ Fetching tree data...
+#> ✔ Fetching tree data... [15ms]
+#> 
+#> ℹ 910 tree records returned
+
+head(tree)
+#>            PLT_CN SUBP TREE STATUSCD SPCD DIA HT ACTUALHT CCLCD TPA_UNADJ
+#> 1 670951075126144    1    1        2  108  NA NA       NA    NA        NA
+#> 2 670951075126144    1    2        1  108   1  9        9     3  74.96528
+#> 3 670951075126144    2    1        2  108  NA NA       NA    NA        NA
+#> 4 670951075126144    2    2        2  108  NA NA       NA    NA        NA
+#> 5 670951075126144    2    3        2  108  NA NA       NA    NA        NA
+#> 6 670951075126144    2    4        2  108  NA NA       NA    NA        NA
+
+## process tree data
+
+# TODO...
+```
 
 ## References
 
