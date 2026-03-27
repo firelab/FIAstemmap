@@ -9,7 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  fig.width = 6.2, fig.height = 6.2
+  fig.width = 7, fig.height = 7,
+  out.width = "70%"
 )
 ```
 
@@ -51,11 +52,11 @@ The data frame `cw_coef` provides a curated set of linear regression coefficient
 ```{r predict-crwidth}
 library(FIAstemmap)
 
-# structure of the cw_coef dataset
-str(cw_coef)
+# regression coefficients for estimating tree crown width from diameter
+head(cw_coef)
 
-# add a column of predicted crown width to the plantation tree list
-# `within()` is used to modify only a copy of the example dataset
+# add predicted crown widths to the plantation tree list
+# `within()` to modify only a copy of the example dataset
 tree_list <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
 str(tree_list)
 ```
@@ -65,8 +66,7 @@ str(tree_list)
 Plot-level visualization and other exploratory analyses require input data with stem locations provided in columns `AZIMUTH` (horizontal angle from subplot/microplot center to the stem location, in range `0:359`) and `DIST` (stem distance from subplot/microplot center).
 
 ```{r plot-crowns}
-# display modeled tree crowns projected vertically on boundaries of the FIA
-# four-subplot cluster design
+# display modeled tree crowns projected vertically on the FIA plot boundary
 plot_crowns(tree_list, main = "plantation plot")
 
 # individual subplot
@@ -89,8 +89,8 @@ plot(X, pch = 16, main = "Loblolly pine plantation")
 # compute Ripley's K-function applying isotropic edge correction
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
 
-# plot estimated values of K(r) along with theoretical values for a completely
-# random (Poisson) point process, suggestng spatial regularity in this case
+# plot estimated K(r) along with theoretical values for a random (Poisson)
+# point process, suggests spatial regularity in this case
 plot(K, main = "Ripley's K for the plantation trees")
 ```
 

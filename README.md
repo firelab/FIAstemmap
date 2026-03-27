@@ -73,20 +73,18 @@ using the `plantation` example tree list.
 ``` r
 library(FIAstemmap)
 
-# structure of the cw_coef dataset
-str(cw_coef)
-#> 'data.frame':    430 obs. of  8 variables:
-#>  $ symbol     : chr  "ABAM" "ABCO" "ABGR" "ABLAA" ...
-#>  $ SPCD       : num  11 15 17 18 19 20 21 22 41 62 ...
-#>  $ common_name: chr  "Pacific silver fir" "white fir" "grand fir" "corkbark fir" ...
-#>  $ surrogate  : chr  NA NA NA NA ...
-#>  $ b0         : num  7.3 4.49 5.75 6.07 3.96 6.67 6.67 6.32 2.36 -2.12 ...
-#>  $ b1         : num  0.59 0.92 1.11 0.37 0.64 0.43 0.43 0.65 0.99 1.73 ...
-#>  $ b2         : num  0 -0.01 -0.01 0 0 0 0 0 0 -0.02 ...
-#>  $ reference  : chr  "Bechtold (2004)" "Bechtold (2004)" "Bechtold (2004)" "Bechtold (2004)" ...
+# regression coefficients for estimating tree crown width from diameter
+head(cw_coef)
+#>   symbol SPCD        common_name surrogate   b0   b1    b2          reference
+#> 1   ABAM   11 Pacific silver fir      <NA> 7.30 0.59  0.00    Bechtold (2004)
+#> 2   ABCO   15          white fir      <NA> 4.49 0.92 -0.01    Bechtold (2004)
+#> 3   ABGR   17          grand fir      <NA> 5.75 1.11 -0.01    Bechtold (2004)
+#> 4  ABLAA   18       corkbark fir      <NA> 6.07 0.37  0.00    Bechtold (2004)
+#> 5   ABLA   19      subalpine fir      <NA> 3.96 0.64  0.00    Bechtold (2004)
+#> 6   ABMA   20 California red fir      <NA> 6.67 0.43  0.00 Gill et al. (2000)
 
-# add a column of predicted crown width to the plantation tree list
-# `within()` is used to modify only a copy of the example dataset
+# add predicted crown widths to the plantation tree list
+# `within()` to modify only a copy of the example dataset
 tree_list <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
 str(tree_list)
 #> 'data.frame':    91 obs. of  13 variables:
@@ -113,12 +111,11 @@ from subplot/microplot center to the stem location, in range `0:359`)
 and `DIST` (stem distance from subplot/microplot center).
 
 ``` r
-# display modeled tree crowns projected vertically on boundaries of the FIA
-# four-subplot cluster design
+# display modeled tree crowns projected vertically on the FIA plot boundary
 plot_crowns(tree_list, main = "plantation plot")
 ```
 
-![](man/figures/README-plot-crowns-1.png)<!-- -->
+<img src="man/figures/README-plot-crowns-1.png" alt="" width="70%" />
 
 ``` r
 
@@ -126,7 +123,7 @@ plot_crowns(tree_list, main = "plantation plot")
 plot_crowns(tree_list, subplot = 4, main = "plantation subplot 4")
 ```
 
-![](man/figures/README-plot-crowns-2.png)<!-- -->
+<img src="man/figures/README-plot-crowns-2.png" alt="" width="70%" />
 
 ``` r
 
@@ -135,7 +132,7 @@ plot_crowns(tree_list, subplot = 4, microplot = TRUE,
             main = "plantation microplot 4")
 ```
 
-![](man/figures/README-plot-crowns-3.png)<!-- -->
+<img src="man/figures/README-plot-crowns-3.png" alt="" width="70%" />
 
 Helper functions are provided to facilitate analyzing FIA tree lists as
 Spatial Point Patterns using the **spatstat** library.
@@ -170,19 +167,19 @@ summary(X)
 plot(X, pch = 16, main = "Loblolly pine plantation")
 ```
 
-![](man/figures/README-spatstat-explore-1.png)<!-- -->
+<img src="man/figures/README-spatstat-explore-1.png" alt="" width="70%" />
 
 ``` r
 
 # compute Ripley's K-function applying isotropic edge correction
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
 
-# plot estimated values of K(r) along with theoretical values for a completely
-# random (Poisson) point process, suggestng spatial regularity in this case
+# plot estimated K(r) along with theoretical values for a random (Poisson)
+# point process, suggests spatial regularity in this case
 plot(K, main = "Ripley's K for the plantation trees")
 ```
 
-![](man/figures/README-spatstat-explore-2.png)<!-- -->
+<img src="man/figures/README-spatstat-explore-2.png" alt="" width="70%" />
 
 ### Compute stand structure metrics
 
