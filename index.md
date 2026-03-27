@@ -45,7 +45,7 @@ You can install the development version of **FIAstemmap** with:
 
 ``` r
 # install.packages("pak")
-pak::pak("ctoney/FIAstemmap")
+pak::pak("firelab/FIAstemmap")
 ```
 
 ## Examples
@@ -55,11 +55,11 @@ pak::pak("ctoney/FIAstemmap")
 The data frame `cw_coef` provides a curated set of linear regression
 coefficients for predicting crown width from stem diameter of tree
 species in the conterminous US (see
-[`?cw_coef`](https://ctoney.github.io/FIAstemmap/reference/cw_coef.md)).
+[`?cw_coef`](https://firelab.github.io/FIAstemmap/reference/cw_coef.md)).
 The crown width prediction method also addresses potential issues in
 cases of extrapolation beyond the range of the model fitting data.
 Details are given in the documentation for
-[`calc_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/calc_crwidth.md).
+[`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md).
 Input is a data frame of tree records which must have columns `SPCD`
 (FIA integer species code), `STATUSCD` (FIA integer tree status code,
 `1` = live) and `DIA` (FIA tree diameter in inches), here using the
@@ -133,7 +133,7 @@ plot_crowns(tree_list, subplot = 4, microplot = TRUE,
 
 Helper functions are provided to facilitate analysis of FIA tree lists
 as Spatial Point Patterns using the **spatstat** library.
-[`create_fia_ppp()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
+[`create_fia_ppp()`](https://firelab.github.io/FIAstemmap/reference/spatstat_helpers.md)
 returns an object of class `"ppp"` representing the point pattern of an
 FIA tree list in the 2-D plane. This object can be used with functions
 of package **spatstat.explore** for additional plotting capability,
@@ -146,9 +146,9 @@ X <- create_fia_ppp(plantation)
 summary(X)
 #> Planar point pattern:  89 points
 #> Average intensity 0.01229542 points per square foot
-#> 
+#>
 #> Coordinates are given to 16 decimal places
-#> 
+#>
 #> Window: polygonal boundary
 #> 4 separate polygons (no holes)
 #>            vertices    area relative.area
@@ -201,76 +201,76 @@ tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
 calc_tcc_metrics(plantation)
 #> $model_tcc
 #> [1] 88.5
-#> 
+#>
 #> $subp1_crown_overlay
 #> [1] 86.9
-#> 
+#>
 #> $subp2_crown_overlay
 #> [1] 91.8
-#> 
+#>
 #> $subp3_crown_overlay
 #> [1] 80.5
-#> 
+#>
 #> $subp4_crown_overlay
 #> [1] 87.3
-#> 
+#>
 #> $subp_overlay_mean
 #> [1] 86.625
-#> 
+#>
 #> $micr1_crown_overlay
 #> [1] 0
-#> 
+#>
 #> $micr2_crown_overlay
 #> [1] 0
-#> 
+#>
 #> $micr3_crown_overlay
 #> [1] 19.4
-#> 
+#>
 #> $micr4_crown_overlay
 #> [1] 22
-#> 
+#>
 #> $micr_overlay_mean
 #> [1] 10.35
-#> 
+#>
 #> $L_6ft
 #> [1] 3.868305
-#> 
+#>
 #> $L_8ft
 #> [1] 6.627377
-#> 
+#>
 #> $L_10ft
 #> [1] 7.300455
-#> 
+#>
 #> $L_12ft
 #> [1] 11.35045
-#> 
+#>
 #> $numTrees
 #> [1] 89
-#> 
+#>
 #> $meanTreeHt
 #> [1] 45
-#> 
+#>
 #> $meanTreeHtBAW
 #> [1] 45.4
-#> 
+#>
 #> $meanTreeHtDom
 #> [1] 45
-#> 
+#>
 #> $meanTreeHtDomBAW
 #> [1] 45.4
-#> 
+#>
 #> $maxTreeHt
 #> [1] 51
-#> 
+#>
 #> $predomTreeHt
 #> [1] 50.3
-#> 
+#>
 #> $numSaplings
 #> [1] 2
-#> 
+#>
 #> $meanSapHt
 #> [1] 33.5
-#> 
+#>
 #> $maxSapHt
 #> [1] 42
 
@@ -292,7 +292,7 @@ tree <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
 #> ✔ Fetching tree data... [14ms]
-#> 
+#>
 #> ℹ 910 tree records returned
 
 head(tree)

@@ -31,13 +31,14 @@ in feet for live trees. `NA` is returned for trees with `STATUSCD != 1`.
 
 Crown width is predicted from tree diameter using coefficients provided
 in the lookup table
-[cw_coef](https://ctoney.github.io/FIAstemmap/reference/cw_coef.md) (see
-[`?cw_coef`](https://ctoney.github.io/FIAstemmap/reference/cw_coef.md))
+[cw_coef](https://firelab.github.io/FIAstemmap/reference/cw_coef.md)
+(see
+[`?cw_coef`](https://firelab.github.io/FIAstemmap/reference/cw_coef.md))
 The method also incorporates adjustment factors used to derive crown
 width estimates for FIA "saplings", i.e., trees less than 5.0 in. (12.7
 cm) diameter but greater than or equal to 1.0 in. (2.54 cm) diameter.
 Details are described in the documentation for the lookup table
-[cw_sapling_adj](https://ctoney.github.io/FIAstemmap/reference/cw_sapling_adj.md).
+[cw_sapling_adj](https://firelab.github.io/FIAstemmap/reference/cw_sapling_adj.md).
 
 Large diameter trees in the temperate rain forests of the Pacific
 Northwest region can far exceed the range of diameters in the broadly
@@ -64,8 +65,8 @@ radius and estimating canopy cover. *Forest Ecology and Management*,
 
 ## See also
 
-[cw_coef](https://ctoney.github.io/FIAstemmap/reference/cw_coef.md),
-[cw_sapling_adj](https://ctoney.github.io/FIAstemmap/reference/cw_sapling_adj.md)
+[cw_coef](https://firelab.github.io/FIAstemmap/reference/cw_coef.md),
+[cw_sapling_adj](https://firelab.github.io/FIAstemmap/reference/cw_sapling_adj.md)
 
 ## Examples
 

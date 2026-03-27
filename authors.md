@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/ctoney/FIAstemmap/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/firelab/FIAstemmap/blob/main/inst/CITATION)
 
 Toney C, Shaw JD, Nelson MD (2009). “A stem-map model for predicting
 tree canopy cover of Forest Inventory and Analysis (FIA) plots.” In

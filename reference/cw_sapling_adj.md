@@ -52,7 +52,7 @@ FIA "saplings" are trees less than 5.0 in. (12.7 cm) diameter but
 greater than or equal to 1.0 in. (2.54 cm) diameter. In general, the
 data available to fit regression models predicting crown width (e.g.,
 Bechtold 2003, 2004, see
-[cw_coef](https://ctoney.github.io/FIAstemmap/reference/cw_coef.md)) do
+[cw_coef](https://firelab.github.io/FIAstemmap/reference/cw_coef.md)) do
 not include trees with diameter less than 5.0 in. (12.7 cm).
 Extrapolating beyond the range of the model fitting data is undesirable,
 especially since a quadratic term is used in the regression equations

@@ -123,7 +123,7 @@ below, along with the status of each column as required or optional for
 - `TPA_UNADJ`: optional tree expansion factor (per acre)
 
 - `CRWIDTH`: optional crown width (see
-  [`calc_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/calc_crwidth.md))
+  [`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md))
 
 ## References
 

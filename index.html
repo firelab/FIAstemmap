@@ -13,7 +13,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="FIA stem map">
 <meta name="description" content="Maps individual tree stem locations on field plots of the Forest Inventory and Analysis (FIA) Program of USDA Forest Service. Stem locations are mapped in cartesian coordinate space based on distance and azimuth offsets from subplot and microplot centers. Per-tree crown widths are estimated using a set of allometric equations with coverage for the conterminous US, and provided as an optional output. Spatial descriptors of tree point pattern are computed at the whole plot level. Several stand height metrics are also computed and provided in the output. The spatial representation of modeled tree crowns is used to generate estimates of fractional tree canopy cover at the microplot, subplot and whole plot levels. Provides facilities for exploratory data analysis and integration with the spatstat library.">
 <meta property="og:description" content="Maps individual tree stem locations on field plots of the Forest Inventory and Analysis (FIA) Program of USDA Forest Service. Stem locations are mapped in cartesian coordinate space based on distance and azimuth offsets from subplot and microplot centers. Per-tree crown widths are estimated using a set of allometric equations with coverage for the conterminous US, and provided as an optional output. Spatial descriptors of tree point pattern are computed at the whole plot level. Several stand height metrics are also computed and provided in the output. The spatial representation of modeled tree crowns is used to generate estimates of fractional tree canopy cover at the microplot, subplot and whole plot levels. Provides facilities for exploratory data analysis and integration with the spatstat library.">
-<meta property="og:image" content="https://ctoney.github.io/FIAstemmap/logo.png">
+<meta property="og:image" content="https://firelab.github.io/FIAstemmap/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -44,7 +44,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ctoney/FIAstemmap/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/firelab/FIAstemmap/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
@@ -90,7 +90,7 @@
 <p>You can install the development version of <strong>FIAstemmap</strong> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"ctoney/FIAstemmap"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"firelab/FIAstemmap"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
@@ -100,7 +100,7 @@
 </h3>
 <p>The data frame <code>cw_coef</code> provides a curated set of linear regression coefficients for predicting crown width from stem diameter of tree species in the conterminous US (see <code><a href="reference/cw_coef.html">?cw_coef</a></code>). The crown width prediction method also addresses potential issues in cases of extrapolation beyond the range of the model fitting data. Details are given in the documentation for <code><a href="reference/calc_crwidth.html">calc_crwidth()</a></code>. Input is a data frame of tree records which must have columns <code>SPCD</code> (FIA integer species code), <code>STATUSCD</code> (FIA integer tree status code, <code>1</code> = live) and <code>DIA</code> (FIA tree diameter in inches), here using the <code>plantation</code> example tree list.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ctoney.github.io/FIAstemmap/">FIAstemmap</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://firelab.github.io/FIAstemmap/">FIAstemmap</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># regression coefficients for estimating tree crown width from diameter</span></span>
 <span><span class="co"># ?cw_coef</span></span>
@@ -159,9 +159,9 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Planar point pattern:  89 points</span></span>
 <span><span class="co">#&gt; Average intensity 0.01229542 points per square foot</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; Coordinates are given to 16 decimal places</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; Window: polygonal boundary</span></span>
 <span><span class="co">#&gt; 4 separate polygons (no holes)</span></span>
 <span><span class="co">#&gt;            vertices    area relative.area</span></span>
@@ -210,76 +210,76 @@
 <span><span class="fu"><a href="reference/calc_tcc_metrics.html">calc_tcc_metrics</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $model_tcc</span></span>
 <span><span class="co">#&gt; [1] 88.5</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $subp1_crown_overlay</span></span>
 <span><span class="co">#&gt; [1] 86.9</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $subp2_crown_overlay</span></span>
 <span><span class="co">#&gt; [1] 91.8</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $subp3_crown_overlay</span></span>
 <span><span class="co">#&gt; [1] 80.5</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $subp4_crown_overlay</span></span>
 <span><span class="co">#&gt; [1] 87.3</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $subp_overlay_mean</span></span>
 <span><span class="co">#&gt; [1] 86.625</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $micr1_crown_overlay</span></span>
 <span><span class="co">#&gt; [1] 0</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $micr2_crown_overlay</span></span>
 <span><span class="co">#&gt; [1] 0</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $micr3_crown_overlay</span></span>
 <span><span class="co">#&gt; [1] 19.4</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $micr4_crown_overlay</span></span>
 <span><span class="co">#&gt; [1] 22</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $micr_overlay_mean</span></span>
 <span><span class="co">#&gt; [1] 10.35</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $L_6ft</span></span>
 <span><span class="co">#&gt; [1] 3.868305</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $L_8ft</span></span>
 <span><span class="co">#&gt; [1] 6.627377</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $L_10ft</span></span>
 <span><span class="co">#&gt; [1] 7.300455</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $L_12ft</span></span>
 <span><span class="co">#&gt; [1] 11.35045</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $numTrees</span></span>
 <span><span class="co">#&gt; [1] 89</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $meanTreeHt</span></span>
 <span><span class="co">#&gt; [1] 45</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $meanTreeHtBAW</span></span>
 <span><span class="co">#&gt; [1] 45.4</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $meanTreeHtDom</span></span>
 <span><span class="co">#&gt; [1] 45</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $meanTreeHtDomBAW</span></span>
 <span><span class="co">#&gt; [1] 45.4</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $maxTreeHt</span></span>
 <span><span class="co">#&gt; [1] 51</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $predomTreeHt</span></span>
 <span><span class="co">#&gt; [1] 50.3</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $numSaplings</span></span>
 <span><span class="co">#&gt; [1] 2</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $meanSapHt</span></span>
 <span><span class="co">#&gt; [1] 33.5</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; $maxSapHt</span></span>
 <span><span class="co">#&gt; [1] 42</span></span>
 <span></span>
@@ -301,7 +301,7 @@
 <span><span class="co">#&gt; ! The data source does not have DIST and/or AZIMUTH</span></span>
 <span><span class="co">#&gt; ℹ Fetching tree data...</span></span>
 <span><span class="co">#&gt; ✔ Fetching tree data... [14ms]</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; ℹ 910 tree records returned</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
@@ -347,8 +347,8 @@
 <div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/ctoney/FIAstemmap/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/ctoney/FIAstemmap/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/firelab/FIAstemmap/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/firelab/FIAstemmap/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 

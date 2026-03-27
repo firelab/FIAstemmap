@@ -17,15 +17,15 @@ calc_tcc_metrics(tree_list, stem_map = TRUE, full_output = TRUE, digits = 1)
 
   A data frame with tree records for one FIA plot. In general, the input
   data frame will have the columns specified in
-  [DEFAULT_TREE_COLUMNS](https://ctoney.github.io/FIAstemmap/reference/DEFAULT_TREE_COLUMNS.md)
+  [DEFAULT_TREE_COLUMNS](https://firelab.github.io/FIAstemmap/reference/DEFAULT_TREE_COLUMNS.md)
   (see
-  [`?DEFAULT_TREE_COLUMNS`](https://ctoney.github.io/FIAstemmap/reference/DEFAULT_TREE_COLUMNS.md)).
+  [`?DEFAULT_TREE_COLUMNS`](https://firelab.github.io/FIAstemmap/reference/DEFAULT_TREE_COLUMNS.md)).
   Potentially, only a subset of those columns will be needed depending
   on values given for the arguments `stem_map` and `full_output`
   described below. If the input data frame has a column named
   `"CRWIDTH"` it will be used for tree crown width values, otherwise,
   crown widths will be calculated with a call to
-  [`calc_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/calc_crwidth.md).
+  [`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md).
 
 - stem_map:
 
@@ -49,9 +49,9 @@ calc_tcc_metrics(tree_list, stem_map = TRUE, full_output = TRUE, digits = 1)
 
   Optional integer indicating the number of digits to keep in the return
   values (defaults to `1`). May be passed to
-  [`calc_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/calc_crwidth.md)
+  [`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md)
   and
-  [`calc_ht_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_ht_metrics.md).
+  [`calc_ht_metrics()`](https://firelab.github.io/FIAstemmap/reference/calc_ht_metrics.md).
 
 ## Value
 
@@ -85,7 +85,7 @@ Forest Vegetation Simulator (Crookston and Stage 1999).
 
 Both methods require estimates of individual tree crown widths, which
 are computed with
-[`calc_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/calc_crwidth.md)
+[`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md)
 if not provided in the input tree list.
 
 The stem-map method also requires computation of several stand structure
@@ -93,11 +93,11 @@ metrics which are used in various components of the overall model used
 to derive a plot-level TCC estimate. These additional variables include:
 
 - individual subplot and microplot crown overlays via
-  [`calc_crown_overlay()`](https://ctoney.github.io/FIAstemmap/reference/calc_crown_overlay.md)
+  [`calc_crown_overlay()`](https://firelab.github.io/FIAstemmap/reference/calc_crown_overlay.md)
 
 - a stand height metric (`meanTreeHtBAW`), and plot-level counts of
   mature trees and saplings, via
-  [`calc_ht_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_ht_metrics.md)
+  [`calc_ht_metrics()`](https://firelab.github.io/FIAstemmap/reference/calc_ht_metrics.md)
 
 - descriptive spatial statistics for the overstory tree point pattern
   via `create_fia_ppp() |> spatstat.explore::Lest()`
@@ -140,7 +140,7 @@ contribution to total tree canopy cover:
 
 If the argument `full_output = TRUE` (the default), then the output will
 also include all of the the named elements from the output of
-[`calc_ht_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_ht_metrics.md).
+[`calc_ht_metrics()`](https://firelab.github.io/FIAstemmap/reference/calc_ht_metrics.md).
 
 ## References
 
@@ -168,10 +168,10 @@ Station. 19 p. <https://research.fs.usda.gov/treesearch/33381>.
 
 ## See also
 
-[`calc_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/calc_crwidth.md),
-[`calc_crown_overlay()`](https://ctoney.github.io/FIAstemmap/reference/calc_crown_overlay.md),
-[`calc_ht_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_ht_metrics.md),
-[`create_fia_ppp()`](https://ctoney.github.io/FIAstemmap/reference/spatstat_helpers.md)
+[`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md),
+[`calc_crown_overlay()`](https://firelab.github.io/FIAstemmap/reference/calc_crown_overlay.md),
+[`calc_ht_metrics()`](https://firelab.github.io/FIAstemmap/reference/calc_ht_metrics.md),
+[`create_fia_ppp()`](https://firelab.github.io/FIAstemmap/reference/spatstat_helpers.md)
 
 ## Examples
 

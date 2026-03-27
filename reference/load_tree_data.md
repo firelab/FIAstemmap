@@ -37,7 +37,7 @@ load_tree_data(
 
   Optional character vector specifying a subset of column names in the
   source table to include in the result set. Defaults to
-  [DEFAULT_TREE_COLUMNS](https://ctoney.github.io/FIAstemmap/reference/DEFAULT_TREE_COLUMNS.md).
+  [DEFAULT_TREE_COLUMNS](https://firelab.github.io/FIAstemmap/reference/DEFAULT_TREE_COLUMNS.md).
   Can also be set to `NULL` or empty string (`""`) to read all columns
   in the source table.
 
@@ -123,7 +123,7 @@ to follow the FIADB upper case naming convention.
 
 ## See also
 
-[DEFAULT_TREE_COLUMNS](https://ctoney.github.io/FIAstemmap/reference/DEFAULT_TREE_COLUMNS.md)
+[DEFAULT_TREE_COLUMNS](https://firelab.github.io/FIAstemmap/reference/DEFAULT_TREE_COLUMNS.md)
 
 ## Examples
 
@@ -133,7 +133,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
-#> ✔ Fetching tree data... [11ms]
+#> ✔ Fetching tree data... [12ms]
 #> 
 #> ℹ 910 tree records returned
 

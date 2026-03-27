@@ -51,7 +51,7 @@ trees for one subplot or microplot with the given `sample_radius`.
 
 ## See also
 
-[`calc_tcc_metrics()`](https://ctoney.github.io/FIAstemmap/reference/calc_tcc_metrics.md)
+[`calc_tcc_metrics()`](https://firelab.github.io/FIAstemmap/reference/calc_tcc_metrics.md)
 
 ## Examples
 

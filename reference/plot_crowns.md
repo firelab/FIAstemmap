@@ -84,8 +84,8 @@ The input, invisibly.
 
 ## See also
 
-[`calc_crwidth()`](https://ctoney.github.io/FIAstemmap/reference/calc_crwidth.md),
-[`calc_crown_overlay()`](https://ctoney.github.io/FIAstemmap/reference/calc_crown_overlay.md)
+[`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md),
+[`calc_crown_overlay()`](https://firelab.github.io/FIAstemmap/reference/calc_crown_overlay.md)
 
 ## Examples
 
