@@ -10,6 +10,8 @@ home:
   title: FIA stem map
   sidebar:
     structure: [toc, links, community, authors, citation, license]
+      toc:
+        depth: 2
 
 reference:
 - title: Functions
