@@ -14,10 +14,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-# FIAstemmap <a href="https://ctoney.github.io/FIAstemmap/"><img src="man/figures/logo.png" align="right" height="138" alt="FIAstemmap website" /></a>
+# FIAstemmap <a href="https://firelab.github.io/FIAstemmap/"><img src="man/figures/logo.png" align="right" height="138" alt="FIAstemmap website" /></a>
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/ctoney/FIAstemmap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ctoney/FIAstemmap/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/firelab/FIAstemmap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/firelab/FIAstemmap/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 **NOTE: this is an implementation update _currently under development_**
@@ -40,7 +40,7 @@ You can install the development version of **FIAstemmap** with:
 
 ``` r
 # install.packages("pak")
-pak::pak("ctoney/FIAstemmap")
+pak::pak("firelab/FIAstemmap")
 ```
 
 ## Examples

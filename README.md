@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# FIAstemmap <a href="https://ctoney.github.io/FIAstemmap/"><img src="man/figures/logo.png" align="right" height="138" alt="FIAstemmap website" /></a>
+# FIAstemmap <a href="https://firelab.github.io/FIAstemmap/"><img src="man/figures/logo.png" align="right" height="138" alt="FIAstemmap website" /></a>
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/ctoney/FIAstemmap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ctoney/FIAstemmap/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/firelab/FIAstemmap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/firelab/FIAstemmap/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 **NOTE: this is an implementation update *currently under development***
@@ -53,7 +53,7 @@ You can install the development version of **FIAstemmap** with:
 
 ``` r
 # install.packages("pak")
-pak::pak("ctoney/FIAstemmap")
+pak::pak("firelab/FIAstemmap")
 ```
 
 ## Examples
@@ -151,9 +151,9 @@ X <- create_fia_ppp(plantation)
 summary(X)
 #> Planar point pattern:  89 points
 #> Average intensity 0.01229542 points per square foot
-#> 
+#>
 #> Coordinates are given to 16 decimal places
-#> 
+#>
 #> Window: polygonal boundary
 #> 4 separate polygons (no holes)
 #>            vertices    area relative.area
@@ -206,76 +206,76 @@ tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
 calc_tcc_metrics(plantation)
 #> $model_tcc
 #> [1] 88.5
-#> 
+#>
 #> $subp1_crown_overlay
 #> [1] 86.9
-#> 
+#>
 #> $subp2_crown_overlay
 #> [1] 91.8
-#> 
+#>
 #> $subp3_crown_overlay
 #> [1] 80.5
-#> 
+#>
 #> $subp4_crown_overlay
 #> [1] 87.3
-#> 
+#>
 #> $subp_overlay_mean
 #> [1] 86.625
-#> 
+#>
 #> $micr1_crown_overlay
 #> [1] 0
-#> 
+#>
 #> $micr2_crown_overlay
 #> [1] 0
-#> 
+#>
 #> $micr3_crown_overlay
 #> [1] 19.4
-#> 
+#>
 #> $micr4_crown_overlay
 #> [1] 22
-#> 
+#>
 #> $micr_overlay_mean
 #> [1] 10.35
-#> 
+#>
 #> $L_6ft
 #> [1] 3.868305
-#> 
+#>
 #> $L_8ft
 #> [1] 6.627377
-#> 
+#>
 #> $L_10ft
 #> [1] 7.300455
-#> 
+#>
 #> $L_12ft
 #> [1] 11.35045
-#> 
+#>
 #> $numTrees
 #> [1] 89
-#> 
+#>
 #> $meanTreeHt
 #> [1] 45
-#> 
+#>
 #> $meanTreeHtBAW
 #> [1] 45.4
-#> 
+#>
 #> $meanTreeHtDom
 #> [1] 45
-#> 
+#>
 #> $meanTreeHtDomBAW
 #> [1] 45.4
-#> 
+#>
 #> $maxTreeHt
 #> [1] 51
-#> 
+#>
 #> $predomTreeHt
 #> [1] 50.3
-#> 
+#>
 #> $numSaplings
 #> [1] 2
-#> 
+#>
 #> $meanSapHt
 #> [1] 33.5
-#> 
+#>
 #> $maxSapHt
 #> [1] 42
 
@@ -297,7 +297,7 @@ tree <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
 #> ✔ Fetching tree data... [14ms]
-#> 
+#>
 #> ℹ 910 tree records returned
 
 head(tree)
