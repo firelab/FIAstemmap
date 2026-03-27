@@ -172,7 +172,7 @@ plot(X, pch = 16, background = "#EEE9DF", main = "plantation point pattern")
 # compute Ripley's K-function applying isotropic edge correction
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
 
-# plot estimated K(r) along with theoretical values for a completely random
+# plot the estimated K(r) along with theoretical values for a completely random
 # point process, spatial regularity suggested in this case
 plot(K, main = "Ripley's K for the plantation trees")
 ```
@@ -190,14 +190,14 @@ tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
   calc_crown_overlay(sample_radius = 24)
 #> [1] 86.9
 
-## calculate stand height metrics, included by default in the output of
-## `calc_tcc_metrics()` (see below)
+## calculate stand height metrics, which are included by default in the output
+## of `calc_tcc_metrics()` (see below)
 
 # calc_ht_metrics(plantation)
 
 ## predict plot-level canopy cover from individual tree measurements
 
-# full output
+# full output, TCC predicted with the "stem-map" model
 calc_tcc_metrics(plantation)
 #> $model_tcc
 #> [1] 88.5
@@ -291,7 +291,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
-#> ✔ Fetching tree data... [15ms]
+#> ✔ Fetching tree data... [14ms]
 #> 
 #> ℹ 910 tree records returned
 
