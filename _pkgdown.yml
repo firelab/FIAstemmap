@@ -11,7 +11,7 @@ home:
   sidebar:
     structure: [toc, links, community, authors, citation, license]
     toc:
-      depth: 2
+      depth: 3
 
 reference:
 - title: Functions
