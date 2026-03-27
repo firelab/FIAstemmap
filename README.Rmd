@@ -84,7 +84,7 @@ Helper functions are provided to facilitate analyzing FIA tree lists as Spatial 
 X <- create_fia_ppp(plantation)
 summary(X)
 
-plot(X, pch = 16, main = "Loblolly pine plantation")
+plot(X, pch = 16, background = "gray90", main = "Loblolly pine plantation")
 
 # compute Ripley's K-function applying isotropic edge correction
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")

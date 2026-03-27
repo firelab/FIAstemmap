@@ -164,7 +164,7 @@ summary(X)
 #> Unit of length: 1 foot
 #> Fraction of frame area: 0.124
 
-plot(X, pch = 16, main = "Loblolly pine plantation")
+plot(X, pch = 16, background = "gray90", main = "Loblolly pine plantation")
 ```
 
 <img src="man/figures/README-spatstat-explore-1.png" alt="" width="70%" />
