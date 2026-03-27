@@ -118,7 +118,7 @@ and `DIST` (stem distance from subplot/microplot center).
 plot_crowns(tree_list, main = "plantation plot")
 ```
 
-<img src="man/figures/README-plot-crowns-1.png" alt="" width="100%" />
+![](man/figures/README-plot-crowns-1.png)<!-- -->
 
 ``` r
 
@@ -126,7 +126,7 @@ plot_crowns(tree_list, main = "plantation plot")
 plot_crowns(tree_list, subplot = 4, main = "plantation subplot 4")
 ```
 
-<img src="man/figures/README-plot-crowns-2.png" alt="" width="100%" />
+![](man/figures/README-plot-crowns-2.png)<!-- -->
 
 ``` r
 
@@ -135,7 +135,7 @@ plot_crowns(tree_list, subplot = 4, microplot = TRUE,
             main = "plantation microplot 4")
 ```
 
-<img src="man/figures/README-plot-crowns-3.png" alt="" width="100%" />
+![](man/figures/README-plot-crowns-3.png)<!-- -->
 
 Helper functions are provided to facilitate analyzing FIA tree lists as
 Spatial Point Patterns using the **spatstat** library.
@@ -170,7 +170,7 @@ summary(X)
 plot(X, pch = 16, main = "Loblolly pine plantation")
 ```
 
-<img src="man/figures/README-spatstat-explore-1.png" alt="" width="100%" />
+![](man/figures/README-spatstat-explore-1.png)<!-- -->
 
 ``` r
 
@@ -182,7 +182,7 @@ K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
 plot(K, main = "Ripley's K for the plantation trees")
 ```
 
-<img src="man/figures/README-spatstat-explore-2.png" alt="" width="100%" />
+![](man/figures/README-spatstat-explore-2.png)<!-- -->
 
 ### Compute stand structure metrics
 
