@@ -242,7 +242,7 @@ calc_tcc_metrics(plantation)
 #> [1] 51
 #> 
 #> $predomTreeHt
-#> [1] 51
+#> [1] 50.7
 #> 
 #> $numSaplings
 #> [1] 2
