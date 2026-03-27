@@ -141,18 +141,18 @@
 <code class="sourceCode R"><span><span class="co"># display modeled tree crowns projected vertically on boundaries of the FIA</span></span>
 <span><span class="co"># four-subplot cluster design</span></span>
 <span><span class="fu"><a href="reference/plot_crowns.html">plot_crowns</a></span><span class="op">(</span><span class="va">tree_list</span>, main <span class="op">=</span> <span class="st">"plantation plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot-crowns-1.png" alt="" width="100%"></p>
+<p><img src="reference/figures/README-plot-crowns-1.png"><!-- --></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># individual subplot</span></span>
 <span><span class="fu"><a href="reference/plot_crowns.html">plot_crowns</a></span><span class="op">(</span><span class="va">tree_list</span>, subplot <span class="op">=</span> <span class="fl">4</span>, main <span class="op">=</span> <span class="st">"plantation subplot 4"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot-crowns-2.png" alt="" width="100%"></p>
+<p><img src="reference/figures/README-plot-crowns-2.png"><!-- --></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># or microplot</span></span>
 <span><span class="fu"><a href="reference/plot_crowns.html">plot_crowns</a></span><span class="op">(</span><span class="va">tree_list</span>, subplot <span class="op">=</span> <span class="fl">4</span>, microplot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>            main <span class="op">=</span> <span class="st">"plantation microplot 4"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot-crowns-3.png" alt="" width="100%"></p>
+<p><img src="reference/figures/README-plot-crowns-3.png"><!-- --></p>
 <p>Helper functions are provided to facilitate analyzing FIA tree lists as Spatial Point Patterns using the <strong>spatstat</strong> library. <code><a href="reference/spatstat_helpers.html">create_fia_ppp()</a></code> returns an object of class <code>"ppp"</code> representing the point pattern of an FIA tree list in the 2-D plane. This object can be used with functions of package <strong>spatstat.explore</strong> for additional plotting capabilty, computation of descriptive spatial statistics, and other exploratory data analysis.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># point pattern object for the plantation tree list</span></span>
@@ -177,7 +177,7 @@
 <span><span class="co">#&gt; Fraction of frame area: 0.124</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, pch <span class="op">=</span> <span class="fl">16</span>, main <span class="op">=</span> <span class="st">"Loblolly pine plantation"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-spatstat-explore-1.png" alt="" width="100%"></p>
+<p><img src="reference/figures/README-spatstat-explore-1.png"><!-- --></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># compute Ripley's K-function applying isotropic edge correction</span></span>
@@ -186,7 +186,7 @@
 <span><span class="co"># plot estimated values of K(r) along with theoretical values for a completely</span></span>
 <span><span class="co"># random (Poisson) point process, suggestng spatial regularity in this case</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">K</span>, main <span class="op">=</span> <span class="st">"Ripley's K for the plantation trees"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-spatstat-explore-2.png" alt="" width="100%"></p>
+<p><img src="reference/figures/README-spatstat-explore-2.png"><!-- --></p>
 </div>
 <div class="section level3">
 <h3 id="compute-stand-structure-metrics">Compute stand structure metrics<a class="anchor" aria-label="anchor" href="#compute-stand-structure-metrics"></a>
