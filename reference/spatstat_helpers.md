@@ -199,14 +199,13 @@ summary(X)
 #> Unit of length: 1 foot
 #> Fraction of frame area: 0.124
 
-plot(X, pch = 16, background = "#fdf6e3", main = "Loblolly pine plantation")
+plot(X, pch = 16, main = "Loblolly pine plantation")
 
 
 # plot trees as trees :)
 X <- create_fia_ppp(plantation, mark_cols = "SPCD")
-plot(X, main = "Loblolly pine plantation",
-     shape = "arrows", direction = 90, size = 12, cols = "darkgreen",
-     background = "#fdf6e3", legend = FALSE)
+plot(X, shape = "arrows", direction = 90, size = 12, cols = "darkgreen",
+     legend = FALSE, main = "Loblolly pine plantation")
 
 
 # Ripley's K-function
