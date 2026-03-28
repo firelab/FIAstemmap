@@ -68,7 +68,7 @@ dataset used here is an example tree list included in the package.
 ``` r
 library(FIAstemmap)
 
-# included regression coefficients for estimating tree crown width from diameter
+# regression coefficients for estimating crown width from diameter are included
 # see `?cw_coef`
 head(cw_coef)
 #>   symbol SPCD        common_name surrogate   b0   b1    b2          reference
@@ -80,7 +80,7 @@ head(cw_coef)
 #> 6   ABMA   20 California red fir      <NA> 6.67 0.43  0.00 Gill et al. (2000)
 
 # add a column of predicted crown widths to the `plantation` tree list
-# `within()` is used to modify only a copy of the example dataset
+# `within()` modifies a copy of the example dataset
 tree_list <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
 str(tree_list)
 #> 'data.frame':    91 obs. of  13 variables:
@@ -141,7 +141,7 @@ computation of descriptive spatial statistics, and other exploratory
 data analysis.
 
 ``` r
-# point pattern object for the plantation tree list
+# create a spatstat point pattern object for the plantation tree list
 X <- create_fia_ppp(plantation)
 summary(X)
 #> Planar point pattern:  89 points
@@ -172,8 +172,8 @@ plot(X, pch = 16, background = "#fdf6e3", main = "plantation point pattern")
 # compute Ripley's K-function applying isotropic edge correction
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
 
-# plot estimated K(r) along with theoretical values for a completely random
-# point process, suggesting spatial regularity in this case
+# plot estimated K(r) along with theoretical values for a random point process,
+# suggesting spatial regularity in this case
 plot(K, main = "Ripley's K for the plantation trees")
 ```
 
@@ -185,7 +185,9 @@ plot(K, main = "Ripley's K for the plantation trees")
 ## compute fractional tree canopy cover of a specific sampled area by overlaying
 ## modeled crowns
 
-# subplot 1 of the `plantation` plot (contains only live trees)
+# subplot 1 of the plantation plot (subplot radius 24 ft)
+# omit saplings which are only sampled in the microplot
+# visualized with: `plot_crowns(tree_list, subplot = 1)`
 tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
   calc_crown_overlay(sample_radius = 24)
 #> [1] 86.8
@@ -193,11 +195,12 @@ tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
 ## calculate stand height metrics, which are also included by default in the
 ## output of `calc_tcc_metrics()` (see below)
 
+# compute stand height metrics only
 # calc_ht_metrics(plantation)
 
 ## predict plot-level canopy cover from individual tree measurements
 
-# by default, TCC is predicted with the "stem-map" model, full output returned
+# by default, TCC is predicted using the "stem-map" model, full output returned
 calc_tcc_metrics(plantation)
 #> $model_tcc
 #> [1] 88.4
@@ -291,7 +294,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
-#> ✔ Fetching tree data... [14ms]
+#> ✔ Fetching tree data... [15ms]
 #> 
 #> ℹ 910 tree records returned
 
