@@ -113,7 +113,7 @@
 <span><span class="co">#&gt; 5   ABLA   19      subalpine fir      &lt;NA&gt; 3.96 0.64  0.00    Bechtold (2004)</span></span>
 <span><span class="co">#&gt; 6   ABMA   20 California red fir      &lt;NA&gt; 6.67 0.43  0.00 Gill et al. (2000)</span></span>
 <span></span>
-<span><span class="co"># add a column predicted crown widths to the `plantation` tree list</span></span>
+<span><span class="co"># add a column of predicted crown widths to the `plantation` tree list</span></span>
 <span><span class="co"># `within()` is used to modify only a copy of the example dataset</span></span>
 <span><span class="va">tree_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">plantation</span>, <span class="va">CRWIDTH</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/calc_crwidth.html">calc_crwidth</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">tree_list</span><span class="op">)</span></span>
@@ -175,7 +175,7 @@
 <span><span class="co">#&gt; Unit of length: 1 foot</span></span>
 <span><span class="co">#&gt; Fraction of frame area: 0.124</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, pch <span class="op">=</span> <span class="fl">16</span>, background <span class="op">=</span> <span class="st">"#EEE9DF"</span>, main <span class="op">=</span> <span class="st">"plantation point pattern"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, pch <span class="op">=</span> <span class="fl">16</span>, background <span class="op">=</span> <span class="st">"#fdf6e3"</span>, main <span class="op">=</span> <span class="st">"plantation point pattern"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-spatstat-explore-1.png" alt="" width="70%"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
@@ -206,7 +206,7 @@
 <span></span>
 <span><span class="co">## predict plot-level canopy cover from individual tree measurements</span></span>
 <span></span>
-<span><span class="co"># by default, TCC predicted with the "stem-map" model and full output returned</span></span>
+<span><span class="co"># by default, TCC is predicted with the "stem-map" model, full output returned</span></span>
 <span><span class="fu"><a href="reference/calc_tcc_metrics.html">calc_tcc_metrics</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $model_tcc</span></span>
 <span><span class="co">#&gt; [1] 88.4</span></span>
@@ -300,7 +300,7 @@
 <span><span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/load_tree_data.html">load_tree_data</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ! The data source does not have DIST and/or AZIMUTH</span></span>
 <span><span class="co">#&gt; ℹ Fetching tree data...</span></span>
-<span><span class="co">#&gt; ✔ Fetching tree data... [15ms]</span></span>
+<span><span class="co">#&gt; ✔ Fetching tree data... [14ms]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ℹ 910 tree records returned</span></span>
 <span></span>
