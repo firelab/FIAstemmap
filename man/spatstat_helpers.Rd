@@ -107,17 +107,17 @@ summary(w)
 
 plot(w, main = "FIA standard four-subplot design")
 
-# point pattern object for the plantation example data
+# point pattern object for the `plantation` example data
 X <- create_fia_ppp(plantation)
 summary(X)
 
-plot(X, pch = 16, background = "#EEE9DF", main = "Loblolly pine plantation")
+plot(X, pch = 16, background = "#fdf6e3", main = "Loblolly pine plantation")
 
 # plot trees as trees :)
 X <- create_fia_ppp(plantation, mark_cols = "SPCD")
 plot(X, main = "Loblolly pine plantation",
      shape = "arrows", direction = 90, size = 12, cols = "darkgreen",
-     background = "#EEE9DF", legend = FALSE)
+     background = "#fdf6e3", legend = FALSE)
 
 # Ripley's K-function
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
