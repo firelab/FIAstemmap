@@ -56,7 +56,7 @@ library(FIAstemmap)
 # see `?cw_coef`
 head(cw_coef)
 
-# add a column predicted crown widths to the `plantation` tree list
+# add a column of predicted crown widths to the `plantation` tree list
 # `within()` is used to modify only a copy of the example dataset
 tree_list <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
 str(tree_list)
@@ -86,7 +86,7 @@ Helper functions facilitate the analysis of FIA tree lists as Spatial Point Patt
 X <- create_fia_ppp(plantation)
 summary(X)
 
-plot(X, pch = 16, background = "#EEE9DF", main = "plantation point pattern")
+plot(X, pch = 16, background = "#fdf6e3", main = "plantation point pattern")
 
 # compute Ripley's K-function applying isotropic edge correction
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
@@ -113,7 +113,7 @@ tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
 
 ## predict plot-level canopy cover from individual tree measurements
 
-# by default, TCC predicted with the "stem-map" model and full output returned
+# by default, TCC is predicted with the "stem-map" model, full output returned
 calc_tcc_metrics(plantation)
 
 # return only the predicted TCC value (`$model_tcc`)

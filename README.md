@@ -85,7 +85,7 @@ head(cw_coef)
 #> 5   ABLA   19      subalpine fir      <NA> 3.96 0.64  0.00    Bechtold (2004)
 #> 6   ABMA   20 California red fir      <NA> 6.67 0.43  0.00 Gill et al. (2000)
 
-# add a column predicted crown widths to the `plantation` tree list
+# add a column of predicted crown widths to the `plantation` tree list
 # `within()` is used to modify only a copy of the example dataset
 tree_list <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
 str(tree_list)
@@ -167,7 +167,7 @@ summary(X)
 #> Unit of length: 1 foot
 #> Fraction of frame area: 0.124
 
-plot(X, pch = 16, background = "#EEE9DF", main = "plantation point pattern")
+plot(X, pch = 16, background = "#fdf6e3", main = "plantation point pattern")
 ```
 
 <img src="man/figures/README-spatstat-explore-1.png" alt="" width="70%" />
@@ -202,7 +202,7 @@ tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
 
 ## predict plot-level canopy cover from individual tree measurements
 
-# by default, TCC predicted with the "stem-map" model and full output returned
+# by default, TCC is predicted with the "stem-map" model, full output returned
 calc_tcc_metrics(plantation)
 #> $model_tcc
 #> [1] 88.4
@@ -296,7 +296,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
-#> ✔ Fetching tree data... [15ms]
+#> ✔ Fetching tree data... [14ms]
 #> 
 #> ℹ 910 tree records returned
 
