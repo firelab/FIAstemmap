@@ -27,6 +27,7 @@ Imports:
     spatstat.geom,
     stats
 Suggests:
+    bit64,
     glue (>= 1.6.0),
     spelling,
     testthat (>= 3.0.0),
