@@ -137,7 +137,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
-#> ✔ Fetching tree data... [19ms]
+#> ✔ Fetching tree data... [18ms]
 #> 
 #> ℹ 910 tree records returned
 
