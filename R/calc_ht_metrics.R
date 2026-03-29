@@ -71,15 +71,20 @@ calc_ht_metrics <- function(tree_list, digits = 1) {
     }
 
     tree_ht <- pmin(trees_in$HT, trees_in$ACTUALHT, na.rm = TRUE)
-    if (any(is.na(tree_ht)))
-        warning("one or more tree heights are missing", call. = FALSE)
+    if (any(is.na(tree_ht))) {
+        warning("one or more tree heights are missing, NAs returned",
+                call. = FALSE)
+    }
 
     sapling_ht <- pmin(saplings_in$HT, saplings_in$ACTUALHT, na.rm = TRUE)
-    if (any(is.na(sapling_ht)))
-        warning("one or more sapling heights are missing", call. = FALSE)
+    if (any(is.na(sapling_ht))) {
+        warning("one or more sapling heights are missing, NAs returned",
+                call. = FALSE)
+    }
 
     ht_metrics <- vector(mode = "list", length = 10)
-    ht_metrics[1:length(ht_metrics)] <- 0  # by definition
+    ht_metrics[seq_along(ht_metrics)] <- 0  # by definition
+
     names(ht_metrics) <- c("numTrees", "meanTreeHt", "meanTreeHtBAW",
                            "meanTreeHtDom", "meanTreeHtDomBAW", "maxTreeHt",
                            "predomTreeHt", "numSaplings", "meanSapHt",
@@ -87,46 +92,51 @@ calc_ht_metrics <- function(tree_list, digits = 1) {
 
     ht_metrics$numTrees <- nrow(trees_in)
     if (nrow(trees_in) > 0) {
-        basal_area <- pi * (trees_in$DIA / 2)^2
         ht_metrics$meanTreeHt <-
-            round(mean(tree_ht, na.rm = TRUE), digits)
+            round(mean(tree_ht), digits)
+
+        basal_area <- pi * (trees_in$DIA / 2)^2
 
         ht_metrics$meanTreeHtBAW <-
-            round(stats::weighted.mean(tree_ht, basal_area, na.rm = TRUE),
-                  digits)
+            round(stats::weighted.mean(tree_ht, basal_area), digits)
 
         tree_ht_doms <- tree_ht[trees_in$CCLCD %in% c(1, 2, 3)]
         basal_area_doms <- basal_area[trees_in$CCLCD %in% c(1, 2, 3)]
+
         ht_metrics$meanTreeHtDom <-
-            round(mean(tree_ht_doms, na.rm = TRUE), digits)
+            round(mean(tree_ht_doms), digits)
 
         ht_metrics$meanTreeHtDomBAW <-
-            round(stats::weighted.mean(tree_ht_doms, basal_area_doms,
-                                       na.rm = TRUE),
+            round(stats::weighted.mean(tree_ht_doms, basal_area_doms),
                   digits = digits)
 
-        ht_metrics$maxTreeHt <- max(tree_ht, na.rm = TRUE)
+        ht_metrics$maxTreeHt <- max(tree_ht)
 
-        tree_ht_tpa <-
-            data.frame(tree_ht, trees_in$TPA_UNADJ, check.names = FALSE)
-        tree_ht_tpa <- tree_ht_tpa[order(tree_ht, decreasing = TRUE), ]
-        tpa <- sum_ht <- n <- 0
-        for (i in seq_len(nrow(tree_ht_tpa))) {
-            sum_ht <- sum_ht + tree_ht_tpa[i, 1]
-            tpa <- tpa + tree_ht_tpa[i, 2]
-            n <- n + 1
-            if (tpa > 16)
-                break
+        if (any(is.na(tree_ht)) || any(is.na(trees_in$TPA_UNADJ))) {
+            ht_metrics$predomTreeHt <- NA_real_
+        } else {
+            tree_ht_tpa <-
+                data.frame(tree_ht, trees_in$TPA_UNADJ, check.names = FALSE)
+
+            tree_ht_tpa <- tree_ht_tpa[order(tree_ht, decreasing = TRUE), ]
+            tpa <- sum_ht <- n <- 0
+            for (i in seq_len(nrow(tree_ht_tpa))) {
+                sum_ht <- sum_ht + tree_ht_tpa[i, 1]
+                tpa <- tpa + tree_ht_tpa[i, 2]
+                n <- n + 1
+                if (tpa > 16)
+                    break
+            }
+            ht_metrics$predomTreeHt <- round(sum_ht / n, digits)
         }
-        ht_metrics$predomTreeHt <- round(sum_ht / n, digits)
     }
 
     ht_metrics$numSaplings <- nrow(saplings_in)
     if (nrow(saplings_in) > 0) {
         ht_metrics$meanSapHt <-
-            round(mean(sapling_ht, na.rm = TRUE), digits)
+            round(mean(sapling_ht), digits)
 
-        ht_metrics$maxSapHt <- max(sapling_ht, na.rm = TRUE)
+        ht_metrics$maxSapHt <- max(sapling_ht)
     }
 
     return(ht_metrics)

@@ -54,6 +54,14 @@ process_tree_data <- function(tree_table, stem_map = TRUE, full_output = TRUE,
              call. = FALSE)
     }
 
+    if (!("CRWIDTH" %in% colnames(tree_table))) {
+        if (!("DIA" %in% colnames(tree_table)))
+            stop("'tree_table' is missing 'DIA'", call. = FALSE)
+
+        if (any(is.na(tree_table$DIA[tree_table$STATUSCD == 1])))
+            stop("'DIA' has missing values for live trees", call. = FALSE)
+    }
+
     if (!(is.logical(stem_map) && length(stem_map) == 1))
         stop("'stem_map' must be a single logical value", call. = FALSE)
 
@@ -64,7 +72,9 @@ process_tree_data <- function(tree_table, stem_map = TRUE, full_output = TRUE,
         digits <- 1
 
     plot_id_dt <- storage.mode(tree_table$PLT_CN)
-    if (!(plot_id_dt %in% c("character", "double", "integer", "integer64"))) {
+    if (bit64::is.integer64(tree_table$PLT_CN)) {
+        plot_id_dt <- "integer64"
+    } else if (!(plot_id_dt %in% c("character", "double", "integer"))) {
         stop("'PLT_CN' must be character, double, integer or integer64",
              call. = FALSE)
     }
@@ -85,20 +95,24 @@ process_tree_data <- function(tree_table, stem_map = TRUE, full_output = TRUE,
     if (plot_id_dt == "character")
         out$PLT_CN <- character(num_plots)
     else if (plot_id_dt == "numeric")
-        out$PLT_CN <- rep(NA_real_, num_plots)
+        out$PLT_CN <- rep_len(NA_real_, num_plots)
     else if (plot_id_dt == "integer")
-        out$PLT_CN <- rep(NA_integer_, num_plots)
+        out$PLT_CN <- rep_len(NA_integer_, num_plots)
     else if (plot_id_dt == "integer64")
-        out$PLT_CN <- rep(bit64::NA_integer64_, num_plots)
+        out$PLT_CN <- rep_len(bit64::NA_integer64_, num_plots)
 
+    # all computed values are currently integer or double
     for (j in 2:length(out)) {
         if (storage.mode(x[[j - 1]]) == "integer")
-            out[[j]] <- rep(NA_integer_, num_plots)
+            out[[j]] <- rep_len(NA_integer_, num_plots)
         else
-            out[[j]] <- rep(NA_real_, num_plots)
+            out[[j]] <- rep_len(NA_real_, num_plots)
     }
 
-    cli::cli_progress_bar("Processing tree data", total = num_plots)
+    cli::cli_alert_info(
+        "The input table contains tree data for {.val {num_plots}} plots.")
+
+    cli::cli_progress_bar("Processing...", total = num_plots)
     for (i in seq_along(plot_ids)) {
         tree_list <- tree_table[tree_table$PLT_CN == plot_ids[i], ]
         x <- calc_tcc_metrics(tree_list, stem_map, full_output, digits,
@@ -110,6 +124,7 @@ process_tree_data <- function(tree_table, stem_map = TRUE, full_output = TRUE,
         cli::cli_progress_update()
     }
     cli::cli_progress_done()
+    cli::cli_alert_info("Done.")
 
     as.data.frame(out)
 }
