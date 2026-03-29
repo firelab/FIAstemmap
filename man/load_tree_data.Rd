@@ -123,5 +123,5 @@ tree <- load_tree_data(f)
 head(tree)
 }
 \seealso{
-\link{DEFAULT_TREE_COLUMNS}
+\link{DEFAULT_TREE_COLUMNS},\code{\link[=process_tree_data]{process_tree_data()}}
 }

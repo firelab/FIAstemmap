@@ -97,7 +97,7 @@
 #' but all digits).
 #'
 #' @seealso
-#' [DEFAULT_TREE_COLUMNS]
+#' [DEFAULT_TREE_COLUMNS],[process_tree_data()]
 #'
 #' @examples
 #' # Lolo NF, single-condition forest plots, INVYR 2022, from public FIADB
@@ -156,7 +156,7 @@ load_tree_data <- function(src, table = NULL, columns = DEFAULT_TREE_COLUMNS,
                 gdalraster::ogr_field_index(src, tbl_tmp, "AZIMUTH") < 0) {
 
                 cli::cli_alert_warning(
-                    c("The data source does not have ",
+                    c("the data source does not have ",
                       "{.field DIST} and/or {.field AZIMUTH}"))
 
                 columns <- columns[!columns %in% c("DIST", "AZIMUTH")]
@@ -237,9 +237,9 @@ load_tree_data <- function(src, table = NULL, columns = DEFAULT_TREE_COLUMNS,
         d$PLT_CN <- as.character(d$PLT_CN)
 
     if (nrow(d) == 0)
-        cli::cli_alert_danger("No tree records were returned")
+        cli::cli_alert_danger("No tree records were returned.")
     else
-        cli::cli_alert_info("{.val {nrow(d)}} tree records returned")
+        cli::cli_alert_info("{.val {nrow(d)}} tree records returned.")
 
     return(d)
 }
