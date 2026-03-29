@@ -121,6 +121,10 @@ support for the PostgreSQL client library (can be checked with
 Column names are case-sensitive in FIAstemmap functions, and are assumed
 to follow the FIADB upper case naming convention.
 
+If column `PLT_CN` is present, it will be read or coerced if necessary
+to R `"character"` type consistent with its data type in FIADB (i.e., a
+string but all digits).
+
 ## See also
 
 [DEFAULT_TREE_COLUMNS](https://firelab.github.io/FIAstemmap/reference/DEFAULT_TREE_COLUMNS.md)
@@ -133,16 +137,10 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
-#> ✔ Fetching tree data... [17ms]
+#> ✔ Fetching tree data... [19ms]
 #> 
 #> ℹ 910 tree records returned
 
 head(tree)
-#>            PLT_CN SUBP TREE STATUSCD SPCD DIA HT ACTUALHT CCLCD TPA_UNADJ
-#> 1 670951075126144    1    1        2  108  NA NA       NA    NA        NA
-#> 2 670951075126144    1    2        1  108   1  9        9     3  74.96528
-#> 3 670951075126144    2    1        2  108  NA NA       NA    NA        NA
-#> 4 670951075126144    2    2        2  108  NA NA       NA    NA        NA
-#> 5 670951075126144    2    3        2  108  NA NA       NA    NA        NA
-#> 6 670951075126144    2    4        2  108  NA NA       NA    NA        NA
+#> Error in as.character.integer64(x): REAL() can only be applied to a 'numeric', not a 'character'
 ```

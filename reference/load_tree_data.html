@@ -160,6 +160,9 @@ support for the PostgreSQL client library (can be checked with
 <code>gdalraster::gdal_formats("postgresql")</code>).</p>
 <p>Column names are case-sensitive in <span class="pkg">FIAstemmap</span> functions, and are
 assumed to follow the FIADB upper case naming convention.</p>
+<p>If column <code>PLT_CN</code> is present, it will be read or coerced if necessary to R
+<code>"character"</code> type consistent with its data type in FIADB (i.e., a string
+but all digits).</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -173,18 +176,12 @@ assumed to follow the FIADB upper case naming convention.</p>
 <span class="r-in"><span><span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu">load_tree_data</span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> The data source does not have <span style="color: #00BB00;">DIST</span> and/or <span style="color: #00BB00;">AZIMUTH</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Fetching tree data...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Fetching tree data... <span style="color: #B2B2B2;">[17ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Fetching tree data... <span style="color: #B2B2B2;">[19ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">910</span> tree records returned</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            PLT_CN SUBP TREE STATUSCD SPCD DIA HT ACTUALHT CCLCD TPA_UNADJ</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 670951075126144    1    1        2  108  NA NA       NA    NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 670951075126144    1    2        1  108   1  9        9     3  74.96528</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 670951075126144    2    1        2  108  NA NA       NA    NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 670951075126144    2    2        2  108  NA NA       NA    NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 670951075126144    2    3        2  108  NA NA       NA    NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 670951075126144    2    4        2  108  NA NA       NA    NA        NA</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as.character.integer64(x):</span> REAL() can only be applied to a 'numeric', not a 'character'</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
