@@ -21,6 +21,7 @@ reference:
   - spatstat_helpers
   - load_tree_data
   - plot_crowns
+  - process_tree_data
 
 - title: Data
 - contents:

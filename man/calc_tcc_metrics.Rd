@@ -4,7 +4,13 @@
 \alias{calc_tcc_metrics}
 \title{Predict plot-level canopy cover from individual tree measurements}
 \usage{
-calc_tcc_metrics(tree_list, stem_map = TRUE, full_output = TRUE, digits = 1)
+calc_tcc_metrics(
+  tree_list,
+  stem_map = TRUE,
+  full_output = TRUE,
+  digits = 1,
+  ...
+)
 }
 \arguments{
 \item{tree_list}{A data frame with tree records for one FIA plot. In general,
@@ -33,6 +39,9 @@ value given for \code{stem_map} (see Details).}
 \item{digits}{Optional integer indicating the number of digits to keep in the
 return values (defaults to \code{1}). May be passed to \code{calc_crwidth()} and
 \code{calc_ht_metrics()}.}
+
+\item{...}{Optional arguments passed to \code{create_fia_ppp()} if
+\code{stem_map = TRUE}.}
 }
 \value{
 If \code{full_output = TRUE}, a named list with element \code{model_tcc} containing

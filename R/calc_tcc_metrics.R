@@ -97,6 +97,8 @@
 #' @param digits Optional integer indicating the number of digits to keep in the
 #' return values (defaults to `1`). May be passed to `calc_crwidth()` and
 #' `calc_ht_metrics()`.
+#' @param ... Optional arguments passed to `create_fia_ppp()` if
+#' `stem_map = TRUE`.
 #' @return
 #' If `full_output = TRUE`, a named list with element `model_tcc` containing
 #' the plot-level predicted tree canopy cover as percent (`0:100`), and
@@ -142,7 +144,7 @@
 #' calc_tcc_metrics(plantation, stem_map = FALSE, full_output = FALSE)
 #' @export
 calc_tcc_metrics <- function(tree_list, stem_map = TRUE, full_output = TRUE,
-                             digits = 1) {
+                             digits = 1, ...) {
 
     if (!(is.logical(stem_map) && length(stem_map) == 1))
         stop("'stem_map' must be a single logical value", call. = FALSE)
@@ -155,7 +157,7 @@ calc_tcc_metrics <- function(tree_list, stem_map = TRUE, full_output = TRUE,
         # validate the input tree list for stem-mapping and get an estimate
         # of the L-function (square root transform of Ripley's K)
         # r = 0:12 feet
-        L <- create_fia_ppp(tree_list) |>
+        L <- create_fia_ppp(tree_list, ...) |>
             spatstat.explore::Lest(r = 0:12, correction = "isotropic")
 
         # mean of L at r = 6, 8, 10, 12 ft (Ripley's isotropic edge corrected)

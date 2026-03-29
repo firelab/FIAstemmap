@@ -19,13 +19,13 @@
 #' equation presented by Gill et al. (2000) to estimate crown width for nine
 #' tree species when their diameter is greater than 50 in. (127 cm).
 #'
-#' @param tree_list A data frame containing tree records. Must have columns
+#' @param tree_table A data frame containing tree records. Must have columns
 #' `SPCD` (FIA integer species code), `STATUSCD` (FIA integer tree status code,
 #' 1 = live) and `DIA` (FIA tree diameter in inches).
 #' @param digits Optional integer indicating the number of digits to keep in the
 #' return values (defaults to `1`).
 #' @return
-#' A numeric vector of length `nrow(tree_list)` with predicted crown width in
+#' A numeric vector of length `nrow(tree_table)` with predicted crown width in
 #' feet for live trees. `NA` is returned for trees with `STATUSCD != 1`.
 #'
 #' @references
@@ -47,36 +47,36 @@
 #' @examples
 #' calc_crwidth(plantation)
 #' @export
-calc_crwidth <- function(tree_list, digits = 1) {
-    if (missing(tree_list) || is.null(tree_list))
-        stop("'tree_list' is required", call. = FALSE)
+calc_crwidth <- function(tree_table, digits = 1) {
+    if (missing(tree_table) || is.null(tree_table))
+        stop("'tree_table' is required", call. = FALSE)
 
-    if (!is.data.frame(tree_list))
-        stop("'tree_list' must be a data frame", call. = FALSE)
+    if (!is.data.frame(tree_table))
+        stop("'tree_table' must be a data frame", call. = FALSE)
 
     required_cols <- c("SPCD", "STATUSCD", "DIA")
-    if (!all(required_cols %in% colnames(tree_list)))
-        stop("'tree_list' is missing required columns", call. = FALSE)
+    if (!all(required_cols %in% colnames(tree_table)))
+        stop("'tree_table' is missing required columns", call. = FALSE)
 
-    if (!is.numeric(tree_list$SPCD))
-        stop("'tree_list$SPCD' must be numeric or integer", call. = FALSE)
-    if (any(is.na(tree_list$SPCD)))
-        stop("'tree_list$SPCD' cannot have missing values", call. = FALSE)
+    if (!is.numeric(tree_table$SPCD))
+        stop("'SPCD' must be numeric or integer", call. = FALSE)
+    if (any(is.na(tree_table$SPCD)))
+        stop("'SPCD' cannot have missing values", call. = FALSE)
 
-    if (!is.numeric(tree_list$STATUSCD))
-        stop("'tree_list$STATUSCD' must be numeric or integer", call. = FALSE)
-    if (any(is.na(tree_list$STATUSCD)))
-        stop("'tree_list$STATUSCD' cannot have missing values", call. = FALSE)
+    if (!is.numeric(tree_table$STATUSCD))
+        stop("'STATUSCD' must be numeric or integer", call. = FALSE)
+    if (any(is.na(tree_table$STATUSCD)))
+        stop("'STATUSCD' cannot have missing values", call. = FALSE)
 
-    if (!is.numeric(tree_list$DIA))
-        stop("'tree_list$DIA' must be numeric", call. = FALSE)
-    if (any(is.na(tree_list$DIA)))
-        stop("'tree_list$DIA' cannot have missing values", call. = FALSE)
+    if (!is.numeric(tree_table$DIA))
+        stop("'DIA' must be numeric", call. = FALSE)
+    if (any(is.na(tree_table$DIA[tree_table$STATUSCD == 1])))
+        stop("'DIA' has missing values for live trees", call. = FALSE)
 
     if (is.null(digits))
         digits <- 1
 
-    cw <- rep_len(NA_real_, nrow(tree_list))
+    cw <- rep_len(NA_real_, nrow(tree_table))
 
     # define a default equation to use in case a species-specific one is missing
     # SPCD == 807, blue oak
@@ -84,50 +84,50 @@ calc_crwidth <- function(tree_list, digits = 1) {
 
     # special case for large trees of certain species in the PNW region:
     # use the "old growth" equation from Gill et al. (2000)
-    old_growth_trees <- tree_list$DIA > 50 & tree_list$STATUSCD == 1 &
-        tree_list$SPCD %in% c(11, 98, 108, 119, 122, 202, 242, 263, 264)
+    old_growth_trees <- tree_table$DIA > 50 & tree_table$STATUSCD == 1 &
+        tree_table$SPCD %in% c(11, 98, 108, 119, 122, 202, 242, 263, 264)
 
-    cw[old_growth_trees] <- 16.449 + 0.4067 * tree_list$DIA[old_growth_trees]
+    cw[old_growth_trees] <- 16.449 + 0.4067 * tree_table$DIA[old_growth_trees]
 
     # apply species-specific equations
     # NB: crwidth of trees with DIA < 5 in. (i.e. "saplings") is predicted for
     # DIA = 5 and then sapling crwidth adjustment factors are applied afterward
-    for (spcd in unique(tree_list$SPCD)) {
+    for (spcd in unique(tree_table$SPCD)) {
         b <- cw_coef[cw_coef$SPCD == spcd, c("b0", "b1", "b2")]
         if (nrow(b) == 0)
             b <- b_default
 
         this_subset <-
-            tree_list$SPCD == spcd & tree_list$STATUSCD == 1 & is.na(cw)
+            tree_table$SPCD == spcd & tree_table$STATUSCD == 1 & is.na(cw)
 
         cw[this_subset] <-
-            b$b0 + b$b1 * pmax(5, tree_list$DIA[this_subset]) +
-            b$b2 * pmax(5, tree_list$DIA[this_subset])^2
+            b$b0 + b$b1 * pmax(5, tree_table$DIA[this_subset]) +
+            b$b2 * pmax(5, tree_table$DIA[this_subset])^2
     }
 
     # apply sapling crown width adjustment factors
-    saplings <- tree_list$DIA < 5 & tree_list$STATUSCD == 1
-    sapling_spp <- unique(tree_list$SPCD[saplings])
+    saplings <- tree_table$DIA < 5 & tree_table$STATUSCD == 1
+    sapling_spp <- unique(tree_table$SPCD[saplings])
     # species-specific adjustment factors if any (based on Bragg 2001)
     spcd_adj <- intersect(sapling_spp, cw_sapling_adj$SPCD)
     for (spcd in spcd_adj) {
         rowid <- which(cw_sapling_adj$SPCD == spcd)
         # adjustment factors at 1, 2, 3, 4, 5 inches DIA:
         adj_factors <- c(as.numeric(cw_sapling_adj[rowid, 2:5]), 1)
-        this_subset <- saplings & tree_list$SPCD == spcd
+        this_subset <- saplings & tree_table$SPCD == spcd
         # interpolated adjustment factors for the actual sapling diameters:
-        n <- trunc(tree_list$DIA[this_subset])
-        cw_adj <- (tree_list$DIA[this_subset] - n) *
+        n <- trunc(tree_table$DIA[this_subset])
+        cw_adj <- (tree_table$DIA[this_subset] - n) *
                   (adj_factors[n + 1] - adj_factors[n]) + adj_factors[n]
         cw[this_subset] <- cw[this_subset] * cw_adj
     }
     # otherwise use avarage adjustment factors based on Bragg (2001) data
     # average adjustment factors at 1, 2, 3, 4, 5 inches DIA:
     adj_factors <- c(0.509, 0.644, 0.767, 0.885, 1.0)
-    this_subset <- saplings & !(tree_list$SPCD %in% cw_sapling_adj$SPCD)
+    this_subset <- saplings & !(tree_table$SPCD %in% cw_sapling_adj$SPCD)
     # interpolated adjustment factors for the actual sapling diameters:
-    n <- trunc(tree_list$DIA[this_subset])
-    cw_adj <- (tree_list$DIA[this_subset] - n) *
+    n <- trunc(tree_table$DIA[this_subset])
+    cw_adj <- (tree_table$DIA[this_subset] - n) *
               (adj_factors[n + 1] - adj_factors[n]) + adj_factors[n]
     cw[this_subset] <- cw[this_subset] * cw_adj
 

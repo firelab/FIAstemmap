@@ -129,15 +129,14 @@ calc_tcc_metrics(plantation, stem_map = FALSE, full_output = FALSE)
 ### Data processing
 
 ```{r data-proc}
-## load tree data from a file or database connection
+# load tree data from a file or database connection
+# Lolo NF, single-condition forest plots, INVYR 2022, from public FIADB
 f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
-tree <- load_tree_data(f)
+tree_table <- load_tree_data(f)
 
-head(tree)
+head(tree_table)
 
-## process tree data
-
-# TODO...
+process_tree_data(tree_table, stem_map = FALSE, full_output = TRUE)
 ```
 
 ## References

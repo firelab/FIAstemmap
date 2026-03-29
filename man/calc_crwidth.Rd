@@ -4,10 +4,10 @@
 \alias{calc_crwidth}
 \title{Predict individual tree crown width using species-specific equations}
 \usage{
-calc_crwidth(tree_list, digits = 1)
+calc_crwidth(tree_table, digits = 1)
 }
 \arguments{
-\item{tree_list}{A data frame containing tree records. Must have columns
+\item{tree_table}{A data frame containing tree records. Must have columns
 \code{SPCD} (FIA integer species code), \code{STATUSCD} (FIA integer tree status code,
 1 = live) and \code{DIA} (FIA tree diameter in inches).}
 
@@ -15,7 +15,7 @@ calc_crwidth(tree_list, digits = 1)
 return values (defaults to \code{1}).}
 }
 \value{
-A numeric vector of length \code{nrow(tree_list)} with predicted crown width in
+A numeric vector of length \code{nrow(tree_table)} with predicted crown width in
 feet for live trees. \code{NA} is returned for trees with \code{STATUSCD != 1}.
 }
 \description{
