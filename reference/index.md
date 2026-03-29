@@ -19,6 +19,8 @@
 - [`plot_crowns()`](https://firelab.github.io/FIAstemmap/reference/plot_crowns.md)
   : Display modeled tree crowns projected vertically on subplot
   boundaries
+- [`process_tree_data()`](https://firelab.github.io/FIAstemmap/reference/process_tree_data.md)
+  : Generate plot-level stand structure metrics for a tree dataset
 
 ## Data
 

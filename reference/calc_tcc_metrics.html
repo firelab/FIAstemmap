@@ -56,7 +56,13 @@ value (see Details).</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calc_tcc_metrics</span><span class="op">(</span><span class="va">tree_list</span>, stem_map <span class="op">=</span> <span class="cn">TRUE</span>, full_output <span class="op">=</span> <span class="cn">TRUE</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calc_tcc_metrics</span><span class="op">(</span></span>
+<span>  <span class="va">tree_list</span>,</span>
+<span>  stem_map <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  full_output <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  digits <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -96,6 +102,11 @@ value given for <code>stem_map</code> (see Details).</p></dd>
 <dd><p>Optional integer indicating the number of digits to keep in the
 return values (defaults to <code>1</code>). May be passed to <code><a href="calc_crwidth.html">calc_crwidth()</a></code> and
 <code><a href="calc_ht_metrics.html">calc_ht_metrics()</a></code>.</p></dd>
+
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Optional arguments passed to <code><a href="spatstat_helpers.html">create_fia_ppp()</a></code> if
+<code>stem_map = TRUE</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">

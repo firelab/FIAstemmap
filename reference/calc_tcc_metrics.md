@@ -8,7 +8,13 @@ plot-level TCC value (see Details).
 ## Usage
 
 ``` r
-calc_tcc_metrics(tree_list, stem_map = TRUE, full_output = TRUE, digits = 1)
+calc_tcc_metrics(
+  tree_list,
+  stem_map = TRUE,
+  full_output = TRUE,
+  digits = 1,
+  ...
+)
 ```
 
 ## Arguments
@@ -52,6 +58,12 @@ calc_tcc_metrics(tree_list, stem_map = TRUE, full_output = TRUE, digits = 1)
   [`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md)
   and
   [`calc_ht_metrics()`](https://firelab.github.io/FIAstemmap/reference/calc_ht_metrics.md).
+
+- ...:
+
+  Optional arguments passed to
+  [`create_fia_ppp()`](https://firelab.github.io/FIAstemmap/reference/spatstat_helpers.md)
+  if `stem_map = TRUE`.
 
 ## Value
 

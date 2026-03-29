@@ -6,12 +6,12 @@ regression equations from the literature.
 ## Usage
 
 ``` r
-calc_crwidth(tree_list, digits = 1)
+calc_crwidth(tree_table, digits = 1)
 ```
 
 ## Arguments
 
-- tree_list:
+- tree_table:
 
   A data frame containing tree records. Must have columns `SPCD` (FIA
   integer species code), `STATUSCD` (FIA integer tree status code, 1 =
@@ -24,7 +24,7 @@ calc_crwidth(tree_list, digits = 1)
 
 ## Value
 
-A numeric vector of length `nrow(tree_list)` with predicted crown width
+A numeric vector of length `nrow(tree_table)` with predicted crown width
 in feet for live trees. `NA` is returned for trees with `STATUSCD != 1`.
 
 ## Details
