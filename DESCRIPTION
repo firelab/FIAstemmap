@@ -19,7 +19,6 @@ Description: Maps individual tree stem locations on field plots of the Forest
 License: MIT + file LICENSE
 Depends: R (>= 4.1.0)
 Imports:
-    bit64,
     cli,
     gdalraster (>= 2.5.0),
     grDevices,
