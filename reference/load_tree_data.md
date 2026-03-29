@@ -137,10 +137,16 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
-#> ✔ Fetching tree data... [18ms]
+#> ✔ Fetching tree data... [16ms]
 #> 
 #> ℹ 910 tree records returned
 
 head(tree)
-#> Error in as.character.integer64(x): REAL() can only be applied to a 'numeric', not a 'character'
+#>            PLT_CN SUBP TREE STATUSCD SPCD DIA HT ACTUALHT CCLCD TPA_UNADJ
+#> 1 670951075126144    1    1        2  108  NA NA       NA    NA        NA
+#> 2 670951075126144    1    2        1  108   1  9        9     3  74.96528
+#> 3 670951075126144    2    1        2  108  NA NA       NA    NA        NA
+#> 4 670951075126144    2    2        2  108  NA NA       NA    NA        NA
+#> 5 670951075126144    2    3        2  108  NA NA       NA    NA        NA
+#> 6 670951075126144    2    4        2  108  NA NA       NA    NA        NA
 ```
