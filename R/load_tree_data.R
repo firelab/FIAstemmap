@@ -233,8 +233,8 @@ load_tree_data <- function(src, table = NULL, columns = DEFAULT_TREE_COLUMNS,
     class(d) <- "data.frame"
     attr(d, "gis") <- NULL
 
-    if ("PLT_CN" %in% colnames(d) && storage.mode(d$PLT_CN) != "character")
-        storage.mode(d$PLT_CN) <- "character"
+    if ("PLT_CN" %in% colnames(d) && !is.character(d$PLT_CN))
+        d$PLT_CN <- as.character(d$PLT_CN)
 
     if (nrow(d) == 0)
         cli::cli_alert_danger("No tree records were returned")
