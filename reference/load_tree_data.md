@@ -127,7 +127,7 @@ string but all digits).
 
 ## See also
 
-[DEFAULT_TREE_COLUMNS](https://firelab.github.io/FIAstemmap/reference/DEFAULT_TREE_COLUMNS.md)
+[DEFAULT_TREE_COLUMNS](https://firelab.github.io/FIAstemmap/reference/DEFAULT_TREE_COLUMNS.md),[`process_tree_data()`](https://firelab.github.io/FIAstemmap/reference/process_tree_data.md)
 
 ## Examples
 
@@ -135,11 +135,11 @@ string but all digits).
 # Lolo NF, single-condition forest plots, INVYR 2022, from public FIADB
 f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
-#> ! The data source does not have DIST and/or AZIMUTH
+#> ! the data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
-#> ✔ Fetching tree data... [16ms]
+#> ✔ Fetching tree data... [17ms]
 #> 
-#> ℹ 910 tree records returned
+#> ℹ 910 tree records returned.
 
 head(tree)
 #>            PLT_CN SUBP TREE STATUSCD SPCD DIA HT ACTUALHT CCLCD TPA_UNADJ
