@@ -35,7 +35,7 @@ but \verb{< 5 in.} (12.7 cm) diameter (denoted as "saplings"). Stem locations
 are specified as distance and azimuth from subplot/microplot center.
 }
 \note{
-This function does not perform an filtering based on \code{SUBP} (subplot),
+This function does not perform any filtering based on \code{SUBP} (subplot),
 \code{STATUSCD}(live vs dead trees) or\code{DIA} (mature trees vs saplings). The input
 tree list is assumed to be filtered to the specific set of live trees for
 one subplot or microplot with the given \code{sample_radius}.
