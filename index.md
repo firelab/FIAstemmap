@@ -295,7 +295,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
 #> ! the data source does not have DIST and/or AZIMUTH
 #> ℹ Fetching tree data...
-#> ✔ Fetching tree data... [14ms]
+#> ✔ Fetching tree data. [14ms]
 #> 
 #> ℹ 910 tree records returned.
 
@@ -310,7 +310,6 @@ head(tree_table)
 
 process_tree_data(tree_table, stem_map = FALSE, full_output = TRUE)
 #> ℹ The input table contains tree data for 22 plots.
-#> ℹ Done.
 #>             PLT_CN model_tcc numTrees meanTreeHt meanTreeHtBAW meanTreeHtDom
 #> 1  670951075126144       1.2        0        0.0           0.0           0.0
 #> 2  670950940126144      38.4       24       61.4          66.4          64.5
