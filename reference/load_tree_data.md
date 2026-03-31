@@ -135,9 +135,9 @@ string but all digits).
 # Lolo NF, single-condition forest plots, INVYR 2022, from public FIADB
 f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
-#> ! the data source does not have DIST and/or AZIMUTH
-#> ℹ Fetching tree data...
-#> ✔ Fetching tree data. [17ms]
+#> ! The data source does not have DIST and/or AZIMUTH.
+#> ℹ Fetching tree data
+#> ✔ Fetching tree data [17ms]
 #> 
 #> ℹ 910 tree records returned.
 

@@ -71,9 +71,9 @@ conditional on the values given for `stem_map` and `full_output`.
 # Lolo NF, single-condition forest plots, INVYR 2022, from public FIADB
 f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
-#> ! the data source does not have DIST and/or AZIMUTH
-#> ℹ Fetching tree data...
-#> ✔ Fetching tree data. [10ms]
+#> ! The data source does not have DIST and/or AZIMUTH.
+#> ℹ Fetching tree data
+#> ✔ Fetching tree data [10ms]
 #> 
 #> ℹ 910 tree records returned.
 
