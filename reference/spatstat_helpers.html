@@ -171,7 +171,7 @@ Statistical Society: Series B (Methodological)</em>, 39(2): 172–192.
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># observation window for the standard FIA plot design</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## observation window for the standard FIA plot design</span></span></span>
 <span class="r-in"><span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu">create_fia_owin</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Window: polygonal boundary</span>
@@ -206,7 +206,7 @@ Statistical Society: Series B (Methodological)</em>, 39(2): 172–192.
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">w</span>, main <span class="op">=</span> <span class="st">"FIA standard four-subplot design"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="spatstat_helpers-1.png" alt="" width="595" height="595"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># point pattern object for the `plantation` example data</span></span></span>
+<span class="r-in"><span><span class="co">## point pattern object for the `plantation` example data</span></span></span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">create_fia_ppp</span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Planar point pattern:  89 points</span>
@@ -238,8 +238,37 @@ Statistical Society: Series B (Methodological)</em>, 39(2): 172–192.
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Ripley's K-function</span></span></span>
 <span class="r-in"><span><span class="va">K</span> <span class="op">&lt;-</span> <span class="fu">spatstat.explore</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/Kest.html" class="external-link">Kest</a></span><span class="op">(</span><span class="va">X</span>, rmax <span class="op">=</span> <span class="fl">12</span>, correction <span class="op">=</span> <span class="st">"isotropic"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">K</span>, main <span class="op">=</span> <span class="st">"Ripley's K for the plantation trees"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">K</span>, main <span class="op">=</span> <span class="st">"Ripley's K for the plantation FIA plot"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="spatstat_helpers-4.png" alt="" width="595" height="595"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## point pattern object for the `western_redcedar` example data</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">create_fia_ppp</span><span class="op">(</span><span class="va">western_redcedar</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Planar point pattern:  24 points</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average intensity 0.00331562 points per square foot</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Coordinates are given to 15 decimal places</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Window: polygonal boundary</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 separate polygons (no holes)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            vertices    area relative.area</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> polygon 1       360 1809.62          0.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> polygon 2       360 1809.62          0.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> polygon 3       360 1809.62          0.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> polygon 4       360 1809.62          0.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> enclosing rectangle: [-127.921, 127.921] x [-84.001, 144.001] feet</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      (255.8 x 228 feet)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Window area = 7238.47 square feet</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Unit of length: 1 foot</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fraction of frame area: 0.124</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, pch <span class="op">=</span> <span class="fl">16</span>, main <span class="op">=</span> <span class="st">"Western redcedar FIA plot"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="spatstat_helpers-5.png" alt="" width="595" height="595"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Ripley's K-function</span></span></span>
+<span class="r-in"><span><span class="va">K</span> <span class="op">&lt;-</span> <span class="fu">spatstat.explore</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/Kest.html" class="external-link">Kest</a></span><span class="op">(</span><span class="va">X</span>, rmax <span class="op">=</span> <span class="fl">12</span>, correction <span class="op">=</span> <span class="st">"isotropic"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">K</span>, main <span class="op">=</span> <span class="st">"Ripley's K for the western redcedar FIA plot"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="spatstat_helpers-6.png" alt="" width="595" height="595"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

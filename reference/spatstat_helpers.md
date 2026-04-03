@@ -143,7 +143,7 @@ spatstat package: <https://cran.r-project.org/package=spatstat>
 ## Examples
 
 ``` r
-# observation window for the standard FIA plot design
+## observation window for the standard FIA plot design
 w <- create_fia_owin()
 summary(w)
 #> Window: polygonal boundary
@@ -178,7 +178,7 @@ summary(w)
 plot(w, main = "FIA standard four-subplot design")
 
 
-# point pattern object for the `plantation` example data
+## point pattern object for the `plantation` example data
 X <- create_fia_ppp(plantation)
 summary(X)
 #> Planar point pattern:  89 points
@@ -210,5 +210,34 @@ plot(X, shape = "arrows", direction = 90, size = 12, cols = "darkgreen",
 
 # Ripley's K-function
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
-plot(K, main = "Ripley's K for the plantation trees")
+plot(K, main = "Ripley's K for the plantation FIA plot")
+
+
+## point pattern object for the `western_redcedar` example data
+X <- create_fia_ppp(western_redcedar)
+summary(X)
+#> Planar point pattern:  24 points
+#> Average intensity 0.00331562 points per square foot
+#> 
+#> Coordinates are given to 15 decimal places
+#> 
+#> Window: polygonal boundary
+#> 4 separate polygons (no holes)
+#>            vertices    area relative.area
+#> polygon 1       360 1809.62          0.25
+#> polygon 2       360 1809.62          0.25
+#> polygon 3       360 1809.62          0.25
+#> polygon 4       360 1809.62          0.25
+#> enclosing rectangle: [-127.921, 127.921] x [-84.001, 144.001] feet
+#>                      (255.8 x 228 feet)
+#> Window area = 7238.47 square feet
+#> Unit of length: 1 foot
+#> Fraction of frame area: 0.124
+
+plot(X, pch = 16, main = "Western redcedar FIA plot")
+
+
+# Ripley's K-function
+K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
+plot(K, main = "Ripley's K for the western redcedar FIA plot")
 ```
