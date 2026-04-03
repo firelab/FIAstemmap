@@ -52,12 +52,12 @@ The data frame `cw_coef` contains a curated set of linear regression coefficient
 ```{r predict-crwidth}
 library(FIAstemmap)
 
-# regression coefficients for estimating crown width from diameter are included
-# see `?cw_coef`
+# Regression coefficients for estimating crown width from diameter are included.
+# See `?cw_coef`.
 head(cw_coef)
 
-# add a column of predicted crown widths to the `plantation` tree list
-# `within()` modifies a copy of the example dataset
+# Add a column of predicted crown widths to the `plantation` tree list.
+# `within()` modifies a copy of the example dataset.
 tree_list <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
 str(tree_list)
 ```
@@ -67,7 +67,7 @@ str(tree_list)
 Plot-level visualization and other exploratory analyses require input data with individual stem locations given in columns named `AZIMUTH` (horizontal angle from subplot/microplot center, `0:359`) and `DIST` (distance from subplot/microplot center).
 
 ```{r plot-crowns}
-# display modeled tree crowns projected vertically on the FIA plot boundary
+# Display modeled tree crowns projected vertically on the FIA plot boundary.
 plot_crowns(tree_list, main = "Loblolly pine plantation")
 
 # individual subplot
@@ -82,55 +82,67 @@ plot_crowns(tree_list, subplot = 4, microplot = TRUE,
 Helper functions facilitate the analysis of FIA tree lists as Spatial Point Patterns using the **spatstat** library. `create_fia_ppp()` returns an object of class `"ppp"` representing the point pattern of an FIA tree list in the 2-D plane. This object can be used with functions of **spatstat.explore** which provide additional plotting capabilities, computation of descriptive spatial statistics, and other exploratory data analysis.
 
 ```{r spatstat-explore}
-# create a spatstat point pattern object for the plantation tree list
+## Create a spatstat point pattern object for the pine plantation tree list.
 X <- create_fia_ppp(plantation)
 summary(X)
 
-plot(X, pch = 16, background = "#fdf6e3", main = "plantation point pattern")
+plot(X, pch = 16, background = "#fdf6e3",
+     main = "Pine plantation point pattern")
 
-# compute Ripley's K-function applying isotropic edge correction
+# Compute Ripley's K-function applying isotropic edge correction.
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
 
-# plot estimated K(r) along with theoretical values for a random point process,
-# suggesting spatial regularity in this case
-plot(K, main = "Ripley's K for the plantation trees")
+# Plot estimated K(r) along with theoretical values for a random point process,
+# suggesting spatial regularity in this case.
+plot(K, main = "Ripley's K for the plantation FIA plot")
+
+## Spatial point pattern for the western redcedar tree list.
+X <- create_fia_ppp(western_redcedar)
+summary(X)
+
+plot(X, pch = 16, background = "#fdf6e3",
+     main = "Western redcedar point pattern")
+
+K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
+
+plot(K, main = "Ripley's K for the western redcedar FIA plot")
 ```
 
 ### Compute stand structure metrics
 
 ```{r stand-structure}
-## compute fractional tree canopy cover of a specific sampled area by overlaying
-## modeled crowns
+## Compute fractional tree canopy cover of a specific sampled area by overlaying
+## modeled crowns.
 
-# subplot 1 of the plantation plot (subplot radius 24 ft)
-# omit saplings which are only sampled in the microplot
+# Subplot 1 of the plantation plot (subplot radius 24 ft).
+# Omit saplings which are only sampled in the microplot.
 # visualized with: `plot_crowns(tree_list, subplot = 1)`
 tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
   calc_crown_overlay(sample_radius = 24)
 
-## calculate stand height metrics, which are also included by default in the
-## output of `calc_tcc_metrics()` (see below)
+## Calculate stand height metrics, which are also included by default in the
+## output of `calc_tcc_metrics()` (see below).
 
 # compute stand height metrics only
 # calc_ht_metrics(plantation)
 
-## predict plot-level canopy cover from individual tree measurements
+## Predict plot-level canopy cover from individual tree measurements.
 
-# by default, TCC is predicted using the "stem-map" model, full output returned
+# By default, TCC is predicted using the "stem-map" model, full output returned.
 calc_tcc_metrics(plantation)
 
-# return only the predicted TCC value (`$model_tcc`)
+# Return only the predicted TCC value (`$model_tcc`).
 calc_tcc_metrics(plantation, full_output = FALSE)
 
-# using the "FVS method", which assumes that trees are randomly located
+# Using the "FVS method", which assumes that trees are randomly located.
 calc_tcc_metrics(plantation, stem_map = FALSE, full_output = FALSE)
 ```
 
 ### Data processing
 
 ```{r data-proc}
-# load tree data from a file or database connection
-# Lolo NF, single-condition forest plots, INVYR 2022, from public FIADB
+# Load tree data from a file or database connection.
+# Lolo NF, single-condition forested plots, INVYR = 2022, from public FIADB
 f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
 

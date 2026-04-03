@@ -74,8 +74,8 @@ dataset used here is an example tree list included in the package.
 ``` r
 library(FIAstemmap)
 
-# regression coefficients for estimating crown width from diameter are included
-# see `?cw_coef`
+# Regression coefficients for estimating crown width from diameter are included.
+# See `?cw_coef`.
 head(cw_coef)
 #>   symbol SPCD        common_name surrogate   b0   b1    b2          reference
 #> 1   ABAM   11 Pacific silver fir      <NA> 7.30 0.59  0.00    Bechtold (2004)
@@ -85,8 +85,8 @@ head(cw_coef)
 #> 5   ABLA   19      subalpine fir      <NA> 3.96 0.64  0.00    Bechtold (2004)
 #> 6   ABMA   20 California red fir      <NA> 6.67 0.43  0.00 Gill et al. (2000)
 
-# add a column of predicted crown widths to the `plantation` tree list
-# `within()` modifies a copy of the example dataset
+# Add a column of predicted crown widths to the `plantation` tree list.
+# `within()` modifies a copy of the example dataset.
 tree_list <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
 str(tree_list)
 #> 'data.frame':    91 obs. of  13 variables:
@@ -113,7 +113,7 @@ data with individual stem locations given in columns named `AZIMUTH`
 (distance from subplot/microplot center).
 
 ``` r
-# display modeled tree crowns projected vertically on the FIA plot boundary
+# Display modeled tree crowns projected vertically on the FIA plot boundary.
 plot_crowns(tree_list, main = "Loblolly pine plantation")
 ```
 
@@ -146,7 +146,7 @@ computation of descriptive spatial statistics, and other exploratory
 data analysis.
 
 ``` r
-# create a spatstat point pattern object for the plantation tree list
+## Create a spatstat point pattern object for the pine plantation tree list.
 X <- create_fia_ppp(plantation)
 summary(X)
 #> Planar point pattern:  89 points
@@ -167,45 +167,84 @@ summary(X)
 #> Unit of length: 1 foot
 #> Fraction of frame area: 0.124
 
-plot(X, pch = 16, background = "#fdf6e3", main = "plantation point pattern")
+plot(X, pch = 16, background = "#fdf6e3",
+     main = "Pine plantation point pattern")
 ```
 
 <img src="man/figures/README-spatstat-explore-1.png" alt="" width="70%" />
 
 ``` r
 
-# compute Ripley's K-function applying isotropic edge correction
+# Compute Ripley's K-function applying isotropic edge correction.
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
 
-# plot estimated K(r) along with theoretical values for a random point process,
-# suggesting spatial regularity in this case
-plot(K, main = "Ripley's K for the plantation trees")
+# Plot estimated K(r) along with theoretical values for a random point process,
+# suggesting spatial regularity in this case.
+plot(K, main = "Ripley's K for the plantation FIA plot")
 ```
 
 <img src="man/figures/README-spatstat-explore-2.png" alt="" width="70%" />
 
+``` r
+
+## Spatial point pattern for the western redcedar tree list.
+X <- create_fia_ppp(western_redcedar)
+summary(X)
+#> Planar point pattern:  24 points
+#> Average intensity 0.00331562 points per square foot
+#> 
+#> Coordinates are given to 15 decimal places
+#> 
+#> Window: polygonal boundary
+#> 4 separate polygons (no holes)
+#>            vertices    area relative.area
+#> polygon 1       360 1809.62          0.25
+#> polygon 2       360 1809.62          0.25
+#> polygon 3       360 1809.62          0.25
+#> polygon 4       360 1809.62          0.25
+#> enclosing rectangle: [-127.921, 127.921] x [-84.001, 144.001] feet
+#>                      (255.8 x 228 feet)
+#> Window area = 7238.47 square feet
+#> Unit of length: 1 foot
+#> Fraction of frame area: 0.124
+
+plot(X, pch = 16, background = "#fdf6e3",
+     main = "Western redcedar point pattern")
+```
+
+<img src="man/figures/README-spatstat-explore-3.png" alt="" width="70%" />
+
+``` r
+
+K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
+
+plot(K, main = "Ripley's K for the western redcedar FIA plot")
+```
+
+<img src="man/figures/README-spatstat-explore-4.png" alt="" width="70%" />
+
 ### Compute stand structure metrics
 
 ``` r
-## compute fractional tree canopy cover of a specific sampled area by overlaying
-## modeled crowns
+## Compute fractional tree canopy cover of a specific sampled area by overlaying
+## modeled crowns.
 
-# subplot 1 of the plantation plot (subplot radius 24 ft)
-# omit saplings which are only sampled in the microplot
+# Subplot 1 of the plantation plot (subplot radius 24 ft).
+# Omit saplings which are only sampled in the microplot.
 # visualized with: `plot_crowns(tree_list, subplot = 1)`
 tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
   calc_crown_overlay(sample_radius = 24)
 #> [1] 86.8
 
-## calculate stand height metrics, which are also included by default in the
-## output of `calc_tcc_metrics()` (see below)
+## Calculate stand height metrics, which are also included by default in the
+## output of `calc_tcc_metrics()` (see below).
 
 # compute stand height metrics only
 # calc_ht_metrics(plantation)
 
-## predict plot-level canopy cover from individual tree measurements
+## Predict plot-level canopy cover from individual tree measurements.
 
-# by default, TCC is predicted using the "stem-map" model, full output returned
+# By default, TCC is predicted using the "stem-map" model, full output returned.
 calc_tcc_metrics(plantation)
 #> $model_tcc
 #> [1] 88.4
@@ -282,11 +321,11 @@ calc_tcc_metrics(plantation)
 #> $maxSapHt
 #> [1] 43
 
-# return only the predicted TCC value (`$model_tcc`)
+# Return only the predicted TCC value (`$model_tcc`).
 calc_tcc_metrics(plantation, full_output = FALSE)
 #> [1] 88.4
 
-# using the "FVS method", which assumes that trees are randomly located
+# Using the "FVS method", which assumes that trees are randomly located.
 calc_tcc_metrics(plantation, stem_map = FALSE, full_output = FALSE)
 #> [1] 81.4
 ```
@@ -294,13 +333,13 @@ calc_tcc_metrics(plantation, stem_map = FALSE, full_output = FALSE)
 ### Data processing
 
 ``` r
-# load tree data from a file or database connection
-# Lolo NF, single-condition forest plots, INVYR 2022, from public FIADB
+# Load tree data from a file or database connection.
+# Lolo NF, single-condition forested plots, INVYR = 2022, from public FIADB
 f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
-#> ! the data source does not have DIST and/or AZIMUTH
-#> ℹ Fetching tree data...
-#> ✔ Fetching tree data. [14ms]
+#> ! The data source does not have DIST and/or AZIMUTH.
+#> ℹ Fetching tree data
+#> ✔ Fetching tree data [14ms]
 #> 
 #> ℹ 910 tree records returned.
 
