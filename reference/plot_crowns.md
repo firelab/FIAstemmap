@@ -30,9 +30,12 @@ plot_crowns(
   `SUBP` (FIA subplot number), `STATUSCD` (FIA integer tree status, `1`
   = live), `DIA` (tree diameter), `HT` (tree height), `ACTUALHT` (tree
   actual height, `ACTUALHT < HT` indicating a broken top), `DIST` (stem
-  distance from subplot/microplot center), `AZIMUTH` (horizontal angle
-  from subplot/microplot center to the stem location, in range `0:359`),
-  and `CRWIDTH` (tree crown width).
+  distance from subplot/microplot center) and `AZIMUTH` (horizontal
+  angle from subplot/microplot center to the stem location, in range
+  `0:359`). If the input data frame has a column named `"CRWIDTH"` it
+  will be used for tree crown width values, otherwise, crown widths will
+  be calculated with a call to
+  [`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md).
 
 - subplot:
 
@@ -90,14 +93,12 @@ The input, invisibly.
 ## Examples
 
 ``` r
-trees <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
-
-plot_crowns(trees, main = "plantation plot")
+plot_crowns(plantation, main = "plantation plot")
 
 
-plot_crowns(trees, subplot = 4, main = "plantation subplot 4")
+plot_crowns(plantation, subplot = 4, main = "plantation subplot 4")
 
 
-plot_crowns(trees, subplot = 4, microplot = TRUE,
+plot_crowns(plantation, subplot = 4, microplot = TRUE,
             main = "plantation microplot 4")
 ```

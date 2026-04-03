@@ -79,3 +79,9 @@ A data frame with 33 rows and 12 columns:
 
 A synthetic plot unique identifier is used in example tree list
 datasets.
+
+## Examples
+
+``` r
+plot_crowns(western_redcedar, main = "western redcedar plot")
+```

@@ -81,9 +81,11 @@ trees <code>&lt; 5</code> in. diameter).</p>
 columns <code>SUBP</code> (FIA subplot number), <code>STATUSCD</code> (FIA integer tree status,
 <code>1</code> = live), <code>DIA</code> (tree diameter), <code>HT</code> (tree height), <code>ACTUALHT</code> (tree
 actual height, <code>ACTUALHT &lt; HT</code> indicating a broken top), <code>DIST</code> (stem
-distance from subplot/microplot center), <code>AZIMUTH</code> (horizontal angle from
-subplot/microplot center to the stem location, in range <code>0:359</code>), and
-<code>CRWIDTH</code> (tree crown width).</p></dd>
+distance from subplot/microplot center) and <code>AZIMUTH</code> (horizontal angle from
+subplot/microplot center to the stem location, in range <code>0:359</code>). If the
+input data frame has a column named <code>"CRWIDTH"</code> it will be used for tree
+crown width values, otherwise, crown widths will be calculated with a call
+to <code><a href="calc_crwidth.html">calc_crwidth()</a></code>.</p></dd>
 
 
 <dt id="arg-subplot">subplot<a class="anchor" aria-label="anchor" href="#arg-subplot"></a></dt>
@@ -142,15 +144,13 @@ above).</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">trees</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">plantation</span>, <span class="va">CRWIDTH</span> <span class="op">&lt;-</span> <span class="fu"><a href="calc_crwidth.html">calc_crwidth</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">plot_crowns</span><span class="op">(</span><span class="va">trees</span>, main <span class="op">=</span> <span class="st">"plantation plot"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">plot_crowns</span><span class="op">(</span><span class="va">plantation</span>, main <span class="op">=</span> <span class="st">"plantation plot"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_crowns-1.png" alt="" width="595" height="595"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">plot_crowns</span><span class="op">(</span><span class="va">trees</span>, subplot <span class="op">=</span> <span class="fl">4</span>, main <span class="op">=</span> <span class="st">"plantation subplot 4"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot_crowns</span><span class="op">(</span><span class="va">plantation</span>, subplot <span class="op">=</span> <span class="fl">4</span>, main <span class="op">=</span> <span class="st">"plantation subplot 4"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_crowns-2.png" alt="" width="595" height="595"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">plot_crowns</span><span class="op">(</span><span class="va">trees</span>, subplot <span class="op">=</span> <span class="fl">4</span>, microplot <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span><span class="fu">plot_crowns</span><span class="op">(</span><span class="va">plantation</span>, subplot <span class="op">=</span> <span class="fl">4</span>, microplot <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
 <span class="r-in"><span>            main <span class="op">=</span> <span class="st">"plantation microplot 4"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_crowns-3.png" alt="" width="595" height="595"></span>
 </code></pre></div>
