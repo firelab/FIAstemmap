@@ -127,7 +127,7 @@ DEFAULT_TREE_COLUMNS <- c("PLT_CN", "SUBP", "TREE", "AZIMUTH", "DIST",
 "cw_sapling_adj"
 
 
-#' Pine plantation tree list
+#' Tree list for a pine plantation
 #'
 #' An example tree list for an FIA plot in a loblolly pine plantation.
 #'
@@ -157,3 +157,35 @@ DEFAULT_TREE_COLUMNS <- c("PLT_CN", "SUBP", "TREE", "AZIMUTH", "DIST",
 #' A synthetic plot unique identifier is used in example tree list datasets.
 #' @source <https://research.fs.usda.gov/programs/nfi>
 "plantation"
+
+
+#' Tree list for a western redcedar forest
+#'
+#' An example tree list for an FIA plot in a western redcedar forest.
+#'
+#' @format ## `western_redcedar`
+#' A data frame with 33 rows and 12 columns:
+#' \describe{
+#'   \item{\code{PLT_CN}}{\code{\link{character}}, Plot unique identifier}
+#'   \item{\code{SUBP}}{\code{\link{integer}}, Subplot number}
+#'   \item{\code{TREE}}{\code{\link{integer}}, Tree number}
+#'   \item{\code{AZIMUTH}}{\code{\link{integer}},
+#'     Horizontal angle from subplot center to the stem location}
+#'   \item{\code{DIST}}{\code{\link{numeric}},
+#'     Distance in feet from subplot center to the stem location}
+#'   \item{\code{STATUSCD}}{\code{\link{integer}},
+#'     Tree status code: 1 = live, 2 = standing dead}
+#'   \item{\code{SPCD}}{\code{\link{integer}}, FIA tree species code}
+#'   \item{\code{DIA}}{\code{\link{numeric}},
+#'     Tree diameter at breast height in inches}
+#'   \item{\code{HT}}{\code{\link{numeric}}, Tree height in feet}
+#'   \item{\code{ACTUALHT}}{\code{\link{numeric}},
+#'     Actual height in ft (ACTUALHT < HT indicates a broken top)}
+#'   \item{\code{CCLCD}}{\code{\link{integer}}, Tree crown class code}
+#'   \item{\code{TPA_UNADJ}}{\code{\link{numeric}},
+#'     Trees per acre expansion factor}
+#' }
+#' @note
+#' A synthetic plot unique identifier is used in example tree list datasets.
+#' @source <https://research.fs.usda.gov/programs/nfi>
+"western_redcedar"
