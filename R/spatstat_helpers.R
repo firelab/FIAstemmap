@@ -80,7 +80,7 @@
 #' \pkg{spatstat} package: \url{https://cran.r-project.org/package=spatstat}
 #'
 #' @examples
-#' # observation window for the standard FIA plot design
+#' ## observation window for the standard FIA plot design
 #' w <- create_fia_owin()
 #' summary(w)
 #'
@@ -90,7 +90,7 @@
 #'
 #' plot(w, main = "FIA standard four-subplot design")
 #'
-#' # point pattern object for the `plantation` example data
+#' ## point pattern object for the `plantation` example data
 #' X <- create_fia_ppp(plantation)
 #' summary(X)
 #'
@@ -103,7 +103,17 @@
 #'
 #' # Ripley's K-function
 #' K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
-#' plot(K, main = "Ripley's K for the plantation trees")
+#' plot(K, main = "Ripley's K for the plantation FIA plot")
+#'
+#' ## point pattern object for the `western_redcedar` example data
+#' X <- create_fia_ppp(western_redcedar)
+#' summary(X)
+#'
+#' plot(X, pch = 16, main = "Western redcedar FIA plot")
+#'
+#' # Ripley's K-function
+#' K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
+#' plot(K, main = "Ripley's K for the western redcedar FIA plot")
 #' @export
 create_fia_owin <- function(linear_unit = "ft", macroplot = FALSE,
                             npoly = 360) {

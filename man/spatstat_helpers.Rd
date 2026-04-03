@@ -97,7 +97,7 @@ below, along with the status of each column as required or optional for
 }
 }
 \examples{
-# observation window for the standard FIA plot design
+## observation window for the standard FIA plot design
 w <- create_fia_owin()
 summary(w)
 
@@ -107,7 +107,7 @@ summary(w)
 
 plot(w, main = "FIA standard four-subplot design")
 
-# point pattern object for the `plantation` example data
+## point pattern object for the `plantation` example data
 X <- create_fia_ppp(plantation)
 summary(X)
 
@@ -120,7 +120,17 @@ plot(X, shape = "arrows", direction = 90, size = 12, cols = "darkgreen",
 
 # Ripley's K-function
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
-plot(K, main = "Ripley's K for the plantation trees")
+plot(K, main = "Ripley's K for the plantation FIA plot")
+
+## point pattern object for the `western_redcedar` example data
+X <- create_fia_ppp(western_redcedar)
+summary(X)
+
+plot(X, pch = 16, main = "Western redcedar FIA plot")
+
+# Ripley's K-function
+K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
+plot(K, main = "Ripley's K for the western redcedar FIA plot")
 }
 \references{
 Baddeley, A., E. Rubak, R. Turner. 2015. \emph{Spatial Point Patterns: Methodology
