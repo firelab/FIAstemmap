@@ -36,4 +36,7 @@
   : Sapling crown width adjustment factors
 
 - [`plantation`](https://firelab.github.io/FIAstemmap/reference/plantation.md)
-  : Pine plantation tree list
+  : Tree list for a pine plantation
+
+- [`western_redcedar`](https://firelab.github.io/FIAstemmap/reference/western_redcedar.md)
+  : Tree list for a western redcedar forest

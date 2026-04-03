@@ -1,18 +1,18 @@
-# Tree list for a pine plantation
+# Tree list for a western redcedar forest
 
-An example tree list for an FIA plot in a loblolly pine plantation.
+An example tree list for an FIA plot in a western redcedar forest.
 
 ## Usage
 
 ``` r
-plantation
+western_redcedar
 ```
 
 ## Format
 
-### `plantation`
+### `western_redcedar`
 
-A data frame with 91 rows and 12 columns:
+A data frame with 33 rows and 12 columns:
 
 - `PLT_CN`:
 
