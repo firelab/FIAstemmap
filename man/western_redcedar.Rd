@@ -42,4 +42,7 @@ An example tree list for an FIA plot in a western redcedar forest.
 \note{
 A synthetic plot unique identifier is used in example tree list datasets.
 }
+\examples{
+plot_crowns(western_redcedar, main = "western redcedar plot")
+}
 \keyword{datasets}

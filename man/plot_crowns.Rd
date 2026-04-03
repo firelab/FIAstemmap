@@ -67,13 +67,11 @@ diameter. Individual microplots can also be displayed with saplings (i.e.,
 trees \verb{< 5} in. diameter).
 }
 \examples{
-trees <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
+plot_crowns(plantation, main = "plantation plot")
 
-plot_crowns(trees, main = "plantation plot")
+plot_crowns(plantation, subplot = 4, main = "plantation subplot 4")
 
-plot_crowns(trees, subplot = 4, main = "plantation subplot 4")
-
-plot_crowns(trees, subplot = 4, microplot = TRUE,
+plot_crowns(plantation, subplot = 4, microplot = TRUE,
             main = "plantation microplot 4")
 }
 \seealso{

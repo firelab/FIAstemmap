@@ -156,6 +156,8 @@ DEFAULT_TREE_COLUMNS <- c("PLT_CN", "SUBP", "TREE", "AZIMUTH", "DIST",
 #' @note
 #' A synthetic plot unique identifier is used in example tree list datasets.
 #' @source <https://research.fs.usda.gov/programs/nfi>
+#' @examples
+#' plot_crowns(plantation, main = "plantation plot")
 "plantation"
 
 
@@ -188,4 +190,6 @@ DEFAULT_TREE_COLUMNS <- c("PLT_CN", "SUBP", "TREE", "AZIMUTH", "DIST",
 #' @note
 #' A synthetic plot unique identifier is used in example tree list datasets.
 #' @source <https://research.fs.usda.gov/programs/nfi>
+#' @examples
+#' plot_crowns(western_redcedar, main = "western redcedar plot")
 "western_redcedar"
