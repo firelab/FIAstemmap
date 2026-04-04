@@ -142,17 +142,17 @@
 <p><img src="reference/figures/README-plot-crowns-1.png" alt="" width="70%"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># individual subplot</span></span>
+<span><span class="co"># Individual subplot</span></span>
 <span><span class="fu"><a href="reference/plot_crowns.html">plot_crowns</a></span><span class="op">(</span><span class="va">tree_list</span>, subplot <span class="op">=</span> <span class="fl">4</span>,</span>
 <span>            main <span class="op">=</span> <span class="st">"Loblolly pine plantation subplot 4"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot-crowns-2.png" alt="" width="70%"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># or microplot</span></span>
+<span><span class="co"># Or microplot</span></span>
 <span><span class="fu"><a href="reference/plot_crowns.html">plot_crowns</a></span><span class="op">(</span><span class="va">tree_list</span>, subplot <span class="op">=</span> <span class="fl">4</span>, microplot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>            main <span class="op">=</span> <span class="st">"Loblolly pine plantation microplot 4"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot-crowns-3.png" alt="" width="70%"></p>
-<p>Helper functions facilitate the analysis of FIA tree lists as Spatial Point Patterns using the <strong>spatstat</strong> library. <code><a href="reference/spatstat_helpers.html">create_fia_ppp()</a></code> returns an object of class <code>"ppp"</code> representing the point pattern of an FIA tree list in the 2-D plane. This object can be used with functions of <strong>spatstat.explore</strong> which provide additional plotting capabilities, computation of descriptive spatial statistics, and other exploratory data analysis.</p>
+<p>Helper functions facilitate the analysis of FIA tree lists as spatial point patterns using the <strong>spatstat</strong> library. <code><a href="reference/spatstat_helpers.html">create_fia_ppp()</a></code> returns an object of class <code>"ppp"</code> representing the point pattern of an FIA tree list in the 2-D plane. This object can be used with functions of <strong>spatstat.explore</strong> which provide additional plotting capabilities, descriptive spatial statistics, and other exploratory data analysis.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Create a spatstat point pattern object for the pine plantation tree list.</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/spatstat_helpers.html">create_fia_ppp</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span></span>
@@ -229,7 +229,7 @@
 <span></span>
 <span><span class="co"># Subplot 1 of the plantation plot (subplot radius 24 ft).</span></span>
 <span><span class="co"># Omit saplings which are only sampled in the microplot.</span></span>
-<span><span class="co"># visualized with: `plot_crowns(tree_list, subplot = 1)`</span></span>
+<span><span class="co"># Visualized with: `plot_crowns(tree_list, subplot = 1)`</span></span>
 <span><span class="va">tree_list</span><span class="op">[</span><span class="va">tree_list</span><span class="op">$</span><span class="va">SUBP</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">tree_list</span><span class="op">$</span><span class="va">DIA</span> <span class="op">&gt;=</span> <span class="fl">5</span>, <span class="op">]</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/calc_crown_overlay.html">calc_crown_overlay</a></span><span class="op">(</span>sample_radius <span class="op">=</span> <span class="fl">24</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 86.8</span></span>
@@ -237,7 +237,7 @@
 <span><span class="co">## Calculate stand height metrics, which are also included by default in the</span></span>
 <span><span class="co">## output of `calc_tcc_metrics()` (see below).</span></span>
 <span></span>
-<span><span class="co"># compute stand height metrics only</span></span>
+<span><span class="co"># Compute stand height metrics only.</span></span>
 <span><span class="co"># calc_ht_metrics(plantation)</span></span>
 <span></span>
 <span><span class="co">## Predict plot-level canopy cover from individual tree measurements.</span></span>
@@ -323,7 +323,8 @@
 <span><span class="fu"><a href="reference/calc_tcc_metrics.html">calc_tcc_metrics</a></span><span class="op">(</span><span class="va">plantation</span>, full_output <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 88.4</span></span>
 <span></span>
-<span><span class="co"># Using the "FVS method", which assumes that trees are randomly located.</span></span>
+<span><span class="co"># Alternatively, use the "FVS method" which assumes a random arrangement of</span></span>
+<span><span class="co"># tree crowns. This method does not require individual stem coordinates.</span></span>
 <span><span class="fu"><a href="reference/calc_tcc_metrics.html">calc_tcc_metrics</a></span><span class="op">(</span><span class="va">plantation</span>, stem_map <span class="op">=</span> <span class="cn">FALSE</span>, full_output <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 81.4</span></span></code></pre></div>
 </div>
@@ -337,7 +338,7 @@
 <span><span class="va">tree_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/load_tree_data.html">load_tree_data</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ! The data source does not have DIST and/or AZIMUTH.</span></span>
 <span><span class="co">#&gt; ℹ Fetching tree data</span></span>
-<span><span class="co">#&gt; ✔ Fetching tree data [14ms]</span></span>
+<span><span class="co">#&gt; ✔ Fetching tree data [15ms]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ℹ 910 tree records returned.</span></span>
 <span></span>

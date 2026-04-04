@@ -115,7 +115,7 @@ plot_crowns(tree_list, main = "Loblolly pine plantation")
 
 ``` r
 
-# individual subplot
+# Individual subplot
 plot_crowns(tree_list, subplot = 4,
             main = "Loblolly pine plantation subplot 4")
 ```
@@ -124,21 +124,20 @@ plot_crowns(tree_list, subplot = 4,
 
 ``` r
 
-# or microplot
+# Or microplot
 plot_crowns(tree_list, subplot = 4, microplot = TRUE,
             main = "Loblolly pine plantation microplot 4")
 ```
 
 ![](reference/figures/README-plot-crowns-3.png)
 
-Helper functions facilitate the analysis of FIA tree lists as Spatial
-Point Patterns using the **spatstat** library.
+Helper functions facilitate the analysis of FIA tree lists as spatial
+point patterns using the **spatstat** library.
 [`create_fia_ppp()`](https://firelab.github.io/FIAstemmap/reference/spatstat_helpers.md)
 returns an object of class `"ppp"` representing the point pattern of an
 FIA tree list in the 2-D plane. This object can be used with functions
 of **spatstat.explore** which provide additional plotting capabilities,
-computation of descriptive spatial statistics, and other exploratory
-data analysis.
+descriptive spatial statistics, and other exploratory data analysis.
 
 ``` r
 ## Create a spatstat point pattern object for the pine plantation tree list.
@@ -226,7 +225,7 @@ plot(K, main = "Ripley's K for the western redcedar FIA plot")
 
 # Subplot 1 of the plantation plot (subplot radius 24 ft).
 # Omit saplings which are only sampled in the microplot.
-# visualized with: `plot_crowns(tree_list, subplot = 1)`
+# Visualized with: `plot_crowns(tree_list, subplot = 1)`
 tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
   calc_crown_overlay(sample_radius = 24)
 #> [1] 86.8
@@ -234,7 +233,7 @@ tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
 ## Calculate stand height metrics, which are also included by default in the
 ## output of `calc_tcc_metrics()` (see below).
 
-# compute stand height metrics only
+# Compute stand height metrics only.
 # calc_ht_metrics(plantation)
 
 ## Predict plot-level canopy cover from individual tree measurements.
@@ -320,7 +319,8 @@ calc_tcc_metrics(plantation)
 calc_tcc_metrics(plantation, full_output = FALSE)
 #> [1] 88.4
 
-# Using the "FVS method", which assumes that trees are randomly located.
+# Alternatively, use the "FVS method" which assumes a random arrangement of
+# tree crowns. This method does not require individual stem coordinates.
 calc_tcc_metrics(plantation, stem_map = FALSE, full_output = FALSE)
 #> [1] 81.4
 ```
@@ -334,7 +334,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH.
 #> ℹ Fetching tree data
-#> ✔ Fetching tree data [14ms]
+#> ✔ Fetching tree data [15ms]
 #> 
 #> ℹ 910 tree records returned.
 
