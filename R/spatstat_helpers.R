@@ -106,13 +106,16 @@
 #' plot(K, main = "Ripley's K for the plantation FIA plot")
 #'
 #' ## point pattern object for the `western_redcedar` example data
-#' X <- create_fia_ppp(western_redcedar)
+#' ## tree distances may be specified in meters
+#' trees <- within(western_redcedar, DIST <- ft_to_m(DIST))
+#'
+#' X <- create_fia_ppp(trees, linear_unit = "m")
 #' summary(X)
 #'
 #' plot(X, pch = 16, main = "Western redcedar FIA plot")
 #'
 #' # Ripley's K-function
-#' K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
+#' K <- spatstat.explore::Kest(X, rmax = ft_to_m(12), correction = "isotropic")
 #' plot(K, main = "Ripley's K for the western redcedar FIA plot")
 #' @export
 create_fia_owin <- function(linear_unit = "ft", macroplot = FALSE,
@@ -241,7 +244,7 @@ create_fia_ppp <- function(tree_list, live_trees = TRUE, min_dia = 5,
         tree_list_in <- tree_list[tree_list$DIA >= min_dia, ]
     }
 
-    xy <- .get_tree_list_xy(tree_list_in)
+    xy <- .get_tree_list_xy(tree_list_in, linear_unit)
 
     marks <- NULL
     if (!is.null(mark_cols))

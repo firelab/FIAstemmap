@@ -19,6 +19,7 @@ reference:
   - calc_ht_metrics
   - calc_tcc_metrics
   - spatstat_helpers
+  - convert_units
   - load_tree_data
   - plot_crowns
   - process_tree_data

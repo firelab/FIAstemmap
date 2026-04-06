@@ -2,17 +2,26 @@
 #'
 #' `.get_tree_list_xy()` returns a named list with two elements each containing
 #' a numeric vector of the x and y coordinates for trees within the FIA
-#' 4-subplot configuration.
+#' 4-subplot configuration. The origin is the center of the center subplot.
 #'
 #' @param tree_list A data frame containing the standard tree list columns for
 #' a plot. This input generally has been pre-filtered, e.g., to live trees with
 #' `DIA >= 5.0`.
+#' @param linear_unit An optional character string specifying the linear
+#' distance unit. Defaults to the native FIA unit of `"ft"`, but may be set to
+#' `"m"` instead (or `"meter"` / `"metre"`). Specifies units of the input
+#' `tree_list$DIST`.
 #' @return
 #' A named list with elements `x` and `y` containing numeric vectors of stem
 #' coordinates.
 #' @noRd
 #' @export
-.get_tree_list_xy <- function(tree_list) {
+.get_tree_list_xy <- function(tree_list, linear_unit = "ft") {
+    unit_conv <- 1  # FIA native unit ft
+    if (linear_unit %in% c("m", "meter", "metre")) {
+        unit_conv <- 0.3048  # ft to m
+    }
+
     x <- rep(NA_real_, nrow(tree_list))
     y <- rep(NA_real_, nrow(tree_list))
 
@@ -24,23 +33,23 @@
 
     # subplot 2 - offsets from plot center
     xoff2 <- 0.0
-    yoff2 <- 120.0
+    yoff2 <- 120.0 * unit_conv
     dist <- tree_list$DIST[tree_list$SUBP == 2]
     azimuth <- tree_list$AZIMUTH[tree_list$SUBP == 2]
     x[tree_list$SUBP == 2] <- dist * sin(azimuth * (pi / 180)) + xoff2
     y[tree_list$SUBP == 2] <- dist * cos(azimuth * (pi / 180)) + yoff2
 
     # subplot 3 - offsets from plot center
-    xoff3 <- 103.92
-    yoff3 <- -60.0
+    xoff3 <- 103.92 * unit_conv
+    yoff3 <- -60.0 * unit_conv
     dist <- tree_list$DIST[tree_list$SUBP == 3]
     azimuth <- tree_list$AZIMUTH[tree_list$SUBP == 3]
     x[tree_list$SUBP == 3] <- dist * sin(azimuth * (pi / 180)) + xoff3
     y[tree_list$SUBP == 3] <- dist * cos(azimuth * (pi / 180)) + yoff3
 
     # subplot 4 - offsets from plot center
-    xoff4 <- -103.92
-    yoff4 <- -60.0
+    xoff4 <- -103.92 * unit_conv
+    yoff4 <- -60.0 * unit_conv
     dist <- tree_list$DIST[tree_list$SUBP == 4]
     azimuth <- tree_list$AZIMUTH[tree_list$SUBP == 4]
     x[tree_list$SUBP == 4] <- dist * sin(azimuth * (pi / 180)) + xoff4
