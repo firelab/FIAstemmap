@@ -14,12 +14,10 @@ test_that("convert_units works", {
     x_ft <- 24
     x_m <- ft_to_m(x_ft)
     expect_equal(m_to_ft(x_m), x_ft, tolerance = 1e-4)
-    expect_equal(ft_to_m(x_ft), x_m, tolerance = 1e-4)
 
     x_in <- 15.1
     x_cm <- in_to_cm(x_in)
     expect_equal(cm_to_in(x_cm), x_in, tolerance = 1e-4)
-    expect_equal(in_to_cm(x_in), x_cm, tolerance = 1e-4)
 
     x <- "char"
     expect_error(ft_to_m(x), "numeric vector")
