@@ -68,8 +68,13 @@ model fitting data by providing reasonable fall backs for the obvious
 cases. Details are given in the documentation for `calc_crwidth()`. The
 input is a data frame of tree records which must have columns `SPCD`
 (FIA species code), `STATUSCD` (FIA tree status code, `1` = live) and
-`DIA` (FIA tree diameter). The `plantation` dataset used here is an
-example tree list included in the package.
+`DIA` (FIA tree diameter). FIA distribute data using US customary units
+with `DIA` given in inches, tree height in feet, etc. Convenience
+functions are provided for converting to and from SI units
+(`in_to_cm()`, `cm_to_in()`, `ft_to_m()`, `m_to_ft()`).
+
+The `plantation` dataset used here is an example tree list included in
+the package.
 
 ``` r
 library(FIAstemmap)
@@ -86,7 +91,7 @@ head(cw_coef)
 #> 6   ABMA   20 California red fir      <NA> 6.67 0.43  0.00 Gill et al. (2000)
 
 # Add a column of predicted crown widths to the `plantation` tree list.
-# `within()` modifies a copy of the example dataset.
+# The base R function `within()` modifies a copy of the example dataset.
 tree_list <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
 str(tree_list)
 #> 'data.frame':    91 obs. of  13 variables:
@@ -189,24 +194,28 @@ the package.
 
 ``` r
 ## Spatial point pattern for the western redcedar tree list.
-X <- create_fia_ppp(western_redcedar)
+
+# Give stem distances in meters.
+trees <- within(western_redcedar, DIST <- ft_to_m(DIST))
+
+X <- create_fia_ppp(trees, linear_unit = "m")
 summary(X)
 #> Planar point pattern:  24 points
-#> Average intensity 0.00331562 points per square foot
+#> Average intensity 0.03568904 points per square meter
 #> 
 #> Coordinates are given to 15 decimal places
 #> 
 #> Window: polygonal boundary
 #> 4 separate polygons (no holes)
 #>            vertices    area relative.area
-#> polygon 1       360 1809.62          0.25
-#> polygon 2       360 1809.62          0.25
-#> polygon 3       360 1809.62          0.25
-#> polygon 4       360 1809.62          0.25
-#> enclosing rectangle: [-127.921, 127.921] x [-84.001, 144.001] feet
-#>                      (255.8 x 228 feet)
-#> Window area = 7238.47 square feet
-#> Unit of length: 1 foot
+#> polygon 1       360 168.119          0.25
+#> polygon 2       360 168.119          0.25
+#> polygon 3       360 168.119          0.25
+#> polygon 4       360 168.119          0.25
+#> enclosing rectangle: [-38.99032, 38.99032] x [-25.6035, 43.8915] meters
+#>                      (77.98 x 69.5 meters)
+#> Window area = 672.475 square meters
+#> Unit of length: 1 meter
 #> Fraction of frame area: 0.124
 
 plot(X, pch = 16, background = "#fdf6e3",
@@ -217,7 +226,7 @@ plot(X, pch = 16, background = "#fdf6e3",
 
 ``` r
 
-K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
+K <- spatstat.explore::Kest(X, rmax = ft_to_m(12), correction = "isotropic")
 
 plot(K, main = "Ripley's K for the western redcedar FIA plot")
 ```
@@ -341,7 +350,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH.
 #> ℹ Fetching tree data
-#> ✔ Fetching tree data [15ms]
+#> ✔ Fetching tree data [16ms]
 #> 
 #> ℹ 910 tree records returned.
 
