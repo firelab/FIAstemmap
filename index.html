@@ -98,7 +98,8 @@
 <div class="section level3">
 <h3 id="predict-tree-crown-width">Predict tree crown width<a class="anchor" aria-label="anchor" href="#predict-tree-crown-width"></a>
 </h3>
-<p>The data frame <code>cw_coef</code> contains a curated set of linear regression coefficients for predicting crown width from stem diameter of tree species in the conterminous US (see <code><a href="reference/cw_coef.html">?cw_coef</a></code>). The method for crown width prediction attempts to avoid extrapolation beyond the range of the model fitting data by providing reasonable fall backs for the obvious cases. Details are given in the documentation for <code><a href="reference/calc_crwidth.html">calc_crwidth()</a></code>. The input is a data frame of tree records which must have columns <code>SPCD</code> (FIA species code), <code>STATUSCD</code> (FIA tree status code, <code>1</code> = live) and <code>DIA</code> (FIA tree diameter). The <code>plantation</code> dataset used here is an example tree list included in the package.</p>
+<p>The data frame <code>cw_coef</code> contains a curated set of linear regression coefficients for predicting crown width from stem diameter of tree species in the conterminous US (see <code><a href="reference/cw_coef.html">?cw_coef</a></code>). The method for crown width prediction attempts to avoid extrapolation beyond the range of the model fitting data by providing reasonable fall backs for the obvious cases. Details are given in the documentation for <code><a href="reference/calc_crwidth.html">calc_crwidth()</a></code>. The input is a data frame of tree records which must have columns <code>SPCD</code> (FIA species code), <code>STATUSCD</code> (FIA tree status code, <code>1</code> = live) and <code>DIA</code> (FIA tree diameter). FIA distribute data using US customary units with <code>DIA</code> given in inches, tree height in feet, etc. Convenience functions are provided for converting to and from SI units (<code><a href="reference/convert_units.html">in_to_cm()</a></code>, <code><a href="reference/convert_units.html">cm_to_in()</a></code>, <code><a href="reference/convert_units.html">ft_to_m()</a></code>, <code><a href="reference/convert_units.html">m_to_ft()</a></code>).</p>
+<p>The <code>plantation</code> dataset used here is an example tree list included in the package.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://firelab.github.io/FIAstemmap/">FIAstemmap</a></span><span class="op">)</span></span>
 <span></span>
@@ -114,7 +115,7 @@
 <span><span class="co">#&gt; 6   ABMA   20 California red fir      &lt;NA&gt; 6.67 0.43  0.00 Gill et al. (2000)</span></span>
 <span></span>
 <span><span class="co"># Add a column of predicted crown widths to the `plantation` tree list.</span></span>
-<span><span class="co"># `within()` modifies a copy of the example dataset.</span></span>
+<span><span class="co"># The base R function `within()` modifies a copy of the example dataset.</span></span>
 <span><span class="va">tree_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">plantation</span>, <span class="va">CRWIDTH</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/calc_crwidth.html">calc_crwidth</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">tree_list</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 'data.frame':    91 obs. of  13 variables:</span></span>
@@ -190,6 +191,11 @@
 <p>The <code>western_redcedar</code> dataset is another example tree list included in the package.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Spatial point pattern for the western redcedar tree list.</span></span>
+<span></span>
+<span><span class="co"># Give stem distances in meters.</span></span>
+<span><span class="va">trees</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">western_redcedar</span>, <span class="va">DIST</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/convert_units.html">ft_to_m</a></span><span class="op">(</span><span class="va">DIST</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/spatstat_helpers.html">create_fia_ppp</a></span><span class="op">(</span><span class="va">trees</span>, linear_unit <span class="op">=</span> <span class="st">"m"</span><span class="op">)</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/spatstat_helpers.html">create_fia_ppp</a></span><span class="op">(</span><span class="va">western_redcedar</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Planar point pattern:  24 points</span></span>
@@ -215,7 +221,7 @@
 <p><img src="reference/figures/README-spatstat-explore-cont-1.png" alt="" width="70%"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">K</span> <span class="op">&lt;-</span> <span class="fu">spatstat.explore</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/Kest.html" class="external-link">Kest</a></span><span class="op">(</span><span class="va">X</span>, rmax <span class="op">=</span> <span class="fl">12</span>, correction <span class="op">=</span> <span class="st">"isotropic"</span><span class="op">)</span></span>
+<span><span class="va">K</span> <span class="op">&lt;-</span> <span class="fu">spatstat.explore</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/Kest.html" class="external-link">Kest</a></span><span class="op">(</span><span class="va">X</span>, rmax <span class="op">=</span> <span class="fu"><a href="reference/convert_units.html">ft_to_m</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span>, correction <span class="op">=</span> <span class="st">"isotropic"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">K</span>, main <span class="op">=</span> <span class="st">"Ripley's K for the western redcedar FIA plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-spatstat-explore-cont-2.png" alt="" width="70%"></p>

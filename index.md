@@ -62,8 +62,16 @@ backs for the obvious cases. Details are given in the documentation for
 [`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md).
 The input is a data frame of tree records which must have columns `SPCD`
 (FIA species code), `STATUSCD` (FIA tree status code, `1` = live) and
-`DIA` (FIA tree diameter). The `plantation` dataset used here is an
-example tree list included in the package.
+`DIA` (FIA tree diameter). FIA distribute data using US customary units
+with `DIA` given in inches, tree height in feet, etc. Convenience
+functions are provided for converting to and from SI units
+([`in_to_cm()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md),
+[`cm_to_in()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md),
+[`ft_to_m()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md),
+[`m_to_ft()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)).
+
+The `plantation` dataset used here is an example tree list included in
+the package.
 
 ``` r
 library(FIAstemmap)
@@ -80,7 +88,7 @@ head(cw_coef)
 #> 6   ABMA   20 California red fir      <NA> 6.67 0.43  0.00 Gill et al. (2000)
 
 # Add a column of predicted crown widths to the `plantation` tree list.
-# `within()` modifies a copy of the example dataset.
+# The base R function `within()` modifies a copy of the example dataset.
 tree_list <- within(plantation, CRWIDTH <- calc_crwidth(plantation))
 str(tree_list)
 #> 'data.frame':    91 obs. of  13 variables:
@@ -184,6 +192,11 @@ the package.
 
 ``` r
 ## Spatial point pattern for the western redcedar tree list.
+
+# Give stem distances in meters.
+trees <- within(western_redcedar, DIST <- ft_to_m(DIST))
+
+X <- create_fia_ppp(trees, linear_unit = "m")
 X <- create_fia_ppp(western_redcedar)
 summary(X)
 #> Planar point pattern:  24 points
@@ -212,7 +225,7 @@ plot(X, pch = 16, background = "#fdf6e3",
 
 ``` r
 
-K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
+K <- spatstat.explore::Kest(X, rmax = ft_to_m(12), correction = "isotropic")
 
 plot(K, main = "Ripley's K for the western redcedar FIA plot")
 ```
