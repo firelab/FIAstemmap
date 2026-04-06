@@ -98,7 +98,7 @@
 <div class="section level3">
 <h3 id="predict-tree-crown-width">Predict tree crown width<a class="anchor" aria-label="anchor" href="#predict-tree-crown-width"></a>
 </h3>
-<p>The data frame <code>cw_coef</code> contains a curated set of linear regression coefficients for predicting crown width from stem diameter of tree species in the conterminous US (see <code><a href="reference/cw_coef.html">?cw_coef</a></code>). The method for crown width prediction attempts to avoid extrapolation beyond the range of the model fitting data by providing reasonable fall backs for the obvious cases. Details are given in the documentation for <code><a href="reference/calc_crwidth.html">calc_crwidth()</a></code>. The input is a data frame of tree records which must have columns <code>SPCD</code> (FIA integer species code), <code>STATUSCD</code> (FIA integer tree status code, <code>1</code> = live) and <code>DIA</code> (FIA tree diameter in inches). The <code>plantation</code> dataset used here is an example tree list included in the package.</p>
+<p>The data frame <code>cw_coef</code> contains a curated set of linear regression coefficients for predicting crown width from stem diameter of tree species in the conterminous US (see <code><a href="reference/cw_coef.html">?cw_coef</a></code>). The method for crown width prediction attempts to avoid extrapolation beyond the range of the model fitting data by providing reasonable fall backs for the obvious cases. Details are given in the documentation for <code><a href="reference/calc_crwidth.html">calc_crwidth()</a></code>. The input is a data frame of tree records which must have columns <code>SPCD</code> (FIA species code), <code>STATUSCD</code> (FIA tree status code, <code>1</code> = live) and <code>DIA</code> (FIA tree diameter). The <code>plantation</code> dataset used here is an example tree list included in the package.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://firelab.github.io/FIAstemmap/">FIAstemmap</a></span><span class="op">)</span></span>
 <span></span>
@@ -187,9 +187,9 @@
 <span><span class="co"># suggesting spatial regularity in this case.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">K</span>, main <span class="op">=</span> <span class="st">"Ripley's K for the plantation FIA plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-spatstat-explore-2.png" alt="" width="70%"></p>
+<p>The <code>western_redcedar</code> dataset is another example tree list included in the package.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co">## Spatial point pattern for the western redcedar tree list.</span></span>
+<code class="sourceCode R"><span><span class="co">## Spatial point pattern for the western redcedar tree list.</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/spatstat_helpers.html">create_fia_ppp</a></span><span class="op">(</span><span class="va">western_redcedar</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Planar point pattern:  24 points</span></span>
@@ -212,13 +212,13 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, pch <span class="op">=</span> <span class="fl">16</span>, background <span class="op">=</span> <span class="st">"#fdf6e3"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Western redcedar point pattern"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-spatstat-explore-3.png" alt="" width="70%"></p>
+<p><img src="reference/figures/README-spatstat-explore-cont-1.png" alt="" width="70%"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">K</span> <span class="op">&lt;-</span> <span class="fu">spatstat.explore</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/Kest.html" class="external-link">Kest</a></span><span class="op">(</span><span class="va">X</span>, rmax <span class="op">=</span> <span class="fl">12</span>, correction <span class="op">=</span> <span class="st">"isotropic"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">K</span>, main <span class="op">=</span> <span class="st">"Ripley's K for the western redcedar FIA plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-spatstat-explore-4.png" alt="" width="70%"></p>
+<p><img src="reference/figures/README-spatstat-explore-cont-2.png" alt="" width="70%"></p>
 </div>
 <div class="section level3">
 <h3 id="compute-stand-structure-metrics">Compute stand structure metrics<a class="anchor" aria-label="anchor" href="#compute-stand-structure-metrics"></a>
