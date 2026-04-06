@@ -196,24 +196,23 @@
 <span><span class="va">trees</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">western_redcedar</span>, <span class="va">DIST</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/convert_units.html">ft_to_m</a></span><span class="op">(</span><span class="va">DIST</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/spatstat_helpers.html">create_fia_ppp</a></span><span class="op">(</span><span class="va">trees</span>, linear_unit <span class="op">=</span> <span class="st">"m"</span><span class="op">)</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/spatstat_helpers.html">create_fia_ppp</a></span><span class="op">(</span><span class="va">western_redcedar</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Planar point pattern:  24 points</span></span>
-<span><span class="co">#&gt; Average intensity 0.00331562 points per square foot</span></span>
+<span><span class="co">#&gt; Average intensity 0.03568904 points per square meter</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coordinates are given to 15 decimal places</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Window: polygonal boundary</span></span>
 <span><span class="co">#&gt; 4 separate polygons (no holes)</span></span>
 <span><span class="co">#&gt;            vertices    area relative.area</span></span>
-<span><span class="co">#&gt; polygon 1       360 1809.62          0.25</span></span>
-<span><span class="co">#&gt; polygon 2       360 1809.62          0.25</span></span>
-<span><span class="co">#&gt; polygon 3       360 1809.62          0.25</span></span>
-<span><span class="co">#&gt; polygon 4       360 1809.62          0.25</span></span>
-<span><span class="co">#&gt; enclosing rectangle: [-127.921, 127.921] x [-84.001, 144.001] feet</span></span>
-<span><span class="co">#&gt;                      (255.8 x 228 feet)</span></span>
-<span><span class="co">#&gt; Window area = 7238.47 square feet</span></span>
-<span><span class="co">#&gt; Unit of length: 1 foot</span></span>
+<span><span class="co">#&gt; polygon 1       360 168.119          0.25</span></span>
+<span><span class="co">#&gt; polygon 2       360 168.119          0.25</span></span>
+<span><span class="co">#&gt; polygon 3       360 168.119          0.25</span></span>
+<span><span class="co">#&gt; polygon 4       360 168.119          0.25</span></span>
+<span><span class="co">#&gt; enclosing rectangle: [-38.99032, 38.99032] x [-25.6035, 43.8915] meters</span></span>
+<span><span class="co">#&gt;                      (77.98 x 69.5 meters)</span></span>
+<span><span class="co">#&gt; Window area = 672.475 square meters</span></span>
+<span><span class="co">#&gt; Unit of length: 1 meter</span></span>
 <span><span class="co">#&gt; Fraction of frame area: 0.124</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, pch <span class="op">=</span> <span class="fl">16</span>, background <span class="op">=</span> <span class="st">"#fdf6e3"</span>,</span>
@@ -344,7 +343,7 @@
 <span><span class="va">tree_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/load_tree_data.html">load_tree_data</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ! The data source does not have DIST and/or AZIMUTH.</span></span>
 <span><span class="co">#&gt; ℹ Fetching tree data</span></span>
-<span><span class="co">#&gt; ✔ Fetching tree data [15ms]</span></span>
+<span><span class="co">#&gt; ✔ Fetching tree data [16ms]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ℹ 910 tree records returned.</span></span>
 <span></span>

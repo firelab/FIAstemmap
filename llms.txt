@@ -197,24 +197,23 @@ the package.
 trees <- within(western_redcedar, DIST <- ft_to_m(DIST))
 
 X <- create_fia_ppp(trees, linear_unit = "m")
-X <- create_fia_ppp(western_redcedar)
 summary(X)
 #> Planar point pattern:  24 points
-#> Average intensity 0.00331562 points per square foot
+#> Average intensity 0.03568904 points per square meter
 #> 
 #> Coordinates are given to 15 decimal places
 #> 
 #> Window: polygonal boundary
 #> 4 separate polygons (no holes)
 #>            vertices    area relative.area
-#> polygon 1       360 1809.62          0.25
-#> polygon 2       360 1809.62          0.25
-#> polygon 3       360 1809.62          0.25
-#> polygon 4       360 1809.62          0.25
-#> enclosing rectangle: [-127.921, 127.921] x [-84.001, 144.001] feet
-#>                      (255.8 x 228 feet)
-#> Window area = 7238.47 square feet
-#> Unit of length: 1 foot
+#> polygon 1       360 168.119          0.25
+#> polygon 2       360 168.119          0.25
+#> polygon 3       360 168.119          0.25
+#> polygon 4       360 168.119          0.25
+#> enclosing rectangle: [-38.99032, 38.99032] x [-25.6035, 43.8915] meters
+#>                      (77.98 x 69.5 meters)
+#> Window area = 672.475 square meters
+#> Unit of length: 1 meter
 #> Fraction of frame area: 0.124
 
 plot(X, pch = 16, background = "#fdf6e3",
@@ -349,7 +348,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH.
 #> ℹ Fetching tree data
-#> ✔ Fetching tree data [15ms]
+#> ✔ Fetching tree data [16ms]
 #> 
 #> ℹ 910 tree records returned.
 
