@@ -41,20 +41,41 @@
 #' plot_crowns(trees, subplot = 1, main = "plantation subplot 1")
 #' @export
 calc_crown_overlay <- function(tree_list, sample_radius, digits = 1) {
-    if (missing(tree_list) || is.null(tree_list))
-        stop("'tree_list' is required", call. = FALSE)
+    if (missing(tree_list) || is.null(tree_list)) {
+        stop(cli::format_error(c(
+            "{.arg tree_list} is required",
+        "x" = "A required argument is missing or NULL")))
+    }
 
-    if (!is.data.frame(tree_list))
-        stop("'tree_list' must be a data frame", call. = FALSE)
+    if (!is.data.frame(tree_list)) {
+        stop(cli::format_error(c(
+            "{.arg tree_list} must be a {.cls data.frame}",
+        "x" = "Invalid input type: {.cls {class(tree_list)}}")))
+    }
 
-    if (any(tree_list$AZIMUTH < 0) || any(tree_list$AZIMUTH > 360))
-        stop("'tree_list$AZIMUTH' contains values out of range", call. = FALSE)
+    if (any(is.na(tree_list$AZIMUTH))) {
+        stop(cli::format_error(c(
+            "{.fld tree_list$AZIMUTH} has missing values",
+        "x" = "{.fld tree_list$AZIMUTH} cannot contain {.val {NA}} values")))
+    }
 
-    if (missing(sample_radius) || is.null(sample_radius))
-        stop("'sample_radius' is required", call. = FALSE)
+    if (any(tree_list$AZIMUTH < 0) || any(tree_list$AZIMUTH > 360)) {
+        stop(cli::format_error(c(
+            "{.fld tree_list$AZIMUTH} contains out-of-range values",
+        "x" = "azimuth values must be in the range 0:360")))
+    }
 
-    if (!(is.numeric(sample_radius) && length(sample_radius) == 1))
-        stop("'sample_radius' must be a single numeric value", call. = FALSE)
+    if (missing(sample_radius) || is.null(sample_radius)) {
+        stop(cli::format_error(c(
+            "{.arg sample_radius} is required",
+        "x" = "A required argument is missing or NULL")))
+    }
+
+    if (!(is.numeric(sample_radius) && length(sample_radius) == 1)) {
+        stop(cli::format_error(c(
+            "{.arg sample_radius} must be a single {.cls numeric} value",
+        "x" = "Invalid input: length-{length(sample_radius)} {.cls {class(sample_radius)}}")))
+    }
 
     if (is.null(digits))
         digits <- 1

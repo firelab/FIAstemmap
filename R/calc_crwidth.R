@@ -48,30 +48,60 @@
 #' calc_crwidth(plantation)
 #' @export
 calc_crwidth <- function(tree_table, digits = 1) {
-    if (missing(tree_table) || is.null(tree_table))
-        stop("'tree_table' is required", call. = FALSE)
+    if (missing(tree_table) || is.null(tree_table)) {
+        stop(cli::format_error(c(
+            "{.arg tree_table} is required",
+        "x" = "A required argument is missing or NULL")))
+    }
 
-    if (!is.data.frame(tree_table))
-        stop("'tree_table' must be a data frame", call. = FALSE)
+    if (!is.data.frame(tree_table)) {
+        stop(cli::format_error(c(
+            "{.arg tree_table} must be a {.cls data.frame}",
+        "x" = "Invalid input type: {.cls {class(tree_table)}}")))
+    }
 
     required_cols <- c("SPCD", "STATUSCD", "DIA")
-    if (!all(required_cols %in% colnames(tree_table)))
-        stop("'tree_table' is missing required columns", call. = FALSE)
+    if (!all(required_cols %in% colnames(tree_table))) {
+        stop(cli::format_error(c(
+            "{.arg tree_table} is missing one or more required columns",
+        "x" = "Missing column(s): {.fld {setdiff(required_cols, colnames(tree_table))}}")))
+    }
 
-    if (!is.numeric(tree_table$SPCD))
-        stop("'SPCD' must be numeric or integer", call. = FALSE)
-    if (any(is.na(tree_table$SPCD)))
-        stop("'SPCD' cannot have missing values", call. = FALSE)
+    if (!is.numeric(tree_table$SPCD)) {
+        stop(cli::format_error(c(
+            "{.fld tree_table$SPCD} must be a {.cls numeric} type",
+        "x" = "Invalid field type: {.cls {class(tree_table$SPCD)}}")))
+    }
 
-    if (!is.numeric(tree_table$STATUSCD))
-        stop("'STATUSCD' must be numeric or integer", call. = FALSE)
-    if (any(is.na(tree_table$STATUSCD)))
-        stop("'STATUSCD' cannot have missing values", call. = FALSE)
+    if (any(is.na(tree_table$SPCD))) {
+        stop(cli::format_error(c(
+            "{.fld tree_table$SPCD} has missing values",
+        "x" = "{.fld tree_table$SPCD} cannot contain {.val {NA}}")))
+    }
 
-    if (!is.numeric(tree_table$DIA))
-        stop("'DIA' must be numeric", call. = FALSE)
-    if (any(is.na(tree_table$DIA[tree_table$STATUSCD == 1])))
-        stop("'DIA' has missing values for live trees", call. = FALSE)
+    if (!is.numeric(tree_table$STATUSCD)) {
+        stop(cli::format_error(c(
+            "{.fld tree_table$STATUSCD} must be a {.cls numeric} type",
+        "x" = "Invalid field type: {.cls {class(tree_table$STATUSCD)}}")))
+    }
+
+    if (any(is.na(tree_table$STATUSCD))) {
+        stop(cli::format_error(c(
+            "{.fld tree_table$STATUSCD} has missing values",
+        "x" = "{.fld tree_table$STATUSCD} cannot contain {.val {NA}}")))
+    }
+
+    if (!is.numeric(tree_table$DIA)) {
+        stop(cli::format_error(c(
+            "{.fld tree_table$DIA} must be {.cls numeric}",
+        "x" = "Invalid field type: {.cls {class(tree_table$DIA)}}")))
+    }
+
+    if (any(is.na(tree_table$DIA[tree_table$STATUSCD == 1]))) {
+        stop(cli::format_error(c(
+            "{.fld tree_table$DIA} has missing values for live trees",
+        "x" = "{.fld tree_table$DIA} cannot have {.val {NA}} for live trees")))
+    }
 
     if (is.null(digits))
         digits <- 1
