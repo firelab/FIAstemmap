@@ -32,7 +32,9 @@ The Forest Inventory and Analysis Program ([FIA](https://research.fs.usda.gov/pr
 * mapping erosion risk [[11]](#references)
 * assessment of tree canopy cover estimation methods [[12, 13]](#references)
 
-Computations based on tree spatial pattern within a plot require input data with coordinates of the individual stems given as azimuth and distance from the sample center point. Note that FIA no longer provide the `AZIMUTH` and `DIST` attributes in the publicly available `TREE` table. The FIADB User Guide states that these attributes are now available by request from [FIA Spatial Data Services](https://research.fs.usda.gov/programs/fia/sds) [[14]](#references). Tree data lacking stem locations can be used with **FIAstemmap** for certain functionality, which includes predicting individual tree crown width and computing several stand structure metrics.
+Computations based on tree spatial pattern within a plot require input data with coordinates of the individual stems given as azimuth and distance from the sample center point. Note that FIA no longer provide the `AZIMUTH` and `DIST` attributes in the publicly available `TREE` table. The FIADB User Guide states that these attributes are now available by request from [FIA Spatial Data Services](https://research.fs.usda.gov/programs/fia/sds) [[14]](#references).
+
+Tree data lacking stem locations can still be used with **FIAstemmap** for certain functionality, which includes predicting individual tree crown width and computing several stand structure metrics. The latter includes the option to estimate plot-level tree canopy cover using the aspatial "FVS" method [[15]](#references) which assumes a random arrangement of the crowns.
 
 ## Installation
 
@@ -99,7 +101,7 @@ K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
 plot(K, main = "Ripley's K for the plantation FIA plot")
 ```
 
-The `western_redcedar` dataset is another example tree list included in the package.
+The `western_redcedar` dataset is another example tree list included in the package. The following code uses meter for the distance unit.
 
 ```{r spatstat-explore-cont}
 ## Spatial point pattern for the western redcedar tree list.
@@ -192,3 +194,5 @@ _Ecological Indicators_, Volume 142, 109271, https://doi.org/10.1016/j.ecolind.2
 [13] Andrew N. Gray, Anne C.S. McIntosh, Steven L. Garman, Michael A. Shettles. 2021. Predicting canopy cover of diverse forest types from individual tree measurements. _Forest Ecology and Management_, Volume 501, 119682, ISSN 0378-1127, https://doi.org/10.1016/j.foreco.2021.119682.
 
 [14] Burrill, Elizabeth A.; DiTommaso, Andrea M.; Turner, Jeffery A.; Pugh, Scott A.; Christensen, Glenn; Kralicek, Karin M.; Perry, Carol J.; Lepine, Lucie C.; Walker, David M.; Conkling, Barbara L. 2024. The Forest Inventory and Analysis Database, FIADB user guides, volume: database description (version 9.4), nationwide forest inventory (NFI). U.S. Department of Agriculture, Forest Service. 1016 p. [Online]. Available at: https://research.fs.usda.gov/understory/forest-inventory-and-analysis-database-user-guide-nfi.
+
+[15] Crookston, N.L. and A.R. Stage. (1999). Percent canopy cover and stand structure statistics from the Forest Vegetation Simulator. Gen. Tech. Rep. RMRS-GTR-24. Ogden, UT: U. S. Department of Agriculture, Forest Service, Rocky Mountain Research Station. 11 p. \url{https://research.fs.usda.gov/treesearch/6261}.
