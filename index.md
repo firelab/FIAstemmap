@@ -31,10 +31,9 @@ Computations based on tree spatial pattern within a plot require input
 data with coordinates of the individual stems given as azimuth and
 distance from the sample center point. Note that FIA no longer provide
 the `AZIMUTH` and `DIST` attributes in the publicly available `TREE`
-table. The FIADB User Guide states that these attributes are now
-available by request from [FIA Spatial Data
-Services](https://research.fs.usda.gov/programs/fia/sds)
-[\[14\]](#references).
+table. The FIADB User Guide [\[14\]](#references) states that these
+attributes are now available by request from [FIA Spatial Data
+Services](https://research.fs.usda.gov/programs/fia/sds).
 
 Tree data lacking stem locations can still be used with **FIAstemmap**
 for certain functionality, which includes predicting individual tree
@@ -352,7 +351,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH.
 #> ℹ Fetching tree data
-#> ✔ Fetching tree data [14ms]
+#> ✔ Fetching tree data [17ms]
 #> 
 #> ℹ 910 tree records returned.
 

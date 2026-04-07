@@ -83,7 +83,7 @@
 <li>assessment of tree canopy cover estimation methods <a href="#references">[12, 13]</a>
 </li>
 </ul>
-<p>Computations based on tree spatial pattern within a plot require input data with coordinates of the individual stems given as azimuth and distance from the sample center point. Note that FIA no longer provide the <code>AZIMUTH</code> and <code>DIST</code> attributes in the publicly available <code>TREE</code> table. The FIADB User Guide states that these attributes are now available by request from <a href="https://research.fs.usda.gov/programs/fia/sds" class="external-link">FIA Spatial Data Services</a> <a href="#references">[14]</a>.</p>
+<p>Computations based on tree spatial pattern within a plot require input data with coordinates of the individual stems given as azimuth and distance from the sample center point. Note that FIA no longer provide the <code>AZIMUTH</code> and <code>DIST</code> attributes in the publicly available <code>TREE</code> table. The FIADB User Guide <a href="#references">[14]</a> states that these attributes are now available by request from <a href="https://research.fs.usda.gov/programs/fia/sds" class="external-link">FIA Spatial Data Services</a>.</p>
 <p>Tree data lacking stem locations can still be used with <strong>FIAstemmap</strong> for certain functionality, which includes predicting individual tree crown width and computing several stand structure metrics. The latter includes the option to estimate plot-level tree canopy cover using the aspatial “FVS” method <a href="#references">[15]</a> which assumes a random arrangement of the crowns.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -344,7 +344,7 @@
 <span><span class="va">tree_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/load_tree_data.html">load_tree_data</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ! The data source does not have DIST and/or AZIMUTH.</span></span>
 <span><span class="co">#&gt; ℹ Fetching tree data</span></span>
-<span><span class="co">#&gt; ✔ Fetching tree data [14ms]</span></span>
+<span><span class="co">#&gt; ✔ Fetching tree data [17ms]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ℹ 910 tree records returned.</span></span>
 <span></span>
