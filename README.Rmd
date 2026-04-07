@@ -32,7 +32,7 @@ The Forest Inventory and Analysis Program ([FIA](https://research.fs.usda.gov/pr
 * mapping erosion risk [[11]](#references)
 * assessment of tree canopy cover estimation methods [[12, 13]](#references)
 
-Computations based on tree spatial pattern within a plot require input data with coordinates of the individual stems given as azimuth and distance from the sample center point. Note that FIA no longer provide the `AZIMUTH` and `DIST` attributes in the publicly available `TREE` table. The FIADB User Guide states that these attributes are now available by request from [FIA Spatial Data Services](https://research.fs.usda.gov/programs/fia/sds) [[14]](#references).
+Computations based on tree spatial pattern within a plot require input data with coordinates of the individual stems given as azimuth and distance from the sample center point. Note that FIA no longer provide the `AZIMUTH` and `DIST` attributes in the publicly available `TREE` table. The FIADB User Guide [[14]](#references) states that these attributes are now available by request from [FIA Spatial Data Services](https://research.fs.usda.gov/programs/fia/sds).
 
 Tree data lacking stem locations can still be used with **FIAstemmap** for certain functionality, which includes predicting individual tree crown width and computing several stand structure metrics. The latter includes the option to estimate plot-level tree canopy cover using the aspatial "FVS" method [[15]](#references) which assumes a random arrangement of the crowns.
 
