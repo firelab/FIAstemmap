@@ -49,7 +49,7 @@ pak::pak("firelab/FIAstemmap")
 
 ### Predict tree crown width
 
-The data frame `cw_coef` contains a curated set of linear regression coefficients for predicting crown width from stem diameter of tree species in the conterminous US (see `?cw_coef`). The method for crown width prediction attempts to avoid extrapolation beyond the range of the model fitting data by providing reasonable fall backs for the obvious cases. Details are given in the documentation for `calc_crwidth()`. The input is a data frame of tree records which must have columns `SPCD` (FIA species code), `STATUSCD` (FIA tree status code, `1` = live) and `DIA` (FIA tree diameter). FIA distribute data using US customary units with `DIA` given in inches, tree height in feet, etc. Convenience functions are provided for converting to and from SI units (`in_to_cm()`, `cm_to_in()`, `ft_to_m()`, `m_to_ft()`).
+The data frame `cw_coef` contains a curated set of linear regression coefficients for predicting crown width from stem diameter of tree species in the conterminous US (see `?cw_coef`). The method for crown width prediction attempts to avoid extrapolation beyond the range of the model fitting data by providing reasonable fall backs for the obvious cases. Details are given in the documentation for `calc_crwidth()`. The input is a data frame of tree records which must have columns `SPCD` (FIA species code), `STATUSCD` (FIA tree status code, `1` = live) and `DIA` (FIA tree diameter). FIA distribute data in [United States customary units](https://en.wikipedia.org/wiki/United_States_customary_units) with tree diameter given in inches, height in feet, and area in acres. Convenience functions are provided for converting to and from SI units[^1^](#footnotes) (`in_to_cm()`, `cm_to_in()`, `ft_to_m()`, `m_to_ft()`, `ac_to_ha()`, `ha_to_ac()`).
 
 The `plantation` dataset used here is an example tree list included in the package.
 
@@ -196,3 +196,7 @@ _Ecological Indicators_, Volume 142, 109271, https://doi.org/10.1016/j.ecolind.2
 [14] Burrill, Elizabeth A.; DiTommaso, Andrea M.; Turner, Jeffery A.; Pugh, Scott A.; Christensen, Glenn; Kralicek, Karin M.; Perry, Carol J.; Lepine, Lucie C.; Walker, David M.; Conkling, Barbara L. 2024. The Forest Inventory and Analysis Database, FIADB user guides, volume: database description (version 9.4), nationwide forest inventory (NFI). U.S. Department of Agriculture, Forest Service. 1016 p. [Online]. Available at: https://research.fs.usda.gov/understory/forest-inventory-and-analysis-database-user-guide-nfi.
 
 [15] Crookston, N.L. and A.R. Stage. (1999). Percent canopy cover and stand structure statistics from the Forest Vegetation Simulator. Gen. Tech. Rep. RMRS-GTR-24. Ogden, UT: U. S. Department of Agriculture, Forest Service, Rocky Mountain Research Station. 11 p. Available: https://research.fs.usda.gov/treesearch/6261.
+
+## Footnotes
+
+^1^ The hectare (ha) is technically a non-SI unit of area that is [accepted for use with SI](https://en.wikipedia.org/wiki/International_System_of_Units#Non-SI_units_accepted_for_use_with_SI).

@@ -6,7 +6,9 @@
 \alias{m_to_ft}
 \alias{in_to_cm}
 \alias{cm_to_in}
-\title{Convenience functions for length unit conversion}
+\alias{ac_to_ha}
+\alias{ha_to_ac}
+\title{Convenience functions for common unit conversions}
 \usage{
 ft_to_m(x)
 
@@ -15,6 +17,10 @@ m_to_ft(x)
 in_to_cm(x)
 
 cm_to_in(x)
+
+ac_to_ha(x)
+
+ha_to_ac(x)
 }
 \arguments{
 \item{x}{Numeric vector of values to convert.}
@@ -24,7 +30,7 @@ A numeric vector of the converted values.
 }
 \description{
 Functions to convert between US customary units and SI units for
-measurements of length used with tree data.
+measurements of length and area commonly used with tree data.
 }
 \details{
 \code{ft_to_m(x)} converts feet to meters.
@@ -34,6 +40,13 @@ measurements of length used with tree data.
 \code{in_to_cm(x)} converts inches to centimeters.
 
 \code{cm_to_in(x)} converts centimeters to inches.
+
+\code{ac_to_ha()} converts acres to hectares.
+
+\code{ha_to_ac()} converts hectares to acres.
+}
+\note{
+The hectare (ha) is technically a non-SI unit of area that is \href{https://en.wikipedia.org/wiki/International_System_of_Units#Non-SI_units_accepted_for_use_with_SI}{accepted for use with SI}.
 }
 \examples{
 ft_to_m(1)
@@ -43,4 +56,8 @@ m_to_ft(1)
 in_to_cm(1)
 
 cm_to_in(1)
+
+ac_to_ha(1)
+
+ha_to_ac(1)
 }
