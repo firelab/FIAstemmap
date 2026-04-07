@@ -514,4 +514,5 @@ Available at:
 \[15\] Crookston, N.L. and A.R. Stage. (1999). Percent canopy cover and
 stand structure statistics from the Forest Vegetation Simulator.
 Gen. Tech. Rep. RMRS-GTR-24. Ogden, UT: U. S. Department of Agriculture,
-Forest Service, Rocky Mountain Research Station. 11 p. .
+Forest Service, Rocky Mountain Research Station. 11 p. Available:
+<https://research.fs.usda.gov/treesearch/6261>.
