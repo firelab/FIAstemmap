@@ -6,7 +6,7 @@
 \alias{m_to_ft}
 \alias{in_to_cm}
 \alias{cm_to_in}
-\title{Convenience functions for unit conversion}
+\title{Convenience functions for length unit conversion}
 \usage{
 ft_to_m(x)
 
@@ -23,7 +23,8 @@ cm_to_in(x)
 A numeric vector of the converted values.
 }
 \description{
-Functions to convert between SI and US customary units.
+Functions to convert between US customary units and SI units for
+measurements of length used with tree data.
 }
 \details{
 \code{ft_to_m(x)} converts feet to meters.

@@ -1,6 +1,7 @@
-#' Convenience functions for unit conversion
+#' Convenience functions for length unit conversion
 #'
-#' Functions to convert between SI and US customary units.
+#' Functions to convert between US customary units and SI units for
+#' measurements of length used with tree data.
 #'
 #' @name convert_units
 #' @details
