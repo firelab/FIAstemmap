@@ -65,13 +65,18 @@ backs for the obvious cases. Details are given in the documentation for
 [`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md).
 The input is a data frame of tree records which must have columns `SPCD`
 (FIA species code), `STATUSCD` (FIA tree status code, `1` = live) and
-`DIA` (FIA tree diameter). FIA distribute data using US customary units
-with `DIA` given in inches, tree height in feet, etc. Convenience
-functions are provided for converting to and from SI units
+`DIA` (FIA tree diameter). FIA distribute data in [United States
+customary
+units](https://en.wikipedia.org/wiki/United_States_customary_units) with
+tree diameter given in inches, height in feet, and area in acres.
+Convenience functions are provided for converting to and from SI
+units[¹](#footnotes)
 ([`in_to_cm()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md),
 [`cm_to_in()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md),
 [`ft_to_m()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md),
-[`m_to_ft()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)).
+[`m_to_ft()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md),
+[`ac_to_ha()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md),
+[`ha_to_ac()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)).
 
 The `plantation` dataset used here is an example tree list included in
 the package.
@@ -351,7 +356,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH.
 #> ℹ Fetching tree data
-#> ✔ Fetching tree data [17ms]
+#> ✔ Fetching tree data [14ms]
 #> 
 #> ℹ 910 tree records returned.
 
@@ -516,6 +521,12 @@ Gen. Tech. Rep. RMRS-GTR-24. Ogden, UT: U. S. Department of Agriculture,
 Forest Service, Rocky Mountain Research Station. 11 p. Available:
 <https://research.fs.usda.gov/treesearch/6261>.
 
+## Footnotes
+
+¹ The hectare (ha) is technically a non-SI unit of area that is
+[accepted for use with
+SI](https://en.wikipedia.org/wiki/International_System_of_Units#Non-SI_units_accepted_for_use_with_SI).
+
 # Package index
 
 ## Functions
@@ -536,7 +547,9 @@ Forest Service, Rocky Mountain Research Station. 11 p. Available:
   [`m_to_ft()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)
   [`in_to_cm()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)
   [`cm_to_in()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)
-  : Convenience functions for length unit conversion
+  [`ac_to_ha()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)
+  [`ha_to_ac()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)
+  : Convenience functions for common unit conversions
 - [`load_tree_data()`](https://firelab.github.io/FIAstemmap/reference/load_tree_data.md)
   : Load tree data from a file or database connection
 - [`plot_crowns()`](https://firelab.github.io/FIAstemmap/reference/plot_crowns.md)

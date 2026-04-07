@@ -1,7 +1,7 @@
-# Convenience functions for length unit conversion
+# Convenience functions for common unit conversions
 
 Functions to convert between US customary units and SI units for
-measurements of length used with tree data.
+measurements of length and area commonly used with tree data.
 
 ## Usage
 
@@ -13,6 +13,10 @@ m_to_ft(x)
 in_to_cm(x)
 
 cm_to_in(x)
+
+ac_to_ha(x)
+
+ha_to_ac(x)
 ```
 
 ## Arguments
@@ -35,6 +39,16 @@ A numeric vector of the converted values.
 
 `cm_to_in(x)` converts centimeters to inches.
 
+`ac_to_ha()` converts acres to hectares.
+
+`ha_to_ac()` converts hectares to acres.
+
+## Note
+
+The hectare (ha) is technically a non-SI unit of area that is [accepted
+for use with
+SI](https://en.wikipedia.org/wiki/International_System_of_Units#Non-SI_units_accepted_for_use_with_SI).
+
 ## Examples
 
 ``` r
@@ -49,4 +63,10 @@ in_to_cm(1)
 
 cm_to_in(1)
 #> [1] 0.393701
+
+ac_to_ha(1)
+#> [1] 0.4046856
+
+ha_to_ac(1)
+#> [1] 2.471054
 ```

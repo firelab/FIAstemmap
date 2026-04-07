@@ -18,7 +18,9 @@
   [`m_to_ft()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)
   [`in_to_cm()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)
   [`cm_to_in()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)
-  : Convenience functions for length unit conversion
+  [`ac_to_ha()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)
+  [`ha_to_ac()`](https://firelab.github.io/FIAstemmap/reference/convert_units.md)
+  : Convenience functions for common unit conversions
 - [`load_tree_data()`](https://firelab.github.io/FIAstemmap/reference/load_tree_data.md)
   : Load tree data from a file or database connection
 - [`plot_crowns()`](https://firelab.github.io/FIAstemmap/reference/plot_crowns.md)
