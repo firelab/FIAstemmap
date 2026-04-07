@@ -34,10 +34,14 @@ the `AZIMUTH` and `DIST` attributes in the publicly available `TREE`
 table. The FIADB User Guide states that these attributes are now
 available by request from [FIA Spatial Data
 Services](https://research.fs.usda.gov/programs/fia/sds)
-[\[14\]](#references). Tree data lacking stem locations can be used with
-**FIAstemmap** for certain functionality, which includes predicting
-individual tree crown width and computing several stand structure
-metrics.
+[\[14\]](#references).
+
+Tree data lacking stem locations can still be used with **FIAstemmap**
+for certain functionality, which includes predicting individual tree
+crown width and computing several stand structure metrics. The latter
+includes the option to estimate plot-level tree canopy cover using the
+aspatial “FVS” method [\[15\]](#references) which assumes a random
+arrangement of the crowns.
 
 ## Installation
 
@@ -188,7 +192,7 @@ plot(K, main = "Ripley's K for the plantation FIA plot")
 ![](reference/figures/README-spatstat-explore-2.png)
 
 The `western_redcedar` dataset is another example tree list included in
-the package.
+the package. The following code uses meter for the distance unit.
 
 ``` r
 ## Spatial point pattern for the western redcedar tree list.
@@ -348,7 +352,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH.
 #> ℹ Fetching tree data
-#> ✔ Fetching tree data [16ms]
+#> ✔ Fetching tree data [14ms]
 #> 
 #> ℹ 910 tree records returned.
 
@@ -506,3 +510,8 @@ database description (version 9.4), nationwide forest inventory (NFI).
 U.S. Department of Agriculture, Forest Service. 1016 p. \[Online\].
 Available at:
 <https://research.fs.usda.gov/understory/forest-inventory-and-analysis-database-user-guide-nfi>.
+
+\[15\] Crookston, N.L. and A.R. Stage. (1999). Percent canopy cover and
+stand structure statistics from the Forest Vegetation Simulator.
+Gen. Tech. Rep. RMRS-GTR-24. Ogden, UT: U. S. Department of Agriculture,
+Forest Service, Rocky Mountain Research Station. 11 p. .

@@ -83,7 +83,8 @@
 <li>assessment of tree canopy cover estimation methods <a href="#references">[12, 13]</a>
 </li>
 </ul>
-<p>Computations based on tree spatial pattern within a plot require input data with coordinates of the individual stems given as azimuth and distance from the sample center point. Note that FIA no longer provide the <code>AZIMUTH</code> and <code>DIST</code> attributes in the publicly available <code>TREE</code> table. The FIADB User Guide states that these attributes are now available by request from <a href="https://research.fs.usda.gov/programs/fia/sds" class="external-link">FIA Spatial Data Services</a> <a href="#references">[14]</a>. Tree data lacking stem locations can be used with <strong>FIAstemmap</strong> for certain functionality, which includes predicting individual tree crown width and computing several stand structure metrics.</p>
+<p>Computations based on tree spatial pattern within a plot require input data with coordinates of the individual stems given as azimuth and distance from the sample center point. Note that FIA no longer provide the <code>AZIMUTH</code> and <code>DIST</code> attributes in the publicly available <code>TREE</code> table. The FIADB User Guide states that these attributes are now available by request from <a href="https://research.fs.usda.gov/programs/fia/sds" class="external-link">FIA Spatial Data Services</a> <a href="#references">[14]</a>.</p>
+<p>Tree data lacking stem locations can still be used with <strong>FIAstemmap</strong> for certain functionality, which includes predicting individual tree crown width and computing several stand structure metrics. The latter includes the option to estimate plot-level tree canopy cover using the aspatial “FVS” method <a href="#references">[15]</a> which assumes a random arrangement of the crowns.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -188,7 +189,7 @@
 <span><span class="co"># suggesting spatial regularity in this case.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">K</span>, main <span class="op">=</span> <span class="st">"Ripley's K for the plantation FIA plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-spatstat-explore-2.png" alt="" width="70%"></p>
-<p>The <code>western_redcedar</code> dataset is another example tree list included in the package.</p>
+<p>The <code>western_redcedar</code> dataset is another example tree list included in the package. The following code uses meter for the distance unit.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Spatial point pattern for the western redcedar tree list.</span></span>
 <span></span>
@@ -343,7 +344,7 @@
 <span><span class="va">tree_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/load_tree_data.html">load_tree_data</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ! The data source does not have DIST and/or AZIMUTH.</span></span>
 <span><span class="co">#&gt; ℹ Fetching tree data</span></span>
-<span><span class="co">#&gt; ✔ Fetching tree data [16ms]</span></span>
+<span><span class="co">#&gt; ✔ Fetching tree data [14ms]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ℹ 910 tree records returned.</span></span>
 <span></span>
@@ -423,6 +424,7 @@
 <p>[12] Riemann, R., Liknes, G., O’Neil-Dunne, J., Toney, C., Lister, T. (2016). Comparative assessment of methods for estimating tree canopy cover across a rural-to-urban gradient in the mid-Atlantic region of the USA. <em>Environmental Monitoring and Assessment</em>, 188, 297, <a href="https://doi.org/10.1007/s10661-016-5281-8" class="external-link uri">https://doi.org/10.1007/s10661-016-5281-8</a>.</p>
 <p>[13] Andrew N. Gray, Anne C.S. McIntosh, Steven L. Garman, Michael A. Shettles. 2021. Predicting canopy cover of diverse forest types from individual tree measurements. <em>Forest Ecology and Management</em>, Volume 501, 119682, ISSN 0378-1127, <a href="https://doi.org/10.1016/j.foreco.2021.119682" class="external-link uri">https://doi.org/10.1016/j.foreco.2021.119682</a>.</p>
 <p>[14] Burrill, Elizabeth A.; DiTommaso, Andrea M.; Turner, Jeffery A.; Pugh, Scott A.; Christensen, Glenn; Kralicek, Karin M.; Perry, Carol J.; Lepine, Lucie C.; Walker, David M.; Conkling, Barbara L. 2024. The Forest Inventory and Analysis Database, FIADB user guides, volume: database description (version 9.4), nationwide forest inventory (NFI). U.S. Department of Agriculture, Forest Service. 1016 p. [Online]. Available at: <a href="https://research.fs.usda.gov/understory/forest-inventory-and-analysis-database-user-guide-nfi" class="external-link uri">https://research.fs.usda.gov/understory/forest-inventory-and-analysis-database-user-guide-nfi</a>.</p>
+<p>[15] Crookston, N.L. and A.R. Stage. (1999). Percent canopy cover and stand structure statistics from the Forest Vegetation Simulator. Gen. Tech. Rep. RMRS-GTR-24. Ogden, UT: U. S. Department of Agriculture, Forest Service, Rocky Mountain Research Station. 11 p. .</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="table-of-contents">
