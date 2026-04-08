@@ -68,8 +68,9 @@ coefficients for predicting crown width from stem diameter of tree
 species in the conterminous US (see `?cw_coef`). The method for crown
 width prediction attempts to avoid extrapolation beyond the range of the
 model fitting data by providing reasonable fall backs for the obvious
-cases. Details are given in the documentation for `calc_crwidth()`. The
-input is a data frame of tree records which must have columns `SPCD`
+cases. Details are given in the documentation for `calc_crwidth()`.
+
+The input is a data frame of tree records which must have columns `SPCD`
 (FIA species code), `STATUSCD` (FIA tree status code, `1` = live) and
 `DIA` (FIA tree diameter). FIA distribute data in [United States
 customary
@@ -152,8 +153,10 @@ Helper functions facilitate the analysis of FIA tree lists as spatial
 point patterns using the **spatstat** library. `create_fia_ppp()`
 returns an object of class `"ppp"` representing the point pattern of an
 FIA tree list in the 2-D plane. This object can be used with functions
-of **spatstat.explore** which provide additional plotting capabilities,
-descriptive spatial statistics, and other exploratory data analysis.
+of
+[**spatstat.explore**](https://cran.r-project.org/package=spatstat.explore)
+which provide additional plotting capabilities, descriptive spatial
+statistics, and other exploratory data analysis.
 
 ``` r
 ## Create a spatstat point pattern object for the pine plantation tree list.
