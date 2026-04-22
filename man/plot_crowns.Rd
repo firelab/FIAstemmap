@@ -38,9 +38,9 @@ saplings overlaid of the microplot boundary of \code{subplot = n}. The default i
 \item{linear_unit}{An optional character string specifying the linear
 distance unit. Defaults to the native FIA unit of \code{"ft"}, but may be set to
 \code{"m"} instead (or \code{"meter"} / \code{"metre"}), in which case subplot boundaries
-will be display in meters, tree heights and crown widths are assumed to be
-given in meters, and tree diameters are assumed to be given in centimeters.
-\strong{TODO: not currently implemented}}
+will be displayed in meters, tree distances and crown widths are assumed to
+be given in meters, and tree diameters are assumed to be given in
+centimeters.}
 
 \item{main}{Character string giving the main plot title (on top).}
 
@@ -73,6 +73,16 @@ plot_crowns(plantation, subplot = 4, main = "plantation subplot 4")
 
 plot_crowns(plantation, subplot = 4, microplot = TRUE,
             main = "plantation microplot 4")
+
+# using SI units
+metric_trees <- within(plantation, {
+  CRWIDTH <- calc_crwidth(plantation) |> ft_to_m()
+  rm(DIST, DIA)
+  DIST <- ft_to_m(plantation$DIST)
+  DIA <- in_to_cm(plantation$DIA)
+})
+plot_crowns(metric_trees, linear_unit = "meter",
+            main = "plantation plot (SI units)")
 }
 \seealso{
 \code{\link[=calc_crwidth]{calc_crwidth()}}, \code{\link[=calc_crown_overlay]{calc_crown_overlay()}}
