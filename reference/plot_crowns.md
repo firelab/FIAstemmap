@@ -54,9 +54,9 @@ plot_crowns(
   An optional character string specifying the linear distance unit.
   Defaults to the native FIA unit of `"ft"`, but may be set to `"m"`
   instead (or `"meter"` / `"metre"`), in which case subplot boundaries
-  will be display in meters, tree heights and crown widths are assumed
-  to be given in meters, and tree diameters are assumed to be given in
-  centimeters. **TODO: not currently implemented**
+  will be displayed in meters, tree distances and crown widths are
+  assumed to be given in meters, and tree diameters are assumed to be
+  given in centimeters.
 
 - main:
 
@@ -101,4 +101,15 @@ plot_crowns(plantation, subplot = 4, main = "plantation subplot 4")
 
 plot_crowns(plantation, subplot = 4, microplot = TRUE,
             main = "plantation microplot 4")
+
+
+# using SI units
+metric_trees <- within(plantation, {
+  CRWIDTH <- calc_crwidth(plantation) |> ft_to_m()
+  rm(DIST, DIA)
+  DIST <- ft_to_m(plantation$DIST)
+  DIA <- in_to_cm(plantation$DIA)
+})
+plot_crowns(metric_trees, linear_unit = "meter",
+            main = "plantation plot (SI units)")
 ```

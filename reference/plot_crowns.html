@@ -104,9 +104,9 @@ saplings overlaid of the microplot boundary of <code>subplot = n</code>. The def
 <dd><p>An optional character string specifying the linear
 distance unit. Defaults to the native FIA unit of <code>"ft"</code>, but may be set to
 <code>"m"</code> instead (or <code>"meter"</code> / <code>"metre"</code>), in which case subplot boundaries
-will be display in meters, tree heights and crown widths are assumed to be
-given in meters, and tree diameters are assumed to be given in centimeters.
-<strong>TODO: not currently implemented</strong></p></dd>
+will be displayed in meters, tree distances and crown widths are assumed to
+be given in meters, and tree diameters are assumed to be given in
+centimeters.</p></dd>
 
 
 <dt id="arg-main">main<a class="anchor" aria-label="anchor" href="#arg-main"></a></dt>
@@ -153,6 +153,17 @@ above).</p></dd>
 <span class="r-in"><span><span class="fu">plot_crowns</span><span class="op">(</span><span class="va">plantation</span>, subplot <span class="op">=</span> <span class="fl">4</span>, microplot <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
 <span class="r-in"><span>            main <span class="op">=</span> <span class="st">"plantation microplot 4"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_crowns-3.png" alt="" width="595" height="595"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># using SI units</span></span></span>
+<span class="r-in"><span><span class="va">metric_trees</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">plantation</span>, <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">CRWIDTH</span> <span class="op">&lt;-</span> <span class="fu"><a href="calc_crwidth.html">calc_crwidth</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="convert_units.html">ft_to_m</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span><span class="va">DIST</span>, <span class="va">DIA</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">DIST</span> <span class="op">&lt;-</span> <span class="fu"><a href="convert_units.html">ft_to_m</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">$</span><span class="va">DIST</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">DIA</span> <span class="op">&lt;-</span> <span class="fu"><a href="convert_units.html">in_to_cm</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">$</span><span class="va">DIA</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot_crowns</span><span class="op">(</span><span class="va">metric_trees</span>, linear_unit <span class="op">=</span> <span class="st">"meter"</span>,</span></span>
+<span class="r-in"><span>            main <span class="op">=</span> <span class="st">"plantation plot (SI units)"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="plot_crowns-4.png" alt="" width="595" height="595"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
