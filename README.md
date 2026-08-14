@@ -8,8 +8,6 @@
 [![R-CMD-check](https://github.com/firelab/FIAstemmap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/firelab/FIAstemmap/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-**NOTE: this is an implementation update *currently under development***
-
 The Forest Inventory and Analysis Program
 ([FIA](https://research.fs.usda.gov/programs/nfi)) of USDA Forest
 Service provide tree-level measurements from a systematic grid of field
