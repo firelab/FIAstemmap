@@ -47,6 +47,7 @@ arrangement of the crowns.
 You can install the development version of **FIAstemmap** with:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("firelab/FIAstemmap")
 ```
@@ -83,6 +84,7 @@ The `plantation` dataset used here is an example tree list included in
 the package.
 
 ``` r
+
 library(FIAstemmap)
 
 # Regression coefficients for estimating crown width from diameter are included.
@@ -124,6 +126,7 @@ data with individual stem locations given in columns named `AZIMUTH`
 (distance from subplot/microplot center).
 
 ``` r
+
 # Display modeled tree crowns projected vertically on the FIA plot boundary.
 plot_crowns(tree_list, main = "Loblolly pine plantation")
 ```
@@ -131,6 +134,7 @@ plot_crowns(tree_list, main = "Loblolly pine plantation")
 ![](reference/figures/README-plot-crowns-1.png)
 
 ``` r
+
 
 # Individual subplot
 plot_crowns(tree_list, subplot = 4,
@@ -140,6 +144,7 @@ plot_crowns(tree_list, subplot = 4,
 ![](reference/figures/README-plot-crowns-2.png)
 
 ``` r
+
 
 # Or microplot
 plot_crowns(tree_list, subplot = 4, microplot = TRUE,
@@ -159,6 +164,7 @@ which provide additional plotting capabilities, descriptive spatial
 statistics, and other exploratory data analysis.
 
 ``` r
+
 ## Create a spatstat point pattern object for the pine plantation tree list.
 X <- create_fia_ppp(plantation)
 summary(X)
@@ -188,6 +194,7 @@ plot(X, pch = 16, background = "#fdf6e3",
 
 ``` r
 
+
 # Compute Ripley's K-function applying isotropic edge correction.
 K <- spatstat.explore::Kest(X, rmax = 12, correction = "isotropic")
 
@@ -202,6 +209,7 @@ The `western_redcedar` dataset is another example tree list included in
 the package. The following code uses meter for the distance unit.
 
 ``` r
+
 ## Spatial point pattern for the western redcedar tree list.
 
 # Give stem distances in meters.
@@ -235,6 +243,7 @@ plot(X, pch = 16, background = "#fdf6e3",
 
 ``` r
 
+
 K <- spatstat.explore::Kest(X, rmax = ft_to_m(12), correction = "isotropic")
 
 plot(K, main = "Ripley's K for the western redcedar FIA plot")
@@ -245,6 +254,7 @@ plot(K, main = "Ripley's K for the western redcedar FIA plot")
 ### Compute stand structure metrics
 
 ``` r
+
 ## Compute fractional tree canopy cover of a specific sampled area by overlaying
 ## modeled crowns.
 
@@ -353,6 +363,7 @@ calc_tcc_metrics(plantation, stem_map = FALSE, full_output = FALSE)
 ### Data processing
 
 ``` r
+
 # Load tree data from a file or database connection.
 # Lolo NF, single-condition forested plots, INVYR = 2022, from public FIADB
 f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
