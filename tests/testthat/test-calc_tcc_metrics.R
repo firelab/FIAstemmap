@@ -27,4 +27,18 @@ test_that("calc_tcc_metrics works", {
     tcc_pred <- calc_tcc_metrics(tree_list, stem_map = FALSE,
                                  full_output = FALSE)
     expect_equal(tcc_pred, 39.3, tolerance = 1e-3)
+
+    # test against results from the legacy v. 1.12 Python code
+    f <- system.file("extdata/test_tree_data.csv", package="FIAstemmap")
+    tree_tbl <- load_tree_data(f)
+
+    tree_list_1 <- tree_tbl[tree_tbl$PLT_CN == "1", ]
+    expect_equal(nrow(tree_list_1), 31)
+    expect_warning(
+        tcc_pred <- calc_tcc_metrics(tree_list_1),
+        "13 points were rejected as lying outside the specified window")
+    expect_true(is.list(tcc_pred))
+
+
+
 })
