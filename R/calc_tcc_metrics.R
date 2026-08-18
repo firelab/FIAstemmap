@@ -167,11 +167,11 @@ calc_tcc_metrics <- function(tree_list, stem_map = TRUE, full_output = TRUE,
     ht_metrics <- NULL
     if (stem_map || full_output) {
         # validate the input tree list for stand height calc and get metrics
-        ht_metrics <- calc_ht_metrics(tree_list)
+        ht_metrics <- calc_ht_metrics(tree_list, digits)
     }
 
     if (!("CRWIDTH" %in% colnames(tree_list)))
-        tree_list$CRWIDTH <- calc_crwidth(tree_list)
+        tree_list$CRWIDTH <- calc_crwidth(tree_list, digits)
 
     model_tcc <- NA_real_
     if (stem_map) {
@@ -189,7 +189,7 @@ calc_tcc_metrics <- function(tree_list, stem_map = TRUE, full_output = TRUE,
             if (nrow(tree_subp) == 0) {
                 subp_overlay[i] <- 0
             } else {
-                subp_overlay[i] <- calc_crown_overlay(tree_subp, 24)
+                subp_overlay[i] <- calc_crown_overlay(tree_subp, 24, digits)
             }
 
             # saplings in the microplot
@@ -200,7 +200,7 @@ calc_tcc_metrics <- function(tree_list, stem_map = TRUE, full_output = TRUE,
             if (nrow(sap_micr) == 0) {
                 micr_overlay[i] <- 0
             } else {
-                micr_overlay[i] <- calc_crown_overlay(sap_micr, 6.8)
+                micr_overlay[i] <- calc_crown_overlay(sap_micr, 6.8, digits)
             }
         }
 
