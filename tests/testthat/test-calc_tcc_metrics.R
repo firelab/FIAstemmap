@@ -51,7 +51,7 @@ test_that("calc_tcc_metrics works", {
     tree_list_2 <- tree_tbl[tree_tbl$PLT_CN == "2", ]
     expect_equal(nrow(tree_list_2), 74)
     expect_no_error(
-        tcc_pred <- calc_tcc_metrics(tree_list_2))
+        tcc_pred <- calc_tcc_metrics(tree_list_2, digits = 3))
     expect_true(is.list(tcc_pred))
     expect_equal(round(tcc_pred$model_tcc), 72)
     expect_equal(round(tcc_pred$subp1_crown_overlay), 50)
