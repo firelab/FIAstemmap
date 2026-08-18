@@ -38,7 +38,28 @@ test_that("calc_tcc_metrics works", {
         tcc_pred <- calc_tcc_metrics(tree_list_1),
         "13 points were rejected as lying outside the specified window")
     expect_true(is.list(tcc_pred))
+    expect_equal(round(tcc_pred$model_tcc), 95)
+    expect_equal(round(tcc_pred$subp1_crown_overlay), 78)
+    expect_equal(round(tcc_pred$subp2_crown_overlay), 75)
+    expect_equal(round(tcc_pred$subp3_crown_overlay), 100)
+    expect_equal(round(tcc_pred$subp4_crown_overlay), 71)
+    expect_equal(round(tcc_pred$micr1_crown_overlay), 0)
+    expect_equal(round(tcc_pred$micr2_crown_overlay), 0)
+    expect_equal(round(tcc_pred$micr3_crown_overlay), 0)
+    expect_equal(round(tcc_pred$micr4_crown_overlay), 0)
 
-
-
+    tree_list_2 <- tree_tbl[tree_tbl$PLT_CN == "2", ]
+    expect_equal(nrow(tree_list_2), 74)
+    expect_no_error(
+        tcc_pred <- calc_tcc_metrics(tree_list_2))
+    expect_true(is.list(tcc_pred))
+    expect_equal(round(tcc_pred$model_tcc), 72)
+    expect_equal(round(tcc_pred$subp1_crown_overlay), 50)
+    expect_equal(round(tcc_pred$subp2_crown_overlay), 63)
+    expect_equal(round(tcc_pred$subp3_crown_overlay), 42)
+    expect_equal(round(tcc_pred$subp4_crown_overlay), 64)
+    expect_equal(round(tcc_pred$micr1_crown_overlay), 33)
+    expect_equal(round(tcc_pred$micr2_crown_overlay), 0)
+    expect_equal(round(tcc_pred$micr3_crown_overlay), 0)
+    expect_equal(round(tcc_pred$micr4_crown_overlay), 88)
 })
