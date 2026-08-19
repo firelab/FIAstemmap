@@ -230,12 +230,12 @@ calc_tcc_metrics <- function(tree_list, stem_map = TRUE, full_output = TRUE,
                 # and 926 omitted)
                 # coefficients given in Table 2, Toney et al. (2009)
                 sapling_component <-
-                    -8.036 +
-                    0.211 * micr_overlay_tcc +
-                    0.552 * ht_metrics$numSaplings +
-                    -0.131 * ht_metrics$numTrees +
-                    4.367 * log(ht_metrics$meanTreeHtBAW) +
-                    0.222 * L_mean
+                    -8.036498 +
+                    0.211119 * micr_overlay_tcc +
+                    0.552399 * ht_metrics$numSaplings +
+                    4.366521 * log(ht_metrics$meanTreeHtBAW) +
+                    -0.130718 * ht_metrics$numTrees +
+                    0.222308 * L_mean
 
                 # constrain sapling adjustment >= 0
                 sapling_component <- max(c(sapling_component, 0))
