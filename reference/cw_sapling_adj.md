@@ -73,10 +73,10 @@ prediction. *Northern Journal of Applied Forestry* 18(1):22-28.
 
 ``` r
 cw_coef[cw_coef$SPCD == 261, ]
-#>     symbol SPCD     common_name surrogate   b0  b1    b2       reference
-#> 154   TSCA  261 eastern hemlock      <NA> 5.66 1.5 -0.02 Bechtold (2003)
+#>     symbol SPCD     common_name surrogate     b0     b1      b2       reference
+#> 154   TSCA  261 eastern hemlock      <NA> 5.6624 1.5041 -0.0204 Bechtold (2003)
 
 cw_sapling_adj[cw_sapling_adj$SPCD == 261, ]
 #>   SPCD adj_1inch adj_2inch adj_3inch adj_4inch
-#> 9  261      0.42      0.61      0.75      0.88
+#> 9  261   0.42961   0.61153   0.75797   0.88527
 ```

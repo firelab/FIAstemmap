@@ -191,22 +191,22 @@ Station. 19 p. <https://research.fs.usda.gov/treesearch/33381>.
 # using the spatially explicit "stem-map model" by default
 calc_tcc_metrics(plantation)
 #> $model_tcc
-#> [1] 88.4
+#> [1] 88.6
 #> 
 #> $subp1_crown_overlay
-#> [1] 86.8
+#> [1] 87
 #> 
 #> $subp2_crown_overlay
-#> [1] 91.7
+#> [1] 91.8
 #> 
 #> $subp3_crown_overlay
 #> [1] 80.2
 #> 
 #> $subp4_crown_overlay
-#> [1] 87.2
+#> [1] 87.3
 #> 
 #> $subp_overlay_mean
-#> [1] 86.475
+#> [1] 86.575
 #> 
 #> $micr1_crown_overlay
 #> [1] 0
@@ -215,13 +215,13 @@ calc_tcc_metrics(plantation)
 #> [1] 0
 #> 
 #> $micr3_crown_overlay
-#> [1] 20.2
+#> [1] 20.6
 #> 
 #> $micr4_crown_overlay
 #> [1] 22.5
 #> 
 #> $micr_overlay_mean
-#> [1] 10.675
+#> [1] 10.775
 #> 
 #> $L_6ft
 #> [1] 3.868305
@@ -268,9 +268,9 @@ calc_tcc_metrics(plantation)
 
 # return only the predicted TCC value (`$model_tcc`)
 calc_tcc_metrics(plantation, full_output = FALSE)
-#> [1] 88.4
+#> [1] 88.6
 
 # using the "FVS method" which assumes random tree locations
 calc_tcc_metrics(plantation, stem_map = FALSE, full_output = FALSE)
-#> [1] 81.4
+#> [1] 81.5
 ```

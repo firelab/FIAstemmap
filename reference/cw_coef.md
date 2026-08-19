@@ -95,6 +95,6 @@ radius and estimating canopy cover. *Forest Ecology and Management*,
 
 ``` r
 cw_coef[cw_coef$SPCD == 17, ]
-#>   symbol SPCD common_name surrogate   b0   b1    b2       reference
-#> 3   ABGR   17   grand fir      <NA> 5.75 1.11 -0.01 Bechtold (2004)
+#>   symbol SPCD common_name surrogate     b0     b1      b2       reference
+#> 3   ABGR   17   grand fir      <NA> 5.7545 1.1196 -0.0147 Bechtold (2004)
 ```
