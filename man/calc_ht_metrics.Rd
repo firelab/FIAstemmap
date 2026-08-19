@@ -2,9 +2,19 @@
 % Please edit documentation in R/calc_ht_metrics.R
 \name{calc_ht_metrics}
 \alias{calc_ht_metrics}
+\alias{calc_landfire_stand_ht}
 \title{Calculate stand height metrics from tree list data}
 \usage{
 calc_ht_metrics(tree_list, digits = 1)
+
+calc_landfire_stand_ht(
+  subp_overlay_mean,
+  micr_overlay_mean,
+  numTrees,
+  meanTreeHtDomBAW,
+  meanTreeHtBAW,
+  meanSapHt
+)
 }
 \arguments{
 \item{tree_list}{A data frame with tree records for one FIA plot.  Must have
@@ -14,19 +24,43 @@ code), \code{TPA_UNADJ} (trees per acre).}
 
 \item{digits}{Optional integer indicating the number of digits to keep in the
 return values (defaults to \code{1}).}
-}
-\value{
-A named list of computed height metrics for the input tree list, as described
-in Details.
+
+\item{subp_overlay_mean}{A numeric vector, value(s) of \code{subp_overlay_mean}
+from the output of \code{calc_tcc_metrics()}.}
+
+\item{micr_overlay_mean}{A numeric vector, value(s) of \code{micr_overlay_mean}
+from the output of \code{calc_tcc_metrics()}.}
+
+\item{numTrees}{A numeric vector, value(s) of \code{numTrees} from the output of
+\code{calc_ht_metrics()}.}
+
+\item{meanTreeHtDomBAW}{A numeric vector, value(s) of \code{meanTreeHtDomBAW} from
+the output of \code{calc_ht_metrics()}.}
+
+\item{meanTreeHtBAW}{A numeric vector, value(s) of \code{meanTreeHtBAW} from the
+output of \code{calc_ht_metrics()}.}
+
+\item{meanSapHt}{A numeric vector, value(s) of \code{meanTreeHmeanSapHttBAW} from
+the output of \code{calc_ht_metrics()}.}
 }
 \description{
-\code{calc_ht_metrics()} computes several stand height metrics for a given tree
-list.
+These functions compute several stand height metrics from tree list data.
 }
 \details{
+\code{calc_ht_metrics()} computes several stand height metrics for a given tree
+list. The return value is a named list as described below.
+
+\code{calc_landfire_stand_ht()} computes LANDFIRE stand height. This metric is
+computed separately since it depends on canopy cover estimates for the
+sapling and overstory layers derived by overlaying modeled crowns. The input
+data are given as vectors of values for one or more plots (all input vectors
+must have the same length). The return value is a numeric vector of stand
+heights, with length equal to the number of elements in each of the input
+vectors.
+
 Stand height metrics are based on live trees (\code{STATUSCD == 1}), and are
-are assigned \code{0} by definition if no live trees are present. Height metrics
-are returned in a named list with the following elements:
+are assigned \code{0} by definition if no live trees are present.
+\code{calc_ht_metrics()}returns a named list with the following elements:
 \itemize{
 \item \verb{$numTrees}: number of live trees \verb{>= 5.0} in. (\code{12.7} cm) diameter
 \item \verb{$meanTreeHt}: mean height of trees \verb{>= 5.0} in. (\code{12.7} cm) diameter
@@ -51,6 +85,19 @@ For the purpose of height calculations, metrics based on
 with FIA crown class codes \code{CCLCD} of \code{1} (open grown), \code{2} (dominant) or \code{3}
 (co-dominant), but exclude trees with \code{CCLCD} of \code{4} (intermediate) or \code{5}
 (over-topped).
+
+LANDFIRE stand height is a metric computed for FIA plots used as reference
+data supporting development of the Existing Vegetation Height (EVH) raster
+product (\url{https://www.landfire.gov/vegetation/evh}). It is generally the
+basal-area weighted mean height of canopy dominant/co-dominant trees (i.e.,
+\code{meanTreeHtDomBAW}). However, this metric attempts to identify plots that may
+be best characterized as sapling stage, in which case stand height is the
+mean height of saplings (\code{meanSapHt}). Sapling-stage plots are defined using
+arbitrary thresholds of canopy cover, estimated separately for the sapling
+layer based on microplot data, and the overstory tree layer based on subplot
+measurements. See \code{calc_tcc_metrics()} for variable definitions. A plot is
+considered sapling stage if \code{subp_overlay_mean <= 10} and
+\code{micr_overlay_mean >= 3 * subp_overlay_mean}.
 }
 \examples{
 calc_ht_metrics(plantation)
