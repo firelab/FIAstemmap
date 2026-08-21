@@ -8,6 +8,7 @@
 - [`calc_crwidth()`](https://firelab.github.io/FIAstemmap/reference/calc_crwidth.md)
   : Predict individual tree crown width using species-specific equations
 - [`calc_ht_metrics()`](https://firelab.github.io/FIAstemmap/reference/calc_ht_metrics.md)
+  [`calc_landfire_stand_ht()`](https://firelab.github.io/FIAstemmap/reference/calc_ht_metrics.md)
   : Calculate stand height metrics from tree list data
 - [`calc_tcc_metrics()`](https://firelab.github.io/FIAstemmap/reference/calc_tcc_metrics.md)
   : Predict plot-level canopy cover from individual tree measurements
