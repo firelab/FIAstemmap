@@ -1,6 +1,6 @@
 Package: FIAstemmap
 Title: Stand structure analysis of US national forest inventory plots
-Version: 0.0.0.9000
+Version: 2.0.0
 Authors@R:
     person("Chris", "Toney", email = "jctoney@gmail.com",
            role = c("aut", "cre"), comment = c(ORCID = "0000-0001-5734-6510"))
