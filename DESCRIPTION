@@ -1,21 +1,21 @@
 Package: FIAstemmap
-Title: Stand structure analysis of US national forest inventory plots
+Title: Plot-level tree canopy modeling for the US national forest inventory
 Version: 2.0.0
 Authors@R:
     person("Chris", "Toney", email = "jctoney@gmail.com",
            role = c("aut", "cre"), comment = c(ORCID = "0000-0001-5734-6510"))
 Description: Maps individual tree stem locations on field plots of the Forest
     Inventory and Analysis (FIA) Program of USDA Forest Service. Stem locations
-    are mapped in cartesian coordinate space based on distance and azimuth
-    offsets from subplot and microplot centers. Per-tree crown widths are
-    estimated using a set of allometric equations with coverage for the
-    conterminous US, and provided as an optional output. Spatial descriptors of
-    tree point pattern are computed at the whole plot level. Several stand
-    height metrics are also computed and provided in the output. The spatial
-    representation of modeled tree crowns is used to generate estimates of
-    fractional tree canopy cover at the microplot, subplot and whole plot
-    levels. Provides facilities for exploratory data analysis and integration
-    with the 'spatstat' library.
+    are mapped in cartesian coordinate space based on field-measured distance
+    and azimuth from subplot and microplot centers. Per-tree crown widths are
+    estimated using a curated set of allometric equations with coverage for the
+    conterminous US. Spatial descriptors of tree point pattern are computed at
+    the whole plot level. Several stand height metrics are also computed and
+    provided in the output. The spatial representation of modeled tree crowns is
+    used to generate estimates of fractional tree canopy cover at the microplot,
+    subplot and whole plot levels. Convenience functions are provided for
+    efficient data processing. Exploratory data analysis is also facilitated via
+    integration with the 'spatstat' packages.
 License: MIT + file LICENSE
 Depends: R (>= 4.1.0)
 Imports:
