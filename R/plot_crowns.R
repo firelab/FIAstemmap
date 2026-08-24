@@ -65,11 +65,17 @@ plot_crowns <- function(tree_list, subplot = NULL, microplot = FALSE,
                         stem_col = "#b85e00", subp_border_lwd = 3,
                         subp_border_col = "gray61") {
 
-    if (missing(tree_list) || is.null(tree_list))
-        stop("'tree_list' is required", call. = FALSE)
+    if (missing(tree_list) || is.null(tree_list)) {
+        stop(cli::format_error(c(
+            "{.arg tree_list} is required",
+            "x" = "A required argument is missing or NULL")))
+    }
 
-    if (!is.data.frame(tree_list))
-        stop("'tree_list' must be a data frame", call. = FALSE)
+    if (!is.data.frame(tree_list)) {
+        stop(cli::format_error(c(
+            "{.arg tree_list} must be a {.cls data.frame}",
+            "x" = "Invalid input type: {.cls {class(tree_list)}}")))
+    }
 
     if (!("CRWIDTH" %in% colnames(tree_list)))
         tree_list$CRWIDTH <- calc_crwidth(tree_list)
@@ -84,11 +90,12 @@ plot_crowns <- function(tree_list, subplot = NULL, microplot = FALSE,
         stop("'tree_list' is missing required columns", call. = FALSE)
     }
 
-    if (!all(unique(tree_list$SUBP) %in% c(1, 2, 3, 4)))
-        stop("'tree_list$SUBP' contains invalid subplot numbers", call. = FALSE)
-
-    if (any(tree_list$AZIMUTH < 0) || any(tree_list$AZIMUTH > 360))
-        stop("'tree_list$AZIMUTH' contains values out of range", call. = FALSE)
+    if (!all(unique(tree_list$SUBP) %in% c(1, 2, 3, 4))) {
+        stop(cli::format_error(c(
+            "{.arg tree_list$SUBP} contains invalid subplot numbers",
+            "i" = "Valid subplot numbers are: 1, 2, 3, 4",
+            "x" = "{.arg tree_list$SUBP} contains: {.val {unique(tree_list$SUBP)}}")))
+    }
 
     if (is.null(linear_unit))
         linear_unit <- "ft"
@@ -100,7 +107,10 @@ plot_crowns <- function(tree_list, subplot = NULL, microplot = FALSE,
     si_units <- FALSE  # US customary units by default
     axis_unit_name <- "feet"
     if (!(linear_unit %in% c("ft", "foot", "m", "meter", "metre"))) {
-        stop("'linear_unit' is invalid", call. = FALSE)
+        stop(cli::format_error(c(
+            "invalid value given for {.arg linear_unit}",
+            "i" = "{.arg linear_unit} must be one of: {.val {c('ft', 'foot', 'm', 'meter', 'metre')}}",
+            "x" = "{.val {linear_unit} is not a valid unit name")))
     } else if (linear_unit %in% c("m", "meter", "metre")) {
         si_units <- TRUE
         if (linear_unit == "metre")
@@ -144,6 +154,24 @@ plot_crowns <- function(tree_list, subplot = NULL, microplot = FALSE,
     } else {
         trees_in <- tree_list[tree_list$STATUSCD == 1 &
                               tree_list$DIA >= tree_min_dia, ]
+    }
+
+    if (any(is.na(trees_in$DIST))) {
+        stop(cli::format_error(c(
+            "{.fld tree_list$DIST} has missing values",
+            "x" = "{.fld tree_list$DIST} cannot contain {.val {NA}} values")))
+    }
+
+    if (any(is.na(trees_in$AZIMUTH))) {
+        stop(cli::format_error(c(
+            "{.fld tree_list$AZIMUTH} has missing values",
+            "x" = "{.fld tree_list$AZIMUTH} cannot contain {.val {NA}} values")))
+    }
+
+    if (any(trees_in$AZIMUTH < 0) || any(trees_in$AZIMUTH > 360)) {
+        stop(cli::format_error(c(
+            "{.fld tree_list$AZIMUTH} contains out-of-range values",
+            "x" = "azimuth values must be in the range 0:360")))
     }
 
     trees_in$height <- pmin(trees_in$HT, trees_in$ACTUALHT, na.rm = TRUE)

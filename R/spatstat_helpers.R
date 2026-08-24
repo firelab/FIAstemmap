@@ -128,8 +128,12 @@ create_fia_owin <- function(linear_unit = "ft", macroplot = FALSE,
     else
         linear_unit <- tolower(linear_unit)
 
-    if (!(linear_unit %in% c("ft", "foot", "m", "meter", "metre")))
-        stop("'linear_unit' is invalid", call. = FALSE)
+    if (!(linear_unit %in% c("ft", "foot", "m", "meter", "metre"))) {
+        stop(cli::format_error(c(
+            "invalid value given for {.arg linear_unit}",
+            "i" = "{.arg linear_unit} must be one of: {.val {c('ft', 'foot', 'm', 'meter', 'metre')}}",
+            "x" = "{.val {linear_unit} is not a valid unit name")))
+    }
 
     if (is.null(macroplot))
         macroplot <- FALSE
@@ -178,21 +182,31 @@ create_fia_ppp <- function(tree_list, live_trees = TRUE, min_dia = 5,
                            linear_unit = "ft", macroplot = FALSE, window = NULL,
                            mark_cols = NULL, mark_as_factor = NULL) {
 
-    if (missing(tree_list) || is.null(tree_list))
-        stop("'tree_list' is required", call. = FALSE)
+    if (missing(tree_list) || is.null(tree_list)) {
+        stop(cli::format_error(c(
+            "{.arg tree_list} is required",
+            "x" = "A required argument is missing or NULL")))
+    }
 
-    if (!is.data.frame(tree_list))
-        stop("'tree_list' must be a data frame", call. = FALSE)
+    if (!is.data.frame(tree_list)) {
+        stop(cli::format_error(c(
+            "{.arg tree_list} must be a {.cls data.frame}",
+            "x" = "Invalid input type: {.cls {class(tree_list)}}")))
+    }
 
     required_cols <- c("SUBP", "TREE", "AZIMUTH", "DIST", "STATUSCD")
-    if (!all(required_cols %in% colnames(tree_list)))
-        stop("'tree_list' is missing required columns", call. = FALSE)
+    if (!all(required_cols %in% colnames(tree_list))) {
+        stop(cli::format_error(c(
+            "{.arg tree_list} is missing one or more required columns",
+            "x" = "Missing column(s): {.fld {setdiff(required_cols, colnames(tree_list))}}")))
+    }
 
-    if (!all(unique(tree_list$SUBP) %in% c(1, 2, 3, 4)))
-        stop("'tree_list$SUBP' contains invalid subplot numbers", call. = FALSE)
-
-    if (any(tree_list$AZIMUTH < 0) || any(tree_list$AZIMUTH > 360))
-        stop("'tree_list$AZIMUTH' contains values out of range", call. = FALSE)
+    if (!all(unique(tree_list$SUBP) %in% c(1, 2, 3, 4))) {
+        stop(cli::format_error(c(
+            "{.arg tree_list$SUBP} contains invalid subplot numbers",
+            "i" = "Valid subplot numbers are: 1, 2, 3, 4",
+            "x" = "{.arg tree_list$SUBP} contains: {.val {unique(tree_list$SUBP)}}")))
+    }
 
     if (is.null(live_trees))
         live_trees <- TRUE
@@ -211,8 +225,12 @@ create_fia_ppp <- function(tree_list, live_trees = TRUE, min_dia = 5,
     else
         linear_unit <- tolower(linear_unit)
 
-    if (!(linear_unit %in% c("ft", "foot", "m", "meter", "metre")))
-        stop("'linear_unit' is invalid", call. = FALSE)
+    if (!(linear_unit %in% c("ft", "foot", "m", "meter", "metre"))) {
+        stop(cli::format_error(c(
+            "invalid value given for {.arg linear_unit}",
+            "i" = "{.arg linear_unit} must be one of: {.val {c('ft', 'foot', 'm', 'meter', 'metre')}}",
+            "x" = "{.val {linear_unit} is not a valid unit name")))
+    }
 
     if (is.null(macroplot))
         macroplot <- FALSE
@@ -221,8 +239,11 @@ create_fia_ppp <- function(tree_list, live_trees = TRUE, min_dia = 5,
 
     if (is.null(window))
         window <- create_fia_owin(linear_unit, macroplot)
-    else if (!methods::is(window, "owin"))
-        stop("'window' must be an object of class `owin`", call. = FALSE)
+    else if (!methods::is(window, "owin")) {
+        stop(cli::format_error(c(
+            "{.arg window} must be an object of class {.cls owin}",
+            "x" = "Invalid input type: {.cls {class(window)}}")))
+    }
 
     if (!is.null(mark_cols) && !is.character(mark_cols))
         stop("'mark_cols' must be a character vector", call. = FALSE)
@@ -242,6 +263,24 @@ create_fia_ppp <- function(tree_list, live_trees = TRUE, min_dia = 5,
                                   tree_list$DIA >= min_dia, ]
     } else {
         tree_list_in <- tree_list[tree_list$DIA >= min_dia, ]
+    }
+
+    if (any(is.na(tree_list_in$DIST))) {
+        stop(cli::format_error(c(
+            "{.fld tree_list$DIST} has missing values",
+            "x" = "{.fld tree_list$DIST} cannot contain {.val {NA}} values")))
+    }
+
+    if (any(is.na(tree_list_in$AZIMUTH))) {
+        stop(cli::format_error(c(
+            "{.fld tree_list$AZIMUTH} has missing values",
+            "x" = "{.fld tree_list$AZIMUTH} cannot contain {.val {NA}} values")))
+    }
+
+    if (any(tree_list_in$AZIMUTH < 0) || any(tree_list_in$AZIMUTH > 360)) {
+        stop(cli::format_error(c(
+            "{.fld tree_list$AZIMUTH} contains out-of-range values",
+            "x" = "azimuth values must be in the range 0:360")))
     }
 
     xy <- .get_tree_list_xy(tree_list_in, linear_unit)

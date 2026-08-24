@@ -81,16 +81,25 @@ calc_ht_metrics <- function(tree_list, digits = 1) {
 
     # TODO: support input in SI units
 
-    if (missing(tree_list) || is.null(tree_list))
-        stop("'tree_list' is required", call. = FALSE)
+    if (missing(tree_list) || is.null(tree_list)) {
+        stop(cli::format_error(c(
+            "{.arg tree_list} is required",
+            "x" = "A required argument is missing or NULL")))
+    }
 
-    if (!is.data.frame(tree_list))
-        stop("'tree_list' must be a data frame", call. = FALSE)
+    if (!is.data.frame(tree_list)) {
+        stop(cli::format_error(c(
+            "{.arg tree_list} must be a {.cls data.frame}",
+            "x" = "Invalid input type: {.cls {class(tree_list)}}")))
+    }
 
     required_cols <- c("DIA", "HT", "ACTUALHT", "CCLCD", "TPA_UNADJ")
 
-    if (!all(required_cols %in% colnames(tree_list)))
-        stop("'tree_list' is missing required columns", call. = FALSE)
+    if (!all(required_cols %in% colnames(tree_list))) {
+        stop(cli::format_error(c(
+            "{.arg tree_list} is missing one or more required columns",
+            "x" = "Missing column(s): {.fld {setdiff(required_cols, colnames(tree_list))}}")))
+    }
 
     if (is.null(digits))
         digits <- 1
@@ -106,14 +115,16 @@ calc_ht_metrics <- function(tree_list, digits = 1) {
 
     tree_ht <- pmin(trees_in$HT, trees_in$ACTUALHT, na.rm = TRUE)
     if (any(is.na(tree_ht))) {
-        warning("one or more tree heights are missing, NAs returned",
-                call. = FALSE)
+        warning(cli::format_warning(c(
+            "one or more tree heights are missing",
+            "!" = "NAs returned due to missing tree height(s)")))
     }
 
     sapling_ht <- pmin(saplings_in$HT, saplings_in$ACTUALHT, na.rm = TRUE)
-    if (any(is.na(sapling_ht))) {
-        warning("one or more sapling heights are missing, NAs returned",
-                call. = FALSE)
+    if (any(is.na(tree_ht))) {
+        warning(cli::format_warning(c(
+            "one or more sapling heights are missing",
+            "!" = "NAs returned due to missing sapling height(s)")))
     }
 
     ht_metrics <- vector(mode = "list", length = 10)
@@ -186,14 +197,17 @@ calc_landfire_stand_ht <- function(subp_overlay_mean, micr_overlay_mean,
          is.numeric(numTrees) && is.numeric(meanTreeHtDomBAW) &&
          is.numeric(meanTreeHtBAW) && is.numeric(meanSapHt))) {
 
-            stop("all arguments are required and must be numeric vectors",
-                 call. = FALSE)
+        stop(cli::format_error(c(
+            "{all arguments are required and must be numeric vectors",
+            "x" = "Required argument(s) missing or NULL")))
     }
 
     input_vectors <- list(subp_overlay_mean, micr_overlay_mean, numTrees,
                           meanTreeHtDomBAW, meanTreeHtBAW, meanSapHt)
     if (length(unique(sapply(input_vectors, length))) != 1) {
-        stop("all inputs must have the same length", call. = FALSE)
+        stop(cli::format_error(c(
+            "{all inputs must have the same length",
+            "x" = "Input vectors have differing lengths")))
     }
 
     standHt <- rep(NA_real_, length(subp_overlay_mean))
