@@ -76,6 +76,8 @@
 #'
 #' @examples
 #' calc_ht_metrics(plantation)
+#'
+#' calc_landfire_stand_ht(86, 11, 89, 45, 45, 34)
 #' @export
 calc_ht_metrics <- function(tree_list, digits = 1) {
 

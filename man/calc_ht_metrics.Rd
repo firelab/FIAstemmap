@@ -101,4 +101,6 @@ considered sapling stage if \code{subp_overlay_mean <= 10} and
 }
 \examples{
 calc_ht_metrics(plantation)
+
+calc_landfire_stand_ht(86, 11, 89, 45, 45, 34)
 }
