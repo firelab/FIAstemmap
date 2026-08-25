@@ -265,6 +265,9 @@ calc_tcc_metrics(plantation)
 #> $maxSapHt
 #> [1] 43
 #> 
+#> $standHt
+#> [1] 45.3
+#> 
 
 # return only the predicted TCC value (`$model_tcc`)
 calc_tcc_metrics(plantation, full_output = FALSE)
