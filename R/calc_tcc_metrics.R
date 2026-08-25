@@ -271,6 +271,10 @@ calc_tcc_metrics <- function(tree_list, stem_map = TRUE, full_output = TRUE,
 
     if (full_output) {
         if (stem_map) {
+            standHt <- calc_landfire_stand_ht(
+                subp_overlay_tcc, micr_overlay_tcc, ht_metrics$numTrees,
+                ht_metrics$meanTreeHtDomBAW, ht_metrics$meanTreeHtBAW,
+                ht_metrics$meanTreeHtBAW)
             return(c(
                 model_tcc = model_tcc,
                 subp1_crown_overlay = subp_overlay[1],
@@ -287,7 +291,8 @@ calc_tcc_metrics <- function(tree_list, stem_map = TRUE, full_output = TRUE,
                 L_8ft = L$iso[9],
                 L_10ft = L$iso[11],
                 L_12ft = L$iso[13],
-                ht_metrics))
+                ht_metrics,
+                standHt = standHt))
         } else {
             return(c(
                 model_tcc = model_tcc,
