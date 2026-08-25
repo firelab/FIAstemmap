@@ -1,5 +1,5 @@
 Package: FIAstemmap
-Title: Plot-level tree canopy modeling for the US national forest inventory
+Title: Tree Canopy Modeling for US Forest Inventory Plots
 Version: 2.0.0
 Authors@R:
     person("Chris", "Toney", email = "jctoney@gmail.com",
