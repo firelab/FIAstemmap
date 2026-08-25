@@ -162,4 +162,7 @@ calc_ht_metrics(plantation)
 #> $maxSapHt
 #> [1] 43
 #> 
+
+calc_landfire_stand_ht(86, 11, 89, 45, 45, 34)
+#> [1] 45
 ```
