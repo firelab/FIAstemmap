@@ -15,7 +15,8 @@ load_tree_data(
   table = NULL,
   columns = DEFAULT_TREE_COLUMNS,
   sql = NULL,
-  quoted_cols_as_char = TRUE
+  quoted_cols_as_char = TRUE,
+  colnames_toupper = TRUE
 )
 ```
 
@@ -52,6 +53,11 @@ load_tree_data(
   A logical value indicating whether to auto-detect columns that contain
   quoted values as `"character"` type, `TRUE` by default. Only used when
   `src` is a CSV file.
+
+- colnames_toupper:
+
+  Logical value, `TRUE` to enforce upper case column names in the
+  returned data frame (the default).
 
 ## Value
 
@@ -137,7 +143,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH.
 #> ℹ Fetching tree data
-#> ✔ Fetching tree data [12ms]
+#> ✔ Fetching tree data [11ms]
 #> 
 #> ℹ 910 tree records returned.
 
