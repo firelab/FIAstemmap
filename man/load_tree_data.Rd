@@ -9,7 +9,8 @@ load_tree_data(
   table = NULL,
   columns = DEFAULT_TREE_COLUMNS,
   sql = NULL,
-  quoted_cols_as_char = TRUE
+  quoted_cols_as_char = TRUE,
+  colnames_toupper = TRUE
 )
 }
 \arguments{
@@ -33,6 +34,9 @@ of columns, i.e., mutually exclusive with \code{table} and/or \code{columns}).}
 \item{quoted_cols_as_char}{A logical value indicating whether to auto-detect
 columns that contain quoted values as \code{"character"} type, \code{TRUE} by default.
 Only used when \code{src} is a CSV file.}
+
+\item{colnames_toupper}{Logical value, \code{TRUE} to enforce upper case column
+names in the returned data frame (the default).}
 }
 \value{
 A data frame containing tree records fetched from \code{src}.

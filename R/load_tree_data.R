@@ -72,6 +72,8 @@
 #' @param quoted_cols_as_char A logical value indicating whether to auto-detect
 #' columns that contain quoted values as `"character"` type, `TRUE` by default.
 #' Only used when `src` is a CSV file.
+#' @param colnames_toupper Logical value, `TRUE` to enforce upper case column
+#' names in the returned data frame (the default).
 #' @return
 #' A data frame containing tree records fetched from `src`.
 #'
@@ -107,7 +109,8 @@
 #' head(tree)
 #' @export
 load_tree_data <- function(src, table = NULL, columns = DEFAULT_TREE_COLUMNS,
-                           sql = NULL, quoted_cols_as_char = TRUE) {
+                           sql = NULL, quoted_cols_as_char = TRUE,
+                           colnames_toupper = TRUE) {
 
     if (missing(src) || is.null(src))
         stop("'src' is required")
@@ -143,6 +146,14 @@ load_tree_data <- function(src, table = NULL, columns = DEFAULT_TREE_COLUMNS,
     } else if (!(is.logical(quoted_cols_as_char) ||
                  length(quoted_cols_as_char) != 1)) {
         stop("'quoted_cols_as_char' must be a single logical value",
+             call. = FALSE)
+    }
+
+    if (missing(colnames_toupper) || is.null(colnames_toupper)) {
+        colnames_toupper <- TRUE
+    } else if (!(is.logical(colnames_toupper) ||
+                 length(colnames_toupper) != 1)) {
+        stop("'colnames_toupper' must be a single logical value",
              call. = FALSE)
     }
 
@@ -240,6 +251,9 @@ load_tree_data <- function(src, table = NULL, columns = DEFAULT_TREE_COLUMNS,
         cli::cli_alert_danger("No tree records were returned.")
     else
         cli::cli_alert_info("{.val {nrow(d)}} tree records returned.")
+
+    if (colnames_toupper)
+        colnames(d) <- toupper(colnames(d))
 
     return(d)
 }
