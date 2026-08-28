@@ -87,13 +87,20 @@ library(FIAstemmap)
 # Regression coefficients for estimating crown width from diameter are included.
 # See `?cw_coef`.
 head(cw_coef)
-#>   symbol SPCD        common_name surrogate   b0   b1    b2          reference
-#> 1   ABAM   11 Pacific silver fir      <NA> 7.30 0.59  0.00    Bechtold (2004)
-#> 2   ABCO   15          white fir      <NA> 4.49 0.92 -0.01    Bechtold (2004)
-#> 3   ABGR   17          grand fir      <NA> 5.75 1.11 -0.01    Bechtold (2004)
-#> 4  ABLAA   18       corkbark fir      <NA> 6.07 0.37  0.00    Bechtold (2004)
-#> 5   ABLA   19      subalpine fir      <NA> 3.96 0.64  0.00    Bechtold (2004)
-#> 6   ABMA   20 California red fir      <NA> 6.67 0.43  0.00 Gill et al. (2000)
+#>   symbol SPCD        common_name surrogate     b0     b1      b2
+#> 1   ABAM   11 Pacific silver fir      <NA> 7.3037 0.5909  0.0000
+#> 2   ABCO   15          white fir      <NA> 4.4965 0.9238 -0.0120
+#> 3   ABGR   17          grand fir      <NA> 5.7545 1.1196 -0.0147
+#> 4  ABLAA   18       corkbark fir      <NA> 6.0730 0.3756  0.0000
+#> 5   ABLA   19      subalpine fir      <NA> 3.9629 0.6469  0.0000
+#> 6   ABMA   20 California red fir      <NA> 6.6740 0.4317  0.0000
+#>            reference
+#> 1    Bechtold (2004)
+#> 2    Bechtold (2004)
+#> 3    Bechtold (2004)
+#> 4    Bechtold (2004)
+#> 5    Bechtold (2004)
+#> 6 Gill et al. (2000)
 
 # Add a column of predicted crown widths to the `plantation` tree list.
 # The base R function `within()` modifies a copy of the example dataset.
@@ -112,7 +119,7 @@ str(tree_list)
 #>  $ ACTUALHT : num  42 44 41 50 45 45 40 43 47 49 ...
 #>  $ CCLCD    : int  3 3 3 3 3 3 3 3 3 3 ...
 #>  $ TPA_UNADJ: num  6.02 6.02 6.02 6.02 6.02 ...
-#>  $ CRWIDTH  : num  11.9 13 10.8 15.8 13.7 10.8 10.2 9.7 15.3 13.9 ...
+#>  $ CRWIDTH  : num  12 13.1 10.9 15.8 13.8 10.9 10.2 9.8 15.3 13.9 ...
 ```
 
 ### Exploratory analysis
@@ -251,7 +258,7 @@ plot(K, main = "Ripley's K for the western redcedar FIA plot")
 # Visualized with: `plot_crowns(tree_list, subplot = 1)`
 tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
   calc_crown_overlay(sample_radius = 24)
-#> [1] 86.8
+#> [1] 87
 
 ## Calculate stand height metrics, which are also included by default in the
 ## output of `calc_tcc_metrics()` (see below).
@@ -264,22 +271,22 @@ tree_list[tree_list$SUBP == 1 & tree_list$DIA >= 5, ] |>
 # By default, TCC is predicted using the "stem-map" model, full output returned.
 calc_tcc_metrics(plantation)
 #> $model_tcc
-#> [1] 88.4
+#> [1] 88.6
 #> 
 #> $subp1_crown_overlay
-#> [1] 86.8
+#> [1] 87
 #> 
 #> $subp2_crown_overlay
-#> [1] 91.7
+#> [1] 91.8
 #> 
 #> $subp3_crown_overlay
 #> [1] 80.2
 #> 
 #> $subp4_crown_overlay
-#> [1] 87.2
+#> [1] 87.3
 #> 
 #> $subp_overlay_mean
-#> [1] 86.475
+#> [1] 86.575
 #> 
 #> $micr1_crown_overlay
 #> [1] 0
@@ -288,13 +295,13 @@ calc_tcc_metrics(plantation)
 #> [1] 0
 #> 
 #> $micr3_crown_overlay
-#> [1] 20.2
+#> [1] 20.6
 #> 
 #> $micr4_crown_overlay
 #> [1] 22.5
 #> 
 #> $micr_overlay_mean
-#> [1] 10.675
+#> [1] 10.775
 #> 
 #> $L_6ft
 #> [1] 3.868305
@@ -337,15 +344,18 @@ calc_tcc_metrics(plantation)
 #> 
 #> $maxSapHt
 #> [1] 43
+#> 
+#> $standHt
+#> [1] 45.3
 
 # Return only the predicted TCC value (`$model_tcc`).
 calc_tcc_metrics(plantation, full_output = FALSE)
-#> [1] 88.4
+#> [1] 88.6
 
 # Alternatively, use the "FVS method" which assumes a random arrangement of
 # tree crowns. This method does not require individual stem coordinates.
 calc_tcc_metrics(plantation, stem_map = FALSE, full_output = FALSE)
-#> [1] 81.4
+#> [1] 81.5
 ```
 
 ### Data processing
@@ -374,27 +384,27 @@ process_tree_data(tree_table, stem_map = FALSE, full_output = TRUE)
 #> ℹ The input table contains tree data for 22 plots.
 #>             PLT_CN model_tcc numTrees meanTreeHt meanTreeHtBAW meanTreeHtDom
 #> 1  670951075126144       1.2        0        0.0           0.0           0.0
-#> 2  670950940126144      38.4       24       61.4          66.4          64.5
+#> 2  670950940126144      37.8       24       61.4          66.4          64.5
 #> 3  670950992126144       3.4        1       43.0          43.0          43.0
-#> 4  670950609126144      17.2        4      102.2         102.6         102.2
-#> 5  670950600126144      34.9       16       62.1          79.0          69.9
-#> 6  670951118126144      20.6        9       24.6          28.0          30.0
-#> 7  670950964126144      37.9       16       58.8          67.1          64.1
-#> 8  670951031126144      51.2       29       70.2          72.8          72.4
-#> 9  670950608126144      70.8       32       73.7          94.8          86.6
-#> 10 670950599126144      66.4       44       61.8          66.4          64.1
-#> 11 670950967126144      57.4       23       86.0         100.7          96.1
-#> 12 670950732126144      34.4       12       64.3          91.8          72.6
-#> 13 670950725126144      66.5       69       66.3          87.0          73.9
-#> 14 670950598126144      55.8       20       65.7          89.6          83.9
-#> 15 670950965126144      81.3       74       53.1          55.1          54.5
-#> 16 670951032126144      32.5        5       15.0          14.2          15.0
-#> 17 670951034126144      16.4        7       40.7          45.0          40.7
+#> 4  670950609126144      16.1        4      102.2         102.6         102.2
+#> 5  670950600126144      35.0       16       62.1          79.0          69.9
+#> 6  670951118126144      20.0        9       24.6          28.0          30.0
+#> 7  670950964126144      37.5       16       58.8          67.1          64.1
+#> 8  670951031126144      51.0       29       70.2          72.8          72.4
+#> 9  670950608126144      71.0       32       73.7          94.8          86.6
+#> 10 670950599126144      65.6       44       61.8          66.4          64.1
+#> 11 670950967126144      56.8       23       86.0         100.7          96.1
+#> 12 670950732126144      34.9       12       64.3          91.8          72.6
+#> 13 670950725126144      66.9       69       66.3          87.0          73.9
+#> 14 670950598126144      56.0       20       65.7          89.6          83.9
+#> 15 670950965126144      81.2       74       53.1          55.1          54.5
+#> 16 670951032126144      32.0        5       15.0          14.2          15.0
+#> 17 670951034126144      16.3        7       40.7          45.0          40.7
 #> 18 670950625126144      44.5       23       42.0          61.9          42.9
 #> 19 670951029126144      55.1       33       64.7          68.5          64.7
-#> 20 670951035126144      97.6       54       44.9          50.6          45.7
-#> 21 670951089126144      21.1        7       79.9          83.0          79.9
-#> 22 670951152126144       5.3        3       21.3          21.7          21.3
+#> 20 670951035126144      97.5       54       44.9          50.6          45.7
+#> 21 670951089126144      21.4        7       79.9          83.0          79.9
+#> 22 670951152126144       5.4        3       21.3          21.7          21.3
 #>    meanTreeHtDomBAW maxTreeHt predomTreeHt numSaplings meanSapHt maxSapHt
 #> 1               0.0         0          0.0           1       9.0        9
 #> 2              67.9        85         81.7           1      16.0       16
