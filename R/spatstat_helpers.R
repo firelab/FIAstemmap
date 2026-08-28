@@ -74,7 +74,7 @@
 #'
 #' Ripley, B.D. 1977. Modelling spatial patterns. _Journal of the Royal
 #' Statistical Society: Series B (Methodological)_, 39(2): 172–192.
-#' \url{https://doi.org/10.1111/j.2517-6161.1977.tb01615.x}.
+#' \doi{10.1111/j.2517-6161.1977.tb01615.x}.
 #'
 #' @seealso
 #' \pkg{spatstat} package: \url{https://cran.r-project.org/package=spatstat}

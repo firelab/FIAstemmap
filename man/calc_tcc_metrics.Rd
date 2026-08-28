@@ -148,7 +148,7 @@ Rocky Mountain Research Station. 11 p.
 
 Ripley, B.D. (1977). Modelling spatial patterns. \emph{Journal of the Royal
 Statistical Society: Series B (Methodological)}, 39(2): 172–192.
-\url{https://doi.org/10.1111/j.2517-6161.1977.tb01615.x}.
+\doi{10.1111/j.2517-6161.1977.tb01615.x}.
 
 Stoyan, D., and Penttinen, A. (2000). Recent applications of point process
 methods in forestry statistics. \emph{Statistical Science}, 15(1), 61–78.
