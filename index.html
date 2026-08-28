@@ -11,8 +11,8 @@
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="FIA stem map">
-<meta name="description" content="Maps individual tree stem locations on field plots of the Forest Inventory and Analysis (FIA) Program of USDA Forest Service. Stem locations are mapped in cartesian coordinate space based on field-measured distance and azimuth from subplot and microplot centers. Per-tree crown widths are estimated using a curated set of allometric equations with coverage for the conterminous US. Spatial descriptors of tree point pattern are computed at the whole plot level. Several stand height metrics are also computed and provided in the output. The spatial representation of modeled tree crowns is used to generate estimates of fractional tree canopy cover at the microplot, subplot and whole plot levels. Convenience functions are provided for efficient data processing. Exploratory data analysis is also facilitated via integration with the spatstat packages.">
-<meta property="og:description" content="Maps individual tree stem locations on field plots of the Forest Inventory and Analysis (FIA) Program of USDA Forest Service. Stem locations are mapped in cartesian coordinate space based on field-measured distance and azimuth from subplot and microplot centers. Per-tree crown widths are estimated using a curated set of allometric equations with coverage for the conterminous US. Spatial descriptors of tree point pattern are computed at the whole plot level. Several stand height metrics are also computed and provided in the output. The spatial representation of modeled tree crowns is used to generate estimates of fractional tree canopy cover at the microplot, subplot and whole plot levels. Convenience functions are provided for efficient data processing. Exploratory data analysis is also facilitated via integration with the spatstat packages.">
+<meta name="description" content="Maps individual tree stem locations on field plots of the Forest Inventory and Analysis Program of USDA Forest Service. Stem locations are mapped in cartesian coordinate space based on field-measured distance and azimuth from subplot and microplot centers. Per-tree crown widths are estimated using a curated set of allometric equations with coverage for the conterminous US. Spatial descriptors of tree point pattern are computed at the whole plot level. Several stand height metrics are also computed and provided in the output. The spatial representation of modeled tree crowns is used to generate estimates of fractional tree canopy cover at the microplot, subplot and whole plot levels. Convenience functions are provided for efficient data processing. Exploratory data analysis is also facilitated via integration with the spatstat packages.">
+<meta property="og:description" content="Maps individual tree stem locations on field plots of the Forest Inventory and Analysis Program of USDA Forest Service. Stem locations are mapped in cartesian coordinate space based on field-measured distance and azimuth from subplot and microplot centers. Per-tree crown widths are estimated using a curated set of allometric equations with coverage for the conterminous US. Spatial descriptors of tree point pattern are computed at the whole plot level. Several stand height metrics are also computed and provided in the output. The spatial representation of modeled tree crowns is used to generate estimates of fractional tree canopy cover at the microplot, subplot and whole plot levels. Convenience functions are provided for efficient data processing. Exploratory data analysis is also facilitated via integration with the spatstat packages.">
 <meta property="og:image" content="https://firelab.github.io/FIAstemmap/logo.png">
 </head>
 <body>
@@ -107,13 +107,20 @@
 <span><span class="co"># Regression coefficients for estimating crown width from diameter are included.</span></span>
 <span><span class="co"># See `?cw_coef`.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cw_coef</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   symbol SPCD        common_name surrogate   b0   b1    b2          reference</span></span>
-<span><span class="co">#&gt; 1   ABAM   11 Pacific silver fir      &lt;NA&gt; 7.30 0.59  0.00    Bechtold (2004)</span></span>
-<span><span class="co">#&gt; 2   ABCO   15          white fir      &lt;NA&gt; 4.49 0.92 -0.01    Bechtold (2004)</span></span>
-<span><span class="co">#&gt; 3   ABGR   17          grand fir      &lt;NA&gt; 5.75 1.11 -0.01    Bechtold (2004)</span></span>
-<span><span class="co">#&gt; 4  ABLAA   18       corkbark fir      &lt;NA&gt; 6.07 0.37  0.00    Bechtold (2004)</span></span>
-<span><span class="co">#&gt; 5   ABLA   19      subalpine fir      &lt;NA&gt; 3.96 0.64  0.00    Bechtold (2004)</span></span>
-<span><span class="co">#&gt; 6   ABMA   20 California red fir      &lt;NA&gt; 6.67 0.43  0.00 Gill et al. (2000)</span></span>
+<span><span class="co">#&gt;   symbol SPCD        common_name surrogate     b0     b1      b2</span></span>
+<span><span class="co">#&gt; 1   ABAM   11 Pacific silver fir      &lt;NA&gt; 7.3037 0.5909  0.0000</span></span>
+<span><span class="co">#&gt; 2   ABCO   15          white fir      &lt;NA&gt; 4.4965 0.9238 -0.0120</span></span>
+<span><span class="co">#&gt; 3   ABGR   17          grand fir      &lt;NA&gt; 5.7545 1.1196 -0.0147</span></span>
+<span><span class="co">#&gt; 4  ABLAA   18       corkbark fir      &lt;NA&gt; 6.0730 0.3756  0.0000</span></span>
+<span><span class="co">#&gt; 5   ABLA   19      subalpine fir      &lt;NA&gt; 3.9629 0.6469  0.0000</span></span>
+<span><span class="co">#&gt; 6   ABMA   20 California red fir      &lt;NA&gt; 6.6740 0.4317  0.0000</span></span>
+<span><span class="co">#&gt;            reference</span></span>
+<span><span class="co">#&gt; 1    Bechtold (2004)</span></span>
+<span><span class="co">#&gt; 2    Bechtold (2004)</span></span>
+<span><span class="co">#&gt; 3    Bechtold (2004)</span></span>
+<span><span class="co">#&gt; 4    Bechtold (2004)</span></span>
+<span><span class="co">#&gt; 5    Bechtold (2004)</span></span>
+<span><span class="co">#&gt; 6 Gill et al. (2000)</span></span>
 <span></span>
 <span><span class="co"># Add a column of predicted crown widths to the `plantation` tree list.</span></span>
 <span><span class="co"># The base R function `within()` modifies a copy of the example dataset.</span></span>
@@ -132,7 +139,7 @@
 <span><span class="co">#&gt;  $ ACTUALHT : num  42 44 41 50 45 45 40 43 47 49 ...</span></span>
 <span><span class="co">#&gt;  $ CCLCD    : int  3 3 3 3 3 3 3 3 3 3 ...</span></span>
 <span><span class="co">#&gt;  $ TPA_UNADJ: num  6.02 6.02 6.02 6.02 6.02 ...</span></span>
-<span><span class="co">#&gt;  $ CRWIDTH  : num  11.9 13 10.8 15.8 13.7 10.8 10.2 9.7 15.3 13.9 ...</span></span></code></pre></div>
+<span><span class="co">#&gt;  $ CRWIDTH  : num  12 13.1 10.9 15.8 13.8 10.9 10.2 9.8 15.3 13.9 ...</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="exploratory-analysis">Exploratory analysis<a class="anchor" aria-label="anchor" href="#exploratory-analysis"></a>
@@ -238,7 +245,7 @@
 <span><span class="co"># Visualized with: `plot_crowns(tree_list, subplot = 1)`</span></span>
 <span><span class="va">tree_list</span><span class="op">[</span><span class="va">tree_list</span><span class="op">$</span><span class="va">SUBP</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">tree_list</span><span class="op">$</span><span class="va">DIA</span> <span class="op">&gt;=</span> <span class="fl">5</span>, <span class="op">]</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/calc_crown_overlay.html">calc_crown_overlay</a></span><span class="op">(</span>sample_radius <span class="op">=</span> <span class="fl">24</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 86.8</span></span>
+<span><span class="co">#&gt; [1] 87</span></span>
 <span></span>
 <span><span class="co">## Calculate stand height metrics, which are also included by default in the</span></span>
 <span><span class="co">## output of `calc_tcc_metrics()` (see below).</span></span>
@@ -251,22 +258,22 @@
 <span><span class="co"># By default, TCC is predicted using the "stem-map" model, full output returned.</span></span>
 <span><span class="fu"><a href="reference/calc_tcc_metrics.html">calc_tcc_metrics</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $model_tcc</span></span>
-<span><span class="co">#&gt; [1] 88.4</span></span>
+<span><span class="co">#&gt; [1] 88.6</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $subp1_crown_overlay</span></span>
-<span><span class="co">#&gt; [1] 86.8</span></span>
+<span><span class="co">#&gt; [1] 87</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $subp2_crown_overlay</span></span>
-<span><span class="co">#&gt; [1] 91.7</span></span>
+<span><span class="co">#&gt; [1] 91.8</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $subp3_crown_overlay</span></span>
 <span><span class="co">#&gt; [1] 80.2</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $subp4_crown_overlay</span></span>
-<span><span class="co">#&gt; [1] 87.2</span></span>
+<span><span class="co">#&gt; [1] 87.3</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $subp_overlay_mean</span></span>
-<span><span class="co">#&gt; [1] 86.475</span></span>
+<span><span class="co">#&gt; [1] 86.575</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $micr1_crown_overlay</span></span>
 <span><span class="co">#&gt; [1] 0</span></span>
@@ -275,13 +282,13 @@
 <span><span class="co">#&gt; [1] 0</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $micr3_crown_overlay</span></span>
-<span><span class="co">#&gt; [1] 20.2</span></span>
+<span><span class="co">#&gt; [1] 20.6</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $micr4_crown_overlay</span></span>
 <span><span class="co">#&gt; [1] 22.5</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $micr_overlay_mean</span></span>
-<span><span class="co">#&gt; [1] 10.675</span></span>
+<span><span class="co">#&gt; [1] 10.775</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $L_6ft</span></span>
 <span><span class="co">#&gt; [1] 3.868305</span></span>
@@ -324,15 +331,18 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $maxSapHt</span></span>
 <span><span class="co">#&gt; [1] 43</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $standHt</span></span>
+<span><span class="co">#&gt; [1] 45.3</span></span>
 <span></span>
 <span><span class="co"># Return only the predicted TCC value (`$model_tcc`).</span></span>
 <span><span class="fu"><a href="reference/calc_tcc_metrics.html">calc_tcc_metrics</a></span><span class="op">(</span><span class="va">plantation</span>, full_output <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 88.4</span></span>
+<span><span class="co">#&gt; [1] 88.6</span></span>
 <span></span>
 <span><span class="co"># Alternatively, use the "FVS method" which assumes a random arrangement of</span></span>
 <span><span class="co"># tree crowns. This method does not require individual stem coordinates.</span></span>
 <span><span class="fu"><a href="reference/calc_tcc_metrics.html">calc_tcc_metrics</a></span><span class="op">(</span><span class="va">plantation</span>, stem_map <span class="op">=</span> <span class="cn">FALSE</span>, full_output <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 81.4</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 81.5</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="data-processing">Data processing<a class="anchor" aria-label="anchor" href="#data-processing"></a>
@@ -361,27 +371,27 @@
 <span><span class="co">#&gt; ℹ The input table contains tree data for 22 plots.</span></span>
 <span><span class="co">#&gt;             PLT_CN model_tcc numTrees meanTreeHt meanTreeHtBAW meanTreeHtDom</span></span>
 <span><span class="co">#&gt; 1  670951075126144       1.2        0        0.0           0.0           0.0</span></span>
-<span><span class="co">#&gt; 2  670950940126144      38.4       24       61.4          66.4          64.5</span></span>
+<span><span class="co">#&gt; 2  670950940126144      37.8       24       61.4          66.4          64.5</span></span>
 <span><span class="co">#&gt; 3  670950992126144       3.4        1       43.0          43.0          43.0</span></span>
-<span><span class="co">#&gt; 4  670950609126144      17.2        4      102.2         102.6         102.2</span></span>
-<span><span class="co">#&gt; 5  670950600126144      34.9       16       62.1          79.0          69.9</span></span>
-<span><span class="co">#&gt; 6  670951118126144      20.6        9       24.6          28.0          30.0</span></span>
-<span><span class="co">#&gt; 7  670950964126144      37.9       16       58.8          67.1          64.1</span></span>
-<span><span class="co">#&gt; 8  670951031126144      51.2       29       70.2          72.8          72.4</span></span>
-<span><span class="co">#&gt; 9  670950608126144      70.8       32       73.7          94.8          86.6</span></span>
-<span><span class="co">#&gt; 10 670950599126144      66.4       44       61.8          66.4          64.1</span></span>
-<span><span class="co">#&gt; 11 670950967126144      57.4       23       86.0         100.7          96.1</span></span>
-<span><span class="co">#&gt; 12 670950732126144      34.4       12       64.3          91.8          72.6</span></span>
-<span><span class="co">#&gt; 13 670950725126144      66.5       69       66.3          87.0          73.9</span></span>
-<span><span class="co">#&gt; 14 670950598126144      55.8       20       65.7          89.6          83.9</span></span>
-<span><span class="co">#&gt; 15 670950965126144      81.3       74       53.1          55.1          54.5</span></span>
-<span><span class="co">#&gt; 16 670951032126144      32.5        5       15.0          14.2          15.0</span></span>
-<span><span class="co">#&gt; 17 670951034126144      16.4        7       40.7          45.0          40.7</span></span>
+<span><span class="co">#&gt; 4  670950609126144      16.1        4      102.2         102.6         102.2</span></span>
+<span><span class="co">#&gt; 5  670950600126144      35.0       16       62.1          79.0          69.9</span></span>
+<span><span class="co">#&gt; 6  670951118126144      20.0        9       24.6          28.0          30.0</span></span>
+<span><span class="co">#&gt; 7  670950964126144      37.5       16       58.8          67.1          64.1</span></span>
+<span><span class="co">#&gt; 8  670951031126144      51.0       29       70.2          72.8          72.4</span></span>
+<span><span class="co">#&gt; 9  670950608126144      71.0       32       73.7          94.8          86.6</span></span>
+<span><span class="co">#&gt; 10 670950599126144      65.6       44       61.8          66.4          64.1</span></span>
+<span><span class="co">#&gt; 11 670950967126144      56.8       23       86.0         100.7          96.1</span></span>
+<span><span class="co">#&gt; 12 670950732126144      34.9       12       64.3          91.8          72.6</span></span>
+<span><span class="co">#&gt; 13 670950725126144      66.9       69       66.3          87.0          73.9</span></span>
+<span><span class="co">#&gt; 14 670950598126144      56.0       20       65.7          89.6          83.9</span></span>
+<span><span class="co">#&gt; 15 670950965126144      81.2       74       53.1          55.1          54.5</span></span>
+<span><span class="co">#&gt; 16 670951032126144      32.0        5       15.0          14.2          15.0</span></span>
+<span><span class="co">#&gt; 17 670951034126144      16.3        7       40.7          45.0          40.7</span></span>
 <span><span class="co">#&gt; 18 670950625126144      44.5       23       42.0          61.9          42.9</span></span>
 <span><span class="co">#&gt; 19 670951029126144      55.1       33       64.7          68.5          64.7</span></span>
-<span><span class="co">#&gt; 20 670951035126144      97.6       54       44.9          50.6          45.7</span></span>
-<span><span class="co">#&gt; 21 670951089126144      21.1        7       79.9          83.0          79.9</span></span>
-<span><span class="co">#&gt; 22 670951152126144       5.3        3       21.3          21.7          21.3</span></span>
+<span><span class="co">#&gt; 20 670951035126144      97.5       54       44.9          50.6          45.7</span></span>
+<span><span class="co">#&gt; 21 670951089126144      21.4        7       79.9          83.0          79.9</span></span>
+<span><span class="co">#&gt; 22 670951152126144       5.4        3       21.3          21.7          21.3</span></span>
 <span><span class="co">#&gt;    meanTreeHtDomBAW maxTreeHt predomTreeHt numSaplings meanSapHt maxSapHt</span></span>
 <span><span class="co">#&gt; 1               0.0         0          0.0           1       9.0        9</span></span>
 <span><span class="co">#&gt; 2              67.9        85         81.7           1      16.0       16</span></span>
