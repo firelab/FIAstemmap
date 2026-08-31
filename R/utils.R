@@ -15,7 +15,6 @@
 #' A named list with elements `x` and `y` containing numeric vectors of stem
 #' coordinates.
 #' @noRd
-#' @export
 .get_tree_list_xy <- function(tree_list, linear_unit = "ft") {
     unit_conv <- 1  # FIA native unit ft
     if (linear_unit %in% c("m", "meter", "metre")) {
@@ -81,7 +80,6 @@
 #' A MultiPolygon geometry as a raw vector of WKB by default, or as a character
 #' string of WKT if `as_wkb = FALSE`.
 #' @noRd
-#' @export
 .get_fia_plot_geom <- function(center_x = 0, center_y = 0, macroplot = FALSE,
                                linear_unit = "ft", quad_segs = 30L,
                                as_wkb = TRUE) {
