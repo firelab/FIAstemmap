@@ -81,6 +81,14 @@ create_fia_ppp(
   `factor` marks are those that take only a finite number of possible
   values (e.g. colors or types).
 
+## Value
+
+`create_fia_owin()` returns an object of class `"owin"` from the
+spatstat library representing the generic 2-D observation window for the
+nationally standard FIA plot design. `create_fia_ppp()` returns an
+object of class `"ppp"` from spatstat representing the point pattern of
+an FIA tree list in the 2-D plane.
+
 ## Details
 
 `create_fia_owin()` returns an object of class `"owin"` from the

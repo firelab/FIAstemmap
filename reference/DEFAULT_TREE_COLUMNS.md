@@ -12,13 +12,14 @@ ones generally needed for all functionality in the package.
 DEFAULT_TREE_COLUMNS
 ```
 
-## Format
-
-A character vector with 12 elements.
-
 ## Source
 
 <https://research.fs.usda.gov/products/dataandtools/fia-datamart>
+
+## Value
+
+A character vector of 12 strings containing the names of columns in the
+FIADB TREE table used by default in FIAstemmap.
 
 ## Examples
 
