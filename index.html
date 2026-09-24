@@ -88,10 +88,13 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of <strong>FIAstemmap</strong> with:</p>
+<p>You can install the released version from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"firelab/FIAstemmap"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"FIAstemmap"</span><span class="op">)</span></span></code></pre></div>
+<p>Or install the development version from GitHub:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"firelab/FIAstemmap"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
@@ -102,7 +105,7 @@
 <p>The data frame <code>cw_coef</code> contains a curated set of linear regression coefficients for predicting crown width from stem diameter of tree species in the conterminous US (see <code><a href="reference/cw_coef.html">?cw_coef</a></code>). The method for crown width prediction attempts to avoid extrapolation beyond the range of the model fitting data by providing reasonable fall backs for the obvious cases. Details are given in the documentation for <code><a href="reference/calc_crwidth.html">calc_crwidth()</a></code>.</p>
 <p>The input is a data frame of tree records which must have columns <code>SPCD</code> (FIA species code), <code>STATUSCD</code> (FIA tree status code, <code>1</code> = live) and <code>DIA</code> (FIA tree diameter). FIA distribute data in <a href="https://en.wikipedia.org/wiki/United_States_customary_units" class="external-link">United States customary units</a> with tree diameter given in inches, height in feet, and area in acres. Convenience functions are provided for converting to and from SI units<a href="#footnotes"><sup>1</sup></a> (<code><a href="reference/convert_units.html">in_to_cm()</a></code>, <code><a href="reference/convert_units.html">cm_to_in()</a></code>, <code><a href="reference/convert_units.html">ft_to_m()</a></code>, <code><a href="reference/convert_units.html">m_to_ft()</a></code>, <code><a href="reference/convert_units.html">ac_to_ha()</a></code>, <code><a href="reference/convert_units.html">ha_to_ac()</a></code>).</p>
 <p>The <code>plantation</code> dataset used here is an example tree list included in the package.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://firelab.github.io/FIAstemmap/">FIAstemmap</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Regression coefficients for estimating crown width from diameter are included.</span></span>
@@ -146,24 +149,24 @@
 <h3 id="exploratory-analysis">Exploratory analysis<a class="anchor" aria-label="anchor" href="#exploratory-analysis"></a>
 </h3>
 <p>Plot-level visualization and other exploratory analyses require input data with individual stem locations given in columns named <code>AZIMUTH</code> (horizontal angle from subplot/microplot center, <code>0:359</code>) and <code>DIST</code> (distance from subplot/microplot center).</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Display modeled tree crowns projected vertically on the FIA plot boundary.</span></span>
 <span><span class="fu"><a href="reference/plot_crowns.html">plot_crowns</a></span><span class="op">(</span><span class="va">tree_list</span>, main <span class="op">=</span> <span class="st">"Loblolly pine plantation"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot-crowns-1.png" alt="" width="70%"></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Individual subplot</span></span>
 <span><span class="fu"><a href="reference/plot_crowns.html">plot_crowns</a></span><span class="op">(</span><span class="va">tree_list</span>, subplot <span class="op">=</span> <span class="fl">4</span>,</span>
 <span>            main <span class="op">=</span> <span class="st">"Loblolly pine plantation subplot 4"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot-crowns-2.png" alt="" width="70%"></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Or microplot</span></span>
 <span><span class="fu"><a href="reference/plot_crowns.html">plot_crowns</a></span><span class="op">(</span><span class="va">tree_list</span>, subplot <span class="op">=</span> <span class="fl">4</span>, microplot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>            main <span class="op">=</span> <span class="st">"Loblolly pine plantation microplot 4"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot-crowns-3.png" alt="" width="70%"></p>
 <p>Helper functions facilitate the analysis of FIA tree lists as spatial point patterns using the <strong>spatstat</strong> library. <code><a href="reference/spatstat_helpers.html">create_fia_ppp()</a></code> returns an object of class <code>"ppp"</code> representing the point pattern of an FIA tree list in the 2-D plane. This object can be used with functions of <a href="https://cran.r-project.org/package=spatstat.explore" class="external-link"><strong>spatstat.explore</strong></a> which provide additional plotting capabilities, descriptive spatial statistics, and other exploratory data analysis.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Create a spatstat point pattern object for the pine plantation tree list.</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/spatstat_helpers.html">create_fia_ppp</a></span><span class="op">(</span><span class="va">plantation</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
@@ -188,7 +191,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, pch <span class="op">=</span> <span class="fl">16</span>, background <span class="op">=</span> <span class="st">"#fdf6e3"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Pine plantation point pattern"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-spatstat-explore-1.png" alt="" width="70%"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Compute Ripley's K-function applying isotropic edge correction.</span></span>
 <span><span class="va">K</span> <span class="op">&lt;-</span> <span class="fu">spatstat.explore</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/Kest.html" class="external-link">Kest</a></span><span class="op">(</span><span class="va">X</span>, rmax <span class="op">=</span> <span class="fl">12</span>, correction <span class="op">=</span> <span class="st">"isotropic"</span><span class="op">)</span></span>
@@ -198,7 +201,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">K</span>, main <span class="op">=</span> <span class="st">"Ripley's K for the plantation FIA plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-spatstat-explore-2.png" alt="" width="70%"></p>
 <p>The <code>western_redcedar</code> dataset is another example tree list included in the package. The following code uses meter for the distance unit.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Spatial point pattern for the western redcedar tree list.</span></span>
 <span></span>
 <span><span class="co"># Give stem distances in meters.</span></span>
@@ -227,7 +230,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">X</span>, pch <span class="op">=</span> <span class="fl">16</span>, background <span class="op">=</span> <span class="st">"#fdf6e3"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Western redcedar point pattern"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-spatstat-explore-cont-1.png" alt="" width="70%"></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">K</span> <span class="op">&lt;-</span> <span class="fu">spatstat.explore</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/Kest.html" class="external-link">Kest</a></span><span class="op">(</span><span class="va">X</span>, rmax <span class="op">=</span> <span class="fu"><a href="reference/convert_units.html">ft_to_m</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span>, correction <span class="op">=</span> <span class="st">"isotropic"</span><span class="op">)</span></span>
 <span></span>
@@ -237,7 +240,7 @@
 <div class="section level3">
 <h3 id="compute-stand-structure-metrics">Compute stand structure metrics<a class="anchor" aria-label="anchor" href="#compute-stand-structure-metrics"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Compute fractional tree canopy cover of a specific sampled area by overlaying</span></span>
 <span><span class="co">## modeled crowns.</span></span>
 <span></span>
@@ -348,14 +351,14 @@
 <div class="section level3">
 <h3 id="data-processing">Data processing<a class="anchor" aria-label="anchor" href="#data-processing"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load tree data from a file or database connection.</span></span>
 <span><span class="co"># Lolo NF, single-condition forested plots, INVYR = 2022, from public FIADB</span></span>
 <span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/mt_lnf_2022_1cond_tree.csv"</span>, package<span class="op">=</span><span class="st">"FIAstemmap"</span><span class="op">)</span></span>
 <span><span class="va">tree_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/load_tree_data.html">load_tree_data</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ! The data source does not have DIST and/or AZIMUTH.</span></span>
 <span><span class="co">#&gt; ℹ Fetching tree data</span></span>
-<span><span class="co">#&gt; ✔ Fetching tree data [14ms]</span></span>
+<span><span class="co">#&gt; ✔ Fetching tree data [15ms]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ℹ 910 tree records returned.</span></span>
 <span></span>

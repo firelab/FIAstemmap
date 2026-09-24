@@ -42,12 +42,19 @@ arrangement of the crowns.
 
 ## Installation
 
-You can install the development version of **FIAstemmap** with:
+You can install the released version from CRAN:
 
 ``` r
 
-# install.packages("pak")
-pak::pak("firelab/FIAstemmap")
+install.packages("FIAstemmap")
+```
+
+Or install the development version from GitHub:
+
+``` r
+
+# install.packages("remotes")
+remotes::install_github("firelab/FIAstemmap")
 ```
 
 ## Examples
@@ -378,7 +385,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH.
 #> ℹ Fetching tree data
-#> ✔ Fetching tree data [14ms]
+#> ✔ Fetching tree data [15ms]
 #> 
 #> ℹ 910 tree records returned.
 
