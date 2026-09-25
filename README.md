@@ -8,6 +8,8 @@
 [![R-CMD-check](https://github.com/firelab/FIAstemmap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/firelab/FIAstemmap/actions/workflows/R-CMD-check.yaml)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/FIAstemmap)](https://CRAN.R-project.org/package=FIAstemmap)
+[![R-universe
+version](https://firelab.r-universe.dev/FIAstemmap/badges/version)](https://firelab.r-universe.dev/FIAstemmap)
 <!-- badges: end -->
 
 The Forest Inventory and Analysis Program
@@ -375,7 +377,7 @@ f <- system.file("extdata/mt_lnf_2022_1cond_tree.csv", package="FIAstemmap")
 tree_table <- load_tree_data(f)
 #> ! The data source does not have DIST and/or AZIMUTH.
 #> ℹ Fetching tree data
-#> ✔ Fetching tree data [15ms]
+#> ✔ Fetching tree data [14ms]
 #> 
 #> ℹ 910 tree records returned.
 
