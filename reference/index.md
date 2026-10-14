@@ -2,6 +2,8 @@
 
 ## Functions
 
+- [`calc_cbh_metrics()`](https://firelab.github.io/FIAstemmap/reference/calc_cbh_metrics.md)
+  : Calculate canopy base height metrics from FIA tree data
 - [`calc_crown_overlay()`](https://firelab.github.io/FIAstemmap/reference/calc_crown_overlay.md)
   : Compute fractional tree canopy cover of a subplot/microplot by crown
   overlay
