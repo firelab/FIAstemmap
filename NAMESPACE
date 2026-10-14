@@ -2,6 +2,7 @@
 
 export(DEFAULT_TREE_COLUMNS)
 export(ac_to_ha)
+export(calc_cbh_metrics)
 export(calc_crown_overlay)
 export(calc_crwidth)
 export(calc_ht_metrics)

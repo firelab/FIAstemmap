@@ -1,6 +1,6 @@
 Package: FIAstemmap
-Title: Tree Canopy Modeling for USDA Forest Inventory and Analysis Plots
-Version: 2.0.0
+Title: Tree Canopy Modeling for US Forest Inventory and Analysis (FIA) Plots
+Version: 2.0.0.9001
 Authors@R:
     person("Chris", "Toney", email = "jctoney@gmail.com",
            role = c("aut", "cre"), comment = c(ORCID = "0000-0001-5734-6510"))
@@ -40,4 +40,4 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 Language: en-US
-Config/roxygen2/version: 8.1.0
+Config/roxygen2/version: 8.1.1
