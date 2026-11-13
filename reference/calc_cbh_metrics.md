@@ -63,7 +63,7 @@ system.file("extdata/dfir_plot.csv", package="FIAstemmap") |>
   load_tree_data(columns = NULL) |>
   calc_cbh_metrics()
 #> ℹ Fetching tree data
-#> ✔ Fetching tree data [9ms]
+#> ✔ Fetching tree data [8ms]
 #> 
 #> ℹ 32 tree records returned.
 #>            PLT_CN cbh_mean cbh_median cbh_pct20 cbh_min
