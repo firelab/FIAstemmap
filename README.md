@@ -10,6 +10,8 @@
 status](https://www.r-pkg.org/badges/version/FIAstemmap)](https://CRAN.R-project.org/package=FIAstemmap)
 [![R-universe
 version](https://firelab.r-universe.dev/FIAstemmap/badges/version)](https://firelab.r-universe.dev/FIAstemmap)
+[![Conda
+Version](https://img.shields.io/conda/vn/conda-forge/r-fiastemmap)](https://anaconda.org/conda-forge/r-fiastemmap)
 <!-- badges: end -->
 
 The Forest Inventory and Analysis Program
